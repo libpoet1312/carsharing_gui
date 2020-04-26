@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.jsOLD" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/LoginModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/auth-header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/auth.service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/user.service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Rides.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/CustomLayout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/CustomLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/RideListView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -48,12 +41,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -87,7 +81,11 @@
       <updated>1587388546118</updated>
       <workItem from="1587388550381" duration="1726000" />
       <workItem from="1587663203184" duration="1212000" />
-      <workItem from="1587668286271" duration="22899000" />
+      <workItem from="1587668286271" duration="23172000" />
+      <workItem from="1587746248646" duration="6342000" />
+      <workItem from="1587835434481" duration="15070000" />
+      <workItem from="1587857110638" duration="131000" />
+      <workItem from="1587857253829" duration="10219000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -96,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587388791875</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="my 2nd commit!">
+      <created>1587696464365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587696464365</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,17 +109,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="my first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="my first commit" />
+    <MESSAGE value="my 2nd commit!" />
+    <option name="LAST_COMMIT_MESSAGE" value="my 2nd commit!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3645" y="411" width="508" height="255" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1587668242766">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3645" y="411" width="508" height="255" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587668242766" />
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1587696428475">
+    <state x="3690" y="378" width="417" height="322" key="#com.intellij.ide.actions.DebugLogConfigureAction" timestamp="1587857125181">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587696428475" />
+    <state x="3690" y="378" width="417" height="322" key="#com.intellij.ide.actions.DebugLogConfigureAction/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857125181" />
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1587696463538">
+      <screen x="2944" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587696463538" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -123,10 +133,14 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3756" y="435" key="Github.ShareDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587388951920" />
-    <state x="3393" y="175" key="SettingsEditor" timestamp="1587389399862">
+    <state x="3393" y="175" key="SettingsEditor" timestamp="1587857056315">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587389399862" />
+    <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857056315" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1587696477936">
+      <screen x="2944" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587696477936" />
     <state x="3568" y="247" key="run.anything.popup" timestamp="1587686888248">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

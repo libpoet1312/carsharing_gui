@@ -4,6 +4,19 @@ const API_URL = "http://localhost:8000/api/";
 const REST_AUTH = API_URL+'rest-auth/';
 
 class AuthService {
+    facebooklogin(response) {
+        return axios
+            .post(REST_AUTH+'facebook/',{
+                access_token: response.accessToken
+            }).then( response => {
+                if(response.data.token){
+                    localStorage.setItem("user", JSON.stringify(response.data));
+                    console.log(response)
+                }
+                return response;
+            });
+    }
+
     login(username, password) {
         return axios
             .post(REST_AUTH+'login/',{
@@ -29,7 +42,7 @@ class AuthService {
     }
 
     getCurrentUser() {
-        return JSON.parse(localStorage.getItem('user'));;
+        return JSON.parse(localStorage.getItem('user'));
     }
 }
 

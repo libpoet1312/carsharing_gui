@@ -1,24 +1,8 @@
 import React from "react";
 import FacebookLogin from 'react-facebook-login';
-import {Modal, Button} from "react-bootstrap";
-import axios from "axios";
-
-const API_URL = "http://localhost:8000/api/";
-const REST_AUTH = API_URL+'rest-auth/';
-
-const responseFacebook = (response) => {
-    console.log(response);
-    return axios
-        .post(REST_AUTH+'facebook/',{
-            access_token: response.accessToken
-        }).then( response => {
-            if(response.data.token){
-                localStorage.setItem("user", JSON.stringify(response.data));
-                console.log(response)
-            }
-            return response;
-        });
-};
+import {Modal, Button, Col, Row} from "react-bootstrap";
+import AuthService from '../../services/auth.service';
+import Login from "./Login";
 
 
 function LoginModal(props) {
@@ -27,26 +11,28 @@ function LoginModal(props) {
             {...props}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
-            centered className=''>
+            centered>
             <Modal.Header closeButton>
-                <Modal.Title id="">
-                    <div className=''>Σύνδεση</div>
+                <Modal.Title>
+                    <div>Σύνδεση στο CarPooling</div>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className='text-center'>
-                <FacebookLogin
-                    appId="2603473709910948"
-                    autoLoad={false}
-                    callback={responseFacebook}
-                    fields="name,email,picture"
-                    icon="fa-facebook" />
-                <h4 className='text-center'>Centered Modal</h4>
-                <hr/>
-                <p>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.
-                </p>
+                <Row>
+                    <Col>
+                        <FacebookLogin
+                            appId="2603473709910948"
+                            autoLoad={false}
+                            callback={AuthService.facebooklogin}
+                            fields="name,email,picture"
+                            icon="fa-facebook" />
+                    </Col>
+                    <Col>
+                        <Login/>
+                    </Col>
+                </Row>
+
+
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>

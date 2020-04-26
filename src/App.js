@@ -1,22 +1,20 @@
-import React from 'react';
-import './App.css';
-import NavigationBar from "./components/Navigation/NavigationBar";
-import { Route, Switch } from 'react-router-dom';
-import Home from "./components/Home";
-import Login from "./components/Auth/Login";
+import React, { Component } from 'react';
+// import './App.css';
+import 'antd/dist/antd.css';
 
-function App() {
-    return (
-        <div>
-            <NavigationBar/>
-            <Switch>
-                <Route path='/' exact component={Home} />
-                <Route path='/login' exact component={Login}/>
-                <Route render={() => <h1>404: page not found</h1>} />
-            </Switch>
+import CustomLayout from "./containers/CustomLayout";
+import RideList from "./containers/RideListView";
 
-        </div>
-    );
+class App extends Component{
+    render() {
+        return (
+            <div className="">
+                <CustomLayout>
+                    <RideList />
+                </CustomLayout>
+            </div>
+        );
+    }
 }
 
 export default App;
