@@ -1,9 +1,9 @@
 import React from "react";
 import {List, Avatar, Row, Col, Popover} from 'antd';
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+import {Link} from "react-router-dom";
+import {AwesomeButton} from "react-awesome-button";
 const Rides = (props) => {
-
-
 
     const IconText = ({ icon, text }) => (
         <span>
@@ -14,7 +14,6 @@ const Rides = (props) => {
 
     return(
         <List
-
             itemLayout="vertical"
             size="large"
             pagination={{
@@ -30,16 +29,18 @@ const Rides = (props) => {
                 </div>
             }
             renderItem={item => (
-                <List.Item
+                <List.Item as={Link} to='/rides/${item.pk}/'
                     key={item.pk}
                     actions={[
-                        <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-                        <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-                        <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+                        // <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
+                        // <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
+                        // <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+                        <AwesomeButton href='' type="primary" size="small">Details</AwesomeButton>,
                     ]}
                     extra={
                         <img
-                            width={272}
+                            width={200}
+                            height={200}
                             alt="logo"
                             src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                         />
@@ -48,9 +49,9 @@ const Rides = (props) => {
                     <List.Item.Meta
                         avatar={
                             <Popover  placement="bottom" content={<h5>Profile</h5>}>
-                                <a href=''>
+                                <a href='/'>
                                     <div className='border border-primary text-center'>
-                                        <Avatar src={item.uploader.avatar} alt='avatar' style={''}/>
+                                        <Avatar src={item.uploader.avatar} alt='avatar'/>
                                         <h6 className='font-italic text-muted mt-5'>{item.uploader.username}</h6>
                                     </div>
                                 </a>

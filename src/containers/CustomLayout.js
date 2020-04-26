@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Menu, Breadcrumb, Button, Space, Row, Col} from 'antd';
+import {Layout, Menu, Breadcrumb, Space, Row, Col} from 'antd';
 import {
     DesktopOutlined,
     HomeFilled,
@@ -15,6 +15,8 @@ import {FaCarSide} from 'react-icons/fa';
 import { AwesomeButton} from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
+import {Link} from "react-router-dom";
+
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -29,10 +31,6 @@ class CustomLayout extends React.Component {
             collapsed: false,
         };
     }
-
-    // state = {
-    //     collapsed: false,
-    // };
 
     onCollapse = collapsed => {
         this.setState({ collapsed });
@@ -59,12 +57,16 @@ class CustomLayout extends React.Component {
                     <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <Menu.Item key="1">
-                                <HomeFilled/>
-                                <span>Home</span>
+                                <Link to='/'>
+                                    <HomeFilled/>
+                                    <span>Home</span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="2">
-                                <DesktopOutlined />
-                                <span>Rides</span>
+                                <Link to='rides/'>
+                                    <DesktopOutlined />
+                                    <span>Rides</span>
+                                </Link>
                             </Menu.Item>
                             <SubMenu
                                 key="sub1"
@@ -100,8 +102,8 @@ class CustomLayout extends React.Component {
                         <Header className="site-layout-background" style={{ padding: 0 }} />
                         <Content style={{ margin: '0 16px' }}>
                             <Breadcrumb style={{ margin: '16px 0' }}>
-                                <Breadcrumb.Item>User</Breadcrumb.Item>
-                                <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                                <Breadcrumb.Item><Link to='/'>Home</Link></Breadcrumb.Item>
+                                <Breadcrumb.Item><Link to='rides/'>List</Link></Breadcrumb.Item>
                             </Breadcrumb>
                             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                                 {this.props.children}

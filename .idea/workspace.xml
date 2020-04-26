@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Rides.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/CustomLayout.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/CustomLayout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/RideListView.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/404.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/RideDetailView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/LoginModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/LoginModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Rides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/CustomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CustomLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/RideListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/RideListView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,9 @@
       <workItem from="1587746248646" duration="6342000" />
       <workItem from="1587835434481" duration="15070000" />
       <workItem from="1587857110638" duration="131000" />
-      <workItem from="1587857253829" duration="10219000" />
+      <workItem from="1587857253829" duration="10265000" />
+      <workItem from="1587867825932" duration="112000" />
+      <workItem from="1587921364939" duration="6388000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -101,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587696464365</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="siga siga proxwrame">
+      <created>1587867724163</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587867724163</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,7 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="my first commit" />
     <MESSAGE value="my 2nd commit!" />
-    <option name="LAST_COMMIT_MESSAGE" value="my 2nd commit!" />
+    <MESSAGE value="siga siga proxwrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="siga siga proxwrame" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3645" y="411" width="508" height="255" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1587668242766">
@@ -121,10 +129,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3690" y="378" width="417" height="322" key="#com.intellij.ide.actions.DebugLogConfigureAction/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857125181" />
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1587696463538">
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1587867723452">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587696463538" />
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587867723452" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -137,10 +145,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857056315" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1587696477936">
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1587867732341">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587696477936" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587867732341" />
     <state x="3568" y="247" key="run.anything.popup" timestamp="1587686888248">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

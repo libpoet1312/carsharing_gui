@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-// import './App.css';
+import {BrowserRouter} from 'react-router-dom';
+import Router from './Routes';
 import 'antd/dist/antd.css';
 
 import CustomLayout from "./containers/CustomLayout";
-import RideList from "./containers/RideListView";
 
 class App extends Component{
     render() {
         return (
-            <div className="">
-                <CustomLayout>
-                    <RideList />
-                </CustomLayout>
+            <div className="App">
+                <BrowserRouter>
+                    <CustomLayout>
+                        <Router />
+                    </CustomLayout>
+                </BrowserRouter>
             </div>
         );
     }

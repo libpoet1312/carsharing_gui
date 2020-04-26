@@ -29,7 +29,6 @@ class RideListView extends React.Component{
             .get(API_URL)
             .then(response => {
                 this.setState({
-
                     rides: response.data.results
                 });
                 console.log(response.data);
