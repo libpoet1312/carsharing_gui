@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Menu, Breadcrumb, Space, Row, Col} from 'antd';
+import {Layout, Menu, Breadcrumb, Space, Row, Col, Modal} from 'antd';
 import {
     DesktopOutlined,
     HomeFilled,
@@ -7,6 +7,7 @@ import {
     TeamOutlined,
     UserOutlined,
     LoginOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
 
 import './CustomLayout.css'
@@ -16,7 +17,7 @@ import { AwesomeButton} from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
 import {Link} from "react-router-dom";
-
+import AuthModal from './AuthModal'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -25,12 +26,36 @@ class CustomLayout extends React.Component {
     constructor(props) {
         super(props);
 
-
-
         this.state = {
             collapsed: false,
+            modalVisible: false,
+            loginModal: true
         };
+
+        this.changeModal = this.changeModal.bind(this);
     }
+
+    showModal = () => {
+        this.setState({
+            modalVisible: true,
+        });
+    };
+
+    changeModal = () => {
+        console.log('here');
+        this.setState({
+            loginModal: !this.state.loginModal
+        })
+    };
+
+    handleCancel = e => {
+        this.setState({
+            modalVisible: false,
+            loginModal: true
+        });
+    };
+
+
 
     onCollapse = collapsed => {
         this.setState({ collapsed });
@@ -39,19 +64,39 @@ class CustomLayout extends React.Component {
     render() {
         return (
             <div>
+                <Modal visible={this.state.modalVisible}
+                       onCancel={this.handleCancel}
+                       title={<h3>Σύνδεση | Εγγραφή</h3>}
+                       width={800}
+                       footer={''}
+                >
+                    <AuthModal login={this.state.loginModal} changeModal={this.changeModal}/>
+                </Modal>
+
                 <Header className="header">
                     <Row type="flex" align="middle">
                         <Col className='site-title'>
                             Car <FaCarSide/> Sharing
                         </Col>
                         <Col className="ml-auto">
-                            <Space>
-                                <AwesomeButton type="primary" size="small"> <LoginOutlined/>{'    '}Σύνδεση</AwesomeButton>
-                                <AwesomeButton type="secondary" size="small"> Εγγραφή</AwesomeButton>
-                            </Space>
+                            {
+                                this.props.isAuthenticated ?
+                                    <Space>
+                                        <AwesomeButton type="primary" size="small"> <LogoutOutlined/>Αποσύνδεση</AwesomeButton>
+                                    </Space>
+                                    :
+                                    <Space>
+                                        <AwesomeButton type="primary" size="small" action={this.showModal}> <LoginOutlined/>Σύνδεση</AwesomeButton>
+                                    </Space>
+                            }
+
                         </Col>
                     </Row>
                 </Header>
+
+
+
+
 
                 <Layout style={{ minHeight: '93vh' }}>
                     <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>

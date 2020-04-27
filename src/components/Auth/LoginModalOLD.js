@@ -5,7 +5,7 @@ import AuthService from '../../services/auth.service';
 import Login from "./Login";
 
 
-function LoginModal(props) {
+function LoginModalOLD(props) {
     return (
         <Modal
             {...props}
@@ -41,4 +41,4 @@ function LoginModal(props) {
     );
 }
 
-export default LoginModal
+export default LoginModalOLD

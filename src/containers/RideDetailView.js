@@ -27,6 +27,7 @@ class RideDetailView extends React.Component{
         return (
             <Card title='skata'>
                 <p>{this.state.ride.origin}</p>
+
             </Card>
         )
     }
