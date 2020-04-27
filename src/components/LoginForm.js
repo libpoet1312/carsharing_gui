@@ -1,14 +1,20 @@
 import React from "react";
-import {Form, Input, Button, Checkbox, Spin, Space} from 'antd';
+import {Form, Input, Button, Checkbox, Spin, Space, Divider} from 'antd';
 import { UserOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 import {connect} from 'react-redux';
+import * as actions from '../store/actions/auth';
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const LoginForm = (props) => {
 
-    const onFinish = values => {
+    const onFinish = (values, error) => {
         console.log('Received values of form: ', values);
+        props.onAuth(values.username, values.password);
+        if (!props.error){
+            console.log('okey registration')
+        }
+        props.showModal()
     };
 
     let errorMessage = null;
@@ -54,23 +60,22 @@ const LoginForm = (props) => {
                                 <Checkbox>Remember me</Checkbox>
                             </Form.Item>
 
-                            <a className="login-form-forgot" href="/">
+                            <Divider/>
+                            <Button type="ghost" size="small" className="login-form-forgot" onClick={props.ForgotPassHandler}>
                                 Forgot password
-                            </a>
+                            </Button>
                         </Form.Item>
 
                         <Form.Item>
                             <Space>
-                                <Button type="primary" htmlType="submit" className="login-form-button">Σύνδεση</Button>
-                                Or
                                 <Button type="secondary" onClick={props.changeForm} className="login-form-button">Εγγραφή
                                 </Button>
+                                Or
+                                <Button type="primary" htmlType="submit" className="login-form-button">Σύνδεση</Button>
                             </Space>
 
                         </Form.Item>
                     </Form>
-
-
             }
 
         </div>
@@ -85,4 +90,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(LoginForm);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

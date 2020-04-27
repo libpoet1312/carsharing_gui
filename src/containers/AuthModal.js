@@ -5,18 +5,30 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import LoginForm from '../components/LoginForm'
 import { AwesomeButtonSocial } from 'react-awesome-button';
 import RegistrationForm from "../components/RegisterForm";
+import ForgotPasswordForm from "../components/ForgotPasswordForm";
 
 
 class AuthModal extends React.Component{
     constructor(props) {
         super(props);
-
-
         this.changeFormHandler = this.changeFormHandler.bind(this);
+        this.ForgotPassHandler = this.ForgotPassHandler.bind(this);
+        this.showModal = this.showModal.bind(this);
     }
 
     changeFormHandler (e) {
+        console.log('ForgotPassword', this.props.forgot);
         this.props.changeModal()
+    };
+
+    ForgotPassHandler (e) {
+        console.log('ForgotPassword', this.props.forgot);
+
+        this.props.ForgotPasswordModal()
+    };
+
+    showModal (e) {
+        this.props.showModal()
     };
 
     render() {
@@ -38,13 +50,18 @@ class AuthModal extends React.Component{
                     </Col>
                     <Col span={2}><Divider type="vertical" style={{ height: "250px" }} /></Col>
                     <Col span={11} className='text-center'>
-                        <LoginForm changeForm={this.changeFormHandler} style={{ height: "250px"}}/>
+                        <LoginForm showModal={this.showModal} changeForm={this.changeFormHandler} ForgotPassHandler={this.ForgotPassHandler} style={{ height: "250px"}}/>
                     </Col>
                 </Row>
+                : this.props.forgot ?
+                <div>
+                    <ForgotPasswordForm showModal={this.showModal} ForgotPassHandler={this.ForgotPassHandler}/>
+                </div>
                 :
                 <div>
-                    <RegistrationForm changeForm={this.changeFormHandler}/>
+                    <RegistrationForm showModal={this.showModal} changeForm={this.changeFormHandler}/>
                 </div>
+
         )
     }
 

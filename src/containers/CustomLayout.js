@@ -18,9 +18,12 @@ import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
 import {Link} from "react-router-dom";
 import AuthModal from './AuthModal'
+import * as actions from '../store/actions/auth';
+import {connect} from "react-redux";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+
 
 class CustomLayout extends React.Component {
     constructor(props) {
@@ -29,15 +32,19 @@ class CustomLayout extends React.Component {
         this.state = {
             collapsed: false,
             modalVisible: false,
-            loginModal: true
+            loginModal: true,
+            ForgotPasswordModal: false
         };
+        console.log(this.state.modal);
 
         this.changeModal = this.changeModal.bind(this);
+        this.ForgotPasswordModal = this.ForgotPasswordModal.bind(this);
+        this.showModal = this.showModal.bind(this);
     }
 
     showModal = () => {
         this.setState({
-            modalVisible: true,
+            modalVisible: !this.state.modalVisible,
         });
     };
 
@@ -48,10 +55,19 @@ class CustomLayout extends React.Component {
         })
     };
 
+    ForgotPasswordModal = () => {
+        this.setState({
+            loginModal: !this.state.loginModal,
+            ForgotPasswordModal: !this.state.ForgotPasswordModal
+        })
+    };
+
+
     handleCancel = e => {
         this.setState({
             modalVisible: false,
-            loginModal: true
+            loginModal: true,
+            ForgotPasswordModal: false
         });
     };
 
@@ -70,7 +86,7 @@ class CustomLayout extends React.Component {
                        width={800}
                        footer={''}
                 >
-                    <AuthModal login={this.state.loginModal} changeModal={this.changeModal}/>
+                    <AuthModal showModal={this.showModal} login={this.state.loginModal} forgot={this.state.ForgotPasswordModal} changeModal={this.changeModal} ForgotPasswordModal={this.ForgotPasswordModal} />
                 </Modal>
 
                 <Header className="header">
@@ -82,7 +98,7 @@ class CustomLayout extends React.Component {
                             {
                                 this.props.isAuthenticated ?
                                     <Space>
-                                        <AwesomeButton type="primary" size="small"> <LogoutOutlined/>Αποσύνδεση</AwesomeButton>
+                                        <AwesomeButton type="primary"  action={this.props.logout}> <LogoutOutlined/>Αποσύνδεση</AwesomeButton>
                                     </Space>
                                     :
                                     <Space>
@@ -113,19 +129,25 @@ class CustomLayout extends React.Component {
                                     <span>Rides</span>
                                 </Link>
                             </Menu.Item>
-                            <SubMenu
-                                key="sub1"
-                                title={
-                                    <span>
+                            {
+                                this.props.isAuthenticated ?
+                                    <SubMenu
+                                        key="sub1"
+                                        title={
+                                            <span>
                                         <UserOutlined />
                                         <span>User</span>
                                     </span>
-                                }
-                            >
-                                <Menu.Item key="3">My Rides</Menu.Item>
-                                <Menu.Item key="4">My Requests</Menu.Item>
-                                <Menu.Item key="5">Profile</Menu.Item>
-                            </SubMenu>
+                                        }
+                                    >
+                                        <Menu.Item key="3">My Rides</Menu.Item>
+                                        <Menu.Item key="4">My Requests</Menu.Item>
+                                        <Menu.Item key="5">Profile</Menu.Item>
+                                    </SubMenu>
+                                    :
+                                    <div></div>
+                            }
+
                             <SubMenu
                                 key="sub2"
                                 title={
@@ -168,4 +190,10 @@ class CustomLayout extends React.Component {
     }
 }
 
-export default CustomLayout
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => dispatch(actions.logout())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(CustomLayout);

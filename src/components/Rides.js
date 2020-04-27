@@ -3,6 +3,7 @@ import {List, Avatar, Row, Col, Popover} from 'antd';
 // import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import {AwesomeButton} from "react-awesome-button";
+
 const Rides = (props) => {
 
     return(
@@ -22,13 +23,13 @@ const Rides = (props) => {
                 </div>
             }
             renderItem={item => (
-                <List.Item as={Link}
+                <List.Item
                     key={item.pk}
                     actions={[
                         // <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
                         // <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
                         // <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-                        <AwesomeButton href={'${item.pk'} type="primary" size="small">Details</AwesomeButton>,
+                        <AwesomeButton href={item.pk} type="primary" size="small">Details</AwesomeButton>,
                     ]}
                     extra={
                         <img
