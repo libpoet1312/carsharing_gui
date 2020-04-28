@@ -16,8 +16,9 @@ import {FaCarSide} from 'react-icons/fa';
 import { AwesomeButton} from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
-import {Link} from "react-router-dom";
-import AuthModal from './AuthModal'
+import {Link, NavLink} from "react-router-dom";
+import AuthModal from './AuthModal';
+
 import * as actions from '../store/actions/auth';
 import {connect} from "react-redux";
 
@@ -35,7 +36,6 @@ class CustomLayout extends React.Component {
             loginModal: true,
             ForgotPasswordModal: false
         };
-        console.log(this.state.modal);
 
         this.changeModal = this.changeModal.bind(this);
         this.ForgotPasswordModal = this.ForgotPasswordModal.bind(this);
@@ -118,13 +118,13 @@ class CustomLayout extends React.Component {
                     <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <Menu.Item key="1">
-                                <Link to='/'>
+                                <Link to={`/`} replace>
                                     <HomeFilled/>
                                     <span>Home</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="2">
-                                <Link to='rides/'>
+                                <Link to={`/rides/`}>
                                     <DesktopOutlined />
                                     <span>Rides</span>
                                 </Link>
@@ -142,7 +142,7 @@ class CustomLayout extends React.Component {
                                     >
                                         <Menu.Item key="3">My Rides</Menu.Item>
                                         <Menu.Item key="4">My Requests</Menu.Item>
-                                        <Menu.Item key="5">Profile</Menu.Item>
+                                        <Menu.Item key="5"><Link to={`/profile/${this.props.user.user.pk}`} replace>Profile</Link></Menu.Item>
                                     </SubMenu>
                                     :
                                     <div></div>
@@ -190,10 +190,18 @@ class CustomLayout extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    console.log('layout: ', state.user)
+    console.log('   ')
+    return {
+        user: state.user
+    }
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         logout: () => dispatch(actions.logout())
     }
 };
 
-export default connect(null, mapDispatchToProps)(CustomLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomLayout);

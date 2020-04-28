@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ForgotPasswordForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/LoginModalOLD.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Rides.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AuthModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AuthModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CustomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/CustomLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +83,7 @@
       <workItem from="1587867825932" duration="112000" />
       <workItem from="1587921364939" duration="6412000" />
       <workItem from="1587930142983" duration="24275000" />
-      <workItem from="1588007007555" duration="15778000" />
+      <workItem from="1588007007555" duration="15880000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -129,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587957105946</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="some of redux and almost finished forms!!">
+      <created>1588024246698</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588024246698</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +138,8 @@
     <MESSAGE value="my 2nd commit!" />
     <MESSAGE value="siga siga proxwrame" />
     <MESSAGE value="some of redux and almost finished forms!" />
-    <option name="LAST_COMMIT_MESSAGE" value="some of redux and almost finished forms!" />
+    <MESSAGE value="some of redux and almost finished forms!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="some of redux and almost finished forms!!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="3499" y="201" width="800" height="675" key="#ESLint" timestamp="1588007137314">
@@ -155,10 +154,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3690" y="378" width="417" height="322" key="#com.intellij.ide.actions.DebugLogConfigureAction/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857125181" />
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1587957104732">
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2" timestamp="1588024244921">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587957104732" />
+    <state x="3534" y="136" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588024244921" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

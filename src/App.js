@@ -3,8 +3,8 @@ import {BrowserRouter} from 'react-router-dom';
 import Router from './Routes';
 import { connect } from 'react-redux';
 import 'antd/dist/antd.css';
-import * as actions from './store/actions/auth';
 import CustomLayout from "./containers/CustomLayout";
+import * as actions from './store/actions/auth';
 
 class App extends Component{
 
@@ -27,14 +27,15 @@ class App extends Component{
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.token !=null
+        isAuthenticated: state.user !=null
     }
 };
 
-const mapDispatchtoProps = dispatch => {
-  return {
-      onTryAutoSignup: () => dispatch(actions.authCheckState())
-  }
-};
 
-export default connect(mapStateToProps, mapDispatchtoProps)(App);
+const mapDispatchToProps = dispatch => {
+    return {
+      onTryAutoSignup: () => dispatch(actions.authCheckState())
+    };
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
