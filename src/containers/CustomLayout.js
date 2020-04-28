@@ -191,8 +191,7 @@ class CustomLayout extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log('layout: ', state.user)
-    console.log('   ')
+    console.log('layout: ', state.user);
     return {
         user: state.user
     }

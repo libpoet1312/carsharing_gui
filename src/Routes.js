@@ -5,7 +5,7 @@ import RideListView from "./containers/RideListView";
 import Home from "./components/Home";
 import RideDetailView from "./containers/RideDetailView";
 import ErrorPage from './components/404'
-import Profile from "./containers/Profile";
+import Profile from "./containers/User";
 
 const Router = () => (
     <Switch>

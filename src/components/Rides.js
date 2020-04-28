@@ -1,7 +1,8 @@
 import React from "react";
 import {List, Avatar, Row, Col, Popover} from 'antd';
-// import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 import {AwesomeButton} from "react-awesome-button";
+import {Link} from "react-router-dom";
+import {connect} from 'react-redux';
 
 const Rides = (props) => {
 
@@ -25,10 +26,10 @@ const Rides = (props) => {
                 <List.Item
                     key={item.pk}
                     actions={[
-                        // <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-                        // <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-                        // <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-                        <AwesomeButton href={`/rides/${item.pk}`} type="primary" size="small">Details</AwesomeButton>,
+                        <Link to={`/rides/${item.pk}`}>
+                            <AwesomeButton as={Link} to={`/rides/${item.pk}`} type="primary" size="small">Details</AwesomeButton>,
+                        </Link>
+
                     ]}
                     extra={
                         <img
@@ -40,15 +41,22 @@ const Rides = (props) => {
                     }
                 >
                     <List.Item.Meta
-                        avatar={
-                            <Popover  placement="bottom" content={<h5>Profile</h5>}>
-                                <a href='/'>
-                                    <div className='border border-primary text-center'>
-                                        <Avatar src={item.uploader.avatar} alt='avatar'/>
-                                        <h6 className='font-italic text-muted mt-5'>{item.uploader.username}</h6>
-                                    </div>
-                                </a>
-                            </Popover>
+                        avatar={ props.isAuthenticated ?
+                                    <Popover  placement="bottom" content={<h5>Profile</h5>}>
+                                        <a href='/'>
+                                            <div className='border border-primary text-center'>
+                                                <Avatar src={item.uploader.avatar} alt='avatar'/>
+                                                <h6 className='font-italic text-muted mt-5'>{item.uploader.username}</h6>
+                                            </div>
+                                        </a>
+                                    </Popover>
+                            :
+                            <div className='border border-primary text-center'>
+                                <Avatar src={item.uploader.avatar} alt='avatar'/>
+                                <h6 className='font-italic text-muted mt-5'>{item.uploader.username}</h6>
+                            </div>
+
+
                         }
                         title={
                             <Row className='border border-danger' type="flex" align="middle">
@@ -91,4 +99,10 @@ const Rides = (props) => {
     )
 };
 
-export default Rides
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user !=null
+    }
+};
+
+export default connect(mapStateToProps)(Rides);

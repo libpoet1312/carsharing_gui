@@ -22,7 +22,6 @@ export const logout = () =>{
     
     axios.post(AUTH_URL+'rest-auth/logout/',{
         token: localStorage.getItem('user')
-        
     }).then( response =>{
         console.log(localStorage.getItem('user'));
         localStorage.removeItem('user');
@@ -48,10 +47,11 @@ export const authLogin = (username, password) => {
             const user = {
                 token: response.data.token,
                 user: response.data.user
-            }
+            };
             localStorage.setItem('user', JSON.stringify(user));
             dispatch(authSuccess(user));
         }).catch( error => {
+
             dispatch(authFail(error))
         });
     }
@@ -80,7 +80,7 @@ export const authSignup = (username, email, password1, password2,
                 const user = {
                     token: response.data.token,
                     user: response.data.user
-                }
+                };
                 localStorage.setItem('user', JSON.stringify(user));
                 dispatch(authSuccess(user));
             }
