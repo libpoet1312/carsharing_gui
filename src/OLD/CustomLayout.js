@@ -10,16 +10,15 @@ import {
     LogoutOutlined
 } from '@ant-design/icons';
 
-import './CustomLayout.css'
+import '../hoc/Layout/CustomLayout.css'
 
 import {FaCarSide} from 'react-icons/fa';
 import { AwesomeButton} from 'react-awesome-button';
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
-import {Link, NavLink} from "react-router-dom";
-import AuthModal from './AuthModal';
+import {Link} from "react-router-dom";
 
-import * as actions from '../store/actions/auth';
+import * as actions from '../store/actions/authActions';
 import {connect} from "react-redux";
 
 const { Header, Content, Footer, Sider } = Layout;

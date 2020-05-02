@@ -19,13 +19,12 @@ export const authSuccess = (user) => {
 export const authFail = error => ({type: actionTypes.AUTH_FAIL, error});
 
 export const logout = () =>{
-    
+
     axios.post(AUTH_URL+'rest-auth/logout/',{
         token: localStorage.getItem('user')
-    }).then( response =>{
+    }).then( () =>{
         console.log(localStorage.getItem('user'));
         localStorage.removeItem('user');
-
     }).catch( error => {
         console.log(error);
         localStorage.removeItem('user');
@@ -36,6 +35,11 @@ export const logout = () =>{
         type: actionTypes.AUTH_LOGOUT
     }
 };
+
+
+//////////////////////////
+// ASYNC ACTIONS BELOW //
+/////////////////////////
 
 export const authLogin = (username, password) => {
     return dispatch => {
@@ -57,38 +61,40 @@ export const authLogin = (username, password) => {
     }
 };
 
-export const authSignup = (username, email, password1, password2,
-                           phone_number, avatar, gender, country,
-                           has_whatsup, has_viber)  => {
-    return dispatch => {
 
-        dispatch(authStart());
-        axios.post(AUTH_URL+'rest-auth/registration/',{
-            username: username,
-            email: email,
-            password1: password1,
-            password2: password2,
-            phone_number: phone_number,
-            avatar: avatar,
-            gender: gender,
-            country: country,
-            has_whatsup: has_whatsup,
-            has_viber: has_viber,
-        }).then (
-            response =>{
+
+export const authSignup = (
+    username, email, password1, password2,
+    phone_number, avatar, gender, country,
+    has_whatsup, has_viber)  => {
+        return dispatch => {
+            dispatch(authStart());
+            axios.post(AUTH_URL+'rest-auth/registration/',{
+                username: username,
+                email: email,
+                password1: password1,
+                password2: password2,
+                phone_number: phone_number,
+                avatar: avatar,
+                gender: gender,
+                country: country,
+                has_whatsup: has_whatsup,
+                has_viber: has_viber,
+            }).then (
+                response =>{
+                    console.log(response);
+                    const user = {
+                        token: response.data.token,
+                        user: response.data.user
+                    };
+                    localStorage.setItem('user', JSON.stringify(user));
+                    dispatch(authSuccess(user));
+                }
+            ).catch( (response, error) => {
                 console.log(response);
-                const user = {
-                    token: response.data.token,
-                    user: response.data.user
-                };
-                localStorage.setItem('user', JSON.stringify(user));
-                dispatch(authSuccess(user));
-            }
-        ).catch( (response, error) => {
-            console.log(response);
-            console.log(error);
-            dispatch(authFail(error));
-        });
+                console.log(error);
+                dispatch(authFail(error));
+            });
     }
 };
 

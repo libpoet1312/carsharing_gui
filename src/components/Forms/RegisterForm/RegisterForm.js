@@ -14,7 +14,7 @@ import { Icon } from '@iconify/react';
 import whatsappIcon from '@iconify/icons-logos/whatsapp';
 import {RiArrowGoBackLine} from 'react-icons/ri';
 import {GrPowerReset} from 'react-icons/gr';
-import * as actions from "../store/actions/auth";
+import * as actions from "../../../store/actions/authActions";
 import {connect} from "react-redux";
 
 
@@ -267,16 +267,16 @@ const RegistrationForm = (props) => {
                 <Row justify="space-around" align="middle" className={'text-center'}>
                     <Col>
                         <Form.Item>
-                            <Button type="secondary" onClick={props.changeForm}>
+                            <Button type="secondary" onClick={() => props.changeModal('login')}>
                                 <RiArrowGoBackLine/>Πίσω στην Σύνδεση
                             </Button>
                         </Form.Item>
                     </Col>
                     <Col>
                         <Form.Item>
-                            <Button type="secondary" htmlType='reset' onClick={e => {
-                                form.resetFields()
-                            }}>
+                            <Button type="secondary" htmlType='reset'
+                                    onClick={() => form.resetFields()}
+                            >
                                 <GrPowerReset/>Καθαρισμός Πεδίων
                             </Button>
                         </Form.Item>

@@ -8,6 +8,7 @@ const ForgotPasswordForm = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = values => {
+        //logic to call REDUX!
         console.log('Received values of form: ', values);
     };
 
@@ -38,17 +39,14 @@ const ForgotPasswordForm = (props) => {
 
                 <Row>
                     <Form.Item>
-                        <Button type="secondary" onClick={props.ForgotPassHandler}>
+                        <Button type="secondary" onClick={() => props.changeModal('login')}>
                             <RiArrowGoBackLine/>Πίσω στην Σύνδεση
                         </Button>
                     </Form.Item>
                     <Form.Item className={'ml-auto'}>
-                        <Button type="primary" htmlType='submit'></Button>
+                        <Button type="primary" htmlType='submit'>Submit</Button>
                     </Form.Item>
-
                 </Row>
-
-
             </Form>
         </div>
     )

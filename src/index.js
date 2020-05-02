@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import App from './App.js';
-import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware} from 'redux';
-import reducer from "./store/reducers/auth";
+import { createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from "redux-thunk";
-import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider, } from 'react-redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+import * as serviceWorker from './serviceWorker';
+
+
+import App from './App.js';
+import authReducer from "./store/reducers/authReducer";
+
 
 
 // REDUX CONFIGURATION
 
-// const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeWithDevTools(
+const rootReducer = combineReducers({
+    auth: authReducer
+});
+
+
+const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 

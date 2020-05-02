@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {connect} from 'react-redux';
 
 const Rides = (props) => {
-
     return(
         <List
             itemLayout="vertical"

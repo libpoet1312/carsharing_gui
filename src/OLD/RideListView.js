@@ -1,5 +1,5 @@
 import React from "react";
-import Rides from '../components/Rides';
+import Rides from '../OLD/Rides';
 import axios from 'axios';
 
 const API_URL = "http://localhost:8000/api/";
