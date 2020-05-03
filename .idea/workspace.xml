@@ -1,38 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="reconstruction almost done!&#10;auth with redux working :)">
-      <change afterPath="$PROJECT_DIR$/src/components/AuthenticationModal/AuthenticationModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Forms/LoginForm/LoginForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Rides/Ride/Ride.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Rides/RideList/RideList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Rides/Rides.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hoc/Aux/Aux.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/User/UserInfo/UserInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ForgotPasswordForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/ForgotPasswordForm/ForgotPasswordForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/RegisterForm/RegisterForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/Rides.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AuthModal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CustomLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/CustomLayout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/CustomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/CustomLayout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/RideDetailView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/RideDetailView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/RideListView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/RideListView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthenticationModal/AuthenticationModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/AuthenticationModal/AuthenticationModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth-header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/services/auth-header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/services/auth.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/services/user.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/getUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/userActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/getUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/userReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Modals" />
       <recent name="$PROJECT_DIR$/src/containers/User" />
       <recent name="$PROJECT_DIR$/src/OLD" />
       <recent name="$PROJECT_DIR$/src/components/Home" />
       <recent name="$PROJECT_DIR$/src/components/Forms/ForgotPasswordForm" />
-      <recent name="$PROJECT_DIR$/src/components/Forms/RegisterForm" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -121,7 +105,9 @@
       <workItem from="1588039124912" duration="214000" />
       <workItem from="1588097444174" duration="13767000" />
       <workItem from="1588377617904" duration="6903000" />
-      <workItem from="1588385432304" duration="4215000" />
+      <workItem from="1588385432304" duration="4260000" />
+      <workItem from="1588426308073" duration="22440000" />
+      <workItem from="1588460373290" duration="6990000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -179,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588112236820</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="reconstruction almost done!&#10;auth with redux working :)">
+      <created>1588389663629</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588389663629</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,10 +206,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588386339459" />
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1588389469314">
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1588389663514">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588389469314" />
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588389663514" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -229,10 +222,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588385701417" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1588039318776">
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1588389686208">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588039318776" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588389686208" />
     <state x="3787" y="483" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1588385678642">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

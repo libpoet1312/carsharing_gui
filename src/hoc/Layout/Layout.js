@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
 
-import AuthenticationModal from '../../components/AuthenticationModal/AuthenticationModal'
+import AuthenticationModal from '../../components/Modals/AuthenticationModal/AuthenticationModal'
 import MyHeader from "./MyHeader/MyHeader";
 import MySider from "./MySider/MySider";
 
@@ -36,7 +36,6 @@ class CustomLayout extends React.Component {
     };
 
     changeModal = (modal) => {
-        console.log('changeModal');
         this.setState({
             modal: modal
         })
@@ -72,7 +71,7 @@ class CustomLayout extends React.Component {
                 <MyHeader isAuthenticated={this.props.isAuthenticated} showModal={this.showModalHandler} logout={() => this.props.logout()}/>
 
                 <Layout style={{ minHeight: '93vh' }}>
-                    <MySider isAuthenticated={this.props.isAuthenticated} collapsed={this.props.collapsed} onCollapse={this.props.onCollapse}/>
+                    <MySider isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed} onCollapse={this.onCollapse} user={this.props.user}/>
 
                     {/* MAIN CONTENT FROM HERE */}
                     <Layout className="site-layout">
@@ -102,7 +101,8 @@ class CustomLayout extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.user !== null
+        isAuthenticated: state.auth.user !== null,
+        user: state.auth.user
     };
 };
 

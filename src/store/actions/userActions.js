@@ -23,6 +23,8 @@ export const getUserSuccess = (user) => {
     }
 };
 
+
+// async get User
 export const getUser = token => {
       return dispatch => {
           dispatch(getUserStart());

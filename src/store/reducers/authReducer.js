@@ -37,6 +37,27 @@ const authLogout = (state) => {
     })
 };
 
+const facebookAuthStart = (state, action) => {
+    return updateObject( state, {
+        error: null,
+        loading: true
+    })
+};
+
+const facebookAuthSuccess = (state, action) => {
+    console.log(action.user);
+    return updateObject(state, {
+        user: action.user,
+        loading:false
+    })
+};
+
+const facebookAuthFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error,
+        loading:false
+    })
+};
 
 // ONE REDUCER
 const authReducer = (state= initialState, action) => {
@@ -45,6 +66,9 @@ const authReducer = (state= initialState, action) => {
         case actionTypes.AUTH_SUCCESS: return authSucces(state, action);
         case actionTypes.AUTH_FAIL: return authFail(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
+        case actionTypes.FACEBOOK_AUTH_START: return facebookAuthStart(state, action);
+        case actionTypes.FACEBOOK_AUTH_SUCCESS: return facebookAuthSuccess(state, action);
+        case actionTypes.FACEBOOK_AUTH_FAIL: return facebookAuthFail(state, action);
         default:
             return state;
     }

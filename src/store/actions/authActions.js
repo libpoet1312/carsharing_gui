@@ -37,6 +37,27 @@ export const logout = () =>{
 };
 
 
+//facebook
+export const facebookAuthStart = () => {
+    return {
+        type: actionTypes.FACEBOOK_AUTH_START
+    }
+};
+
+export const facebookAuthFail = (error) => {
+    return{
+        type: actionTypes.FACEBOOK_AUTH_FAIL,
+        error: error
+    }
+};
+
+export const facebookAuthSuccess = (user) => {
+    return{
+        type: actionTypes.FACEBOOK_AUTH_SUCCESS,
+        user: user
+    }
+};
+
 //////////////////////////
 // ASYNC ACTIONS BELOW //
 /////////////////////////
@@ -60,8 +81,6 @@ export const authLogin = (username, password) => {
         });
     }
 };
-
-
 
 export const authSignup = (
     username, email, password1, password2,
@@ -107,5 +126,33 @@ export const authCheckState = () => {
         } else {
             dispatch(authSuccess(user));   
         }
+    }
+};
+
+
+// FACEBOOK LOGIN/SIGNUP
+export const facebookAuth = (fbToken) => {
+    return dispatch => {
+        dispatch(facebookAuthStart());
+        axios
+            .post(
+                'http://localhost:8000/rest-auth/facebook/',
+                {access_token: fbToken})
+            .then( response =>{
+                console.log(response);
+                if(response.data.token){
+                    const user = {
+                        token: response.data.token,
+                        user: response.data.user
+                    };
+                    localStorage.setItem('user', JSON.stringify(user));
+                    dispatch(facebookAuthSuccess(user));
+                }else{
+                    dispatch(facebookAuthFail(response));
+                }
+            }).catch(error => {
+                console.log(error);
+                dispatch(facebookAuthFail(error));
+            })
     }
 };

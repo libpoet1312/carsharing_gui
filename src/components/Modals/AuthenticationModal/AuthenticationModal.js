@@ -1,17 +1,31 @@
 import React from 'react'
 import {Col, Divider, Row} from "antd";
+import {connect} from 'react-redux';
 
-import Aux from '../../hoc/Aux/Aux'
-import LoginForm from "../Forms/LoginForm/LoginForm";
-import RegistrationForm from "../Forms/RegisterForm/RegisterForm";
-import ForgotPasswordForm from "../Forms/ForgotPasswordForm/ForgotPasswordForm";
+import Aux from '../../../hoc/Aux/Aux'
+import LoginForm from "../../Forms/LoginForm/LoginForm";
+import RegistrationForm from "../../Forms/RegisterForm/RegisterForm";
+import ForgotPasswordForm from "../../Forms/ForgotPasswordForm/ForgotPasswordForm";
 
-import {AwesomeButtonSocial} from "react-awesome-button";
+import {AwesomeButton} from "react-awesome-button";
 
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import FacebookLogin from 'react-facebook-login'
+// import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 // import AuthService from "../../services/auth.service";
+import * as actions from '../../../store/actions/authActions'
 
 const AuthenticationModal = (props) => {
+
+    const responseFacebook = (response) => {
+        console.log(response);
+        props.facebookLogin(response.accessToken);
+        props.showModal();
+    };
+
+    const componentClicked = (e) => {
+        console.log('e');
+    };
+
 
     let modal;
 
@@ -26,13 +40,9 @@ const AuthenticationModal = (props) => {
                     <FacebookLogin
                         appId="2603473709910948"
                         autoLoad={false}
-                        // callback={AuthService.facebooklogin}
+                        callback={responseFacebook}
+                        onClick={componentClicked}
                         fields="name,email,picture"
-                        render={renderProps => (
-                            <AwesomeButtonSocial onClick={renderProps.onClick} size='lg' type='facebook'>
-                                <Row>Σύνδεση / Εγγραφή με Facebook</Row>
-                            </AwesomeButtonSocial>
-                        )}
                     />
                 </Col>
                 <Col span={2}><Divider type="vertical" style={{height: "250px"}}/></Col>
@@ -52,4 +62,17 @@ const AuthenticationModal = (props) => {
     )
 };
 
-export default AuthenticationModal
+const mapStateToProps = (state) => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return{
+        facebookLogin: (fbToken) => dispatch(actions.facebookAuth(fbToken))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthenticationModal);
