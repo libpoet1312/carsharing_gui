@@ -12,7 +12,7 @@ class User extends Component {
     state = {
         user: null,
         loading: true,
-        isOwner: false
+        isOwner: false,
     };
 
     fetchUserHandler = () => {

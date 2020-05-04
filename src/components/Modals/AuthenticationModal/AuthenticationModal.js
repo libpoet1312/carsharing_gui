@@ -7,7 +7,6 @@ import LoginForm from "../../Forms/LoginForm/LoginForm";
 import RegistrationForm from "../../Forms/RegisterForm/RegisterForm";
 import ForgotPasswordForm from "../../Forms/ForgotPasswordForm/ForgotPasswordForm";
 
-import {AwesomeButton} from "react-awesome-button";
 
 import FacebookLogin from 'react-facebook-login'
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";

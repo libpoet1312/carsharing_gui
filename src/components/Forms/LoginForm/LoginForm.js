@@ -33,6 +33,7 @@ const LoginForm = (props) => {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 size={"large"}
+                style={{display: "flex", flexDirection: "column"}}
             >
                 <Form.Item
                     name="username"
@@ -65,8 +66,8 @@ const LoginForm = (props) => {
                     </Button>
                 </Form.Item>
 
-                <Form.Item>
-                    <Space>
+                <Form.Item >
+                    <Space direction="vertical">
                         <Button type="secondary"
                                 onClick={() => props.changeModal('register')}
                                 className="login-form-button"

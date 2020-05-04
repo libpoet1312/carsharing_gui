@@ -246,8 +246,6 @@ const RegistrationForm = (props) => {
 
 
 
-
-
                 <Form.Item className={'text-center'}
                            name="agreement"
                            valuePropName="checked"

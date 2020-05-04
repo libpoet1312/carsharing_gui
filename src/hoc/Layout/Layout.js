@@ -2,6 +2,7 @@ import React from "react";
 import {Layout, Breadcrumb, Modal} from 'antd';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
@@ -14,6 +15,8 @@ import * as authActions from '../../store/actions/authActions';
 import './CustomLayout.css'
 
 const {Header, Content, Footer } = Layout;
+
+
 
 const modals = {
     login: 'login',
@@ -49,7 +52,13 @@ class CustomLayout extends React.Component {
     };
 
     onCollapse = collapsed => {
-        this.setState({ collapsed });
+        this.setState({ collapsed: collapsed });
+    };
+
+    logout = () => {
+        this.props.logout();
+
+        this.props.history.push('/');
     };
 
     render() {
@@ -68,10 +77,10 @@ class CustomLayout extends React.Component {
                 </Modal>
 
 
-                <MyHeader isAuthenticated={this.props.isAuthenticated} showModal={this.showModalHandler} logout={() => this.props.logout()}/>
+                <MyHeader isAuthenticated={this.props.isAuthenticated} showModal={this.showModalHandler} logout={() => this.logout()}/>
 
-                <Layout style={{ minHeight: '93vh' }}>
-                    <MySider isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed} onCollapse={this.onCollapse} user={this.props.user}/>
+                <Layout style={{ minHeight: '93vh'}} hasSider>
+                    <MySider isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed} onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}/>
 
                     {/* MAIN CONTENT FROM HERE */}
                     <Layout className="site-layout">
@@ -113,4 +122,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomLayout);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CustomLayout));

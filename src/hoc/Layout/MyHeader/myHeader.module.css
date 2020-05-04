@@ -1,0 +1,19 @@
+.myHeader {
+    align-items: center;
+    display: flex;
+    color: white;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.Title {
+    color: white;
+
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+.Button {
+
+}

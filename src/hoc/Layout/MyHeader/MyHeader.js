@@ -1,26 +1,26 @@
 import React from 'react';
-import {Col, Layout, Row} from "antd";
+import {Layout} from "antd";
 
 import {AwesomeButton} from "react-awesome-button";
 import {FaCarSide} from 'react-icons/fa';
 import { LoginOutlined, LogoutOutlined } from '@ant-design/icons';
 
+import classes from './myHeader.module.css';
+
 const {Header} = Layout;
 
 const MyHeader = (props) => {
 
-    let header = <AwesomeButton type="primary" size="small" action={props.showModal}> <LoginOutlined/>Σύνδεση</AwesomeButton>;
+    let header = <AwesomeButton className={classes.Button} type="primary" size="small" action={props.showModal}> <LoginOutlined/><span>Login</span></AwesomeButton>;
 
     if(props.isAuthenticated){
-        header = <AwesomeButton type="primary"  action={props.logout}> <LogoutOutlined/>Αποσύνδεση</AwesomeButton>
+        header = <AwesomeButton type="primary" size="small" action={props.logout}><LogoutOutlined/>Logout</AwesomeButton>
     }
 
     return (
-        <Header className="header">
-            <Row type="flex" align="middle">
-                <Col className='site-title'> Car <FaCarSide/> Sharing</Col>
-                <Col className="ml-auto">{header}</Col>
-            </Row>
+        <Header className={classes.myHeader}>
+            <h5 className={classes.Title}>Car <FaCarSide/> Sharing</h5>
+            <div className={classes.Button}>{header}</div>
         </Header>
     )
 };

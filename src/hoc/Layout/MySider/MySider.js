@@ -1,6 +1,7 @@
 import React from 'react'
 import {Layout, Menu, Space} from "antd";
 import {Link} from "react-router-dom";
+import {BarsOutlined} from '@ant-design/icons'
 
 import {FaCar, FaHome, FaUserAlt, FaUserCog, FaQuestionCircle} from 'react-icons/fa';
 
@@ -25,12 +26,12 @@ const MySider = (props) => {
                     </span>
                 }
             >
-                <Menu.Item key="3">Οι διαδρομές μου</Menu.Item>
-                <Menu.Item key="4">Οι αιτήσεις μου</Menu.Item>
+                <Menu.Item key="3">My rides</Menu.Item>
+                <Menu.Item key="4">My requests</Menu.Item>
                 <Menu.Item key="5">
                     <Link to={`/user/`+props.user.user.pk} replace>
                         <Space style={{color: 'white'}}>
-                            <FaUserCog/>Το προφίλ μου
+                            <FaUserCog/>My profile
                         </Space>
                     </Link>
                 </Menu.Item>
@@ -40,7 +41,20 @@ const MySider = (props) => {
     }
 
     return (
-        <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
+        <Sider breakpoint="md"
+               collapsedWidth={0}
+               collapsible
+               trigger={null}
+
+               collapsed={!props.collapsed}
+               className={{minWidth: "150"}}
+        >
+            <span className={'ant-layout-sider-zero-width-trigger ant-layout-sider-zero-width-trigger-left'}
+                  style={{top: 0, margin: "auto", padding: "auto"}}
+                  onClick={()=>props.onCollapse(!props.collapsed)}>
+				<BarsOutlined />
+			</span>
+
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                 <Menu.Item key="1">
                     <Link to={`/`} replace>
