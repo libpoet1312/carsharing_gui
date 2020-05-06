@@ -1,0 +1,40 @@
+.autocompleteContainer {
+    border-bottom: honeydew;
+    border-left: honeydew;
+    border-right: honeydew;
+    border-top: 1px solid #e6e6e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 0 0 2px 2px;
+    overflow: hidden;
+    z-index: 1000;
+    flex-shrink: revert;
+}
+
+.Location {
+    width: 200px;
+}
+
+.Input{
+    width: 200px;
+}
+
+.SuggestionItem {
+    padding: 8px;
+    text-align: left;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.SuggestionItemActive {
+    background-color: #fafafa;
+}
+
+
+.Demo__spinner {
+    color: #18bc9c;
+    font-size: 30px;
+}
+
+.Demo__error-message {
+    color: red;
+}

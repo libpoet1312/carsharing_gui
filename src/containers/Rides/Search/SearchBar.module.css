@@ -1,0 +1,35 @@
+.SearchTitle {
+    text-align: center;
+}
+
+.SearchBar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    align-content: center;
+    justify-content: center;
+    align-items:center;
+
+    border: 1px black solid;
+}
+.Item {
+    margin: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.ReactCollapseCollapse {
+    display: flex;
+    align-items: center; /* vertical */
+
+
+    border-radius: 50px;
+
+    transition: height 100ms;
+
+    border: 2px solid black;
+}

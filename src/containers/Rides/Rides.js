@@ -4,10 +4,11 @@ import {List} from 'antd';
 import Aux from '../../hoc/Aux/Aux';
 import RideList from "./RideList/RideList";
 import axios from "axios";
+import SearchBar from "./Search/Search";
 
 class Rides extends Component {
 
-    state ={
+    state = {
         rides: []
     };
 
@@ -30,6 +31,7 @@ class Rides extends Component {
     render() {
         return (
             <Aux>
+                <SearchBar/>
                 <List
                     itemLayout="vertical"
                     size="large"
@@ -46,7 +48,6 @@ class Rides extends Component {
                         </div>
                     }
                     renderItem={this.renderItemFunction}
-
                 >
 
                 </List>

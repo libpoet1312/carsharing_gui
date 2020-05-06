@@ -14,7 +14,7 @@ import MySider from "./MySider/MySider";
 import * as authActions from '../../store/actions/authActions';
 import './CustomLayout.css'
 
-const {Header, Content, Footer } = Layout;
+const {Content, Footer } = Layout;
 
 
 
@@ -84,8 +84,8 @@ class CustomLayout extends React.Component {
 
                     {/* MAIN CONTENT FROM HERE */}
                     <Layout className="site-layout">
-                        <Header className="site-layout-background" style={{ padding: 0 }} />
-                        <Content style={{ margin: '16px 16px' }}>
+                        {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
+                        <Content style={{ margin: '36px 16px' }}>
                             <Breadcrumb style={{ margin: '16px 0' }}>
                                 <Breadcrumb.Item><Link to='/'>Home</Link></Breadcrumb.Item>
                                 <Breadcrumb.Item><Link to='rides/'>List</Link></Breadcrumb.Item>
