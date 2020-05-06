@@ -23,11 +23,11 @@
 }
 
 .ReactCollapseCollapse {
-    display: flex;
-    align-items: center; /* vertical */
-
-
-    border-radius: 50px;
+    display: inherit;
+    margin: 10px;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
 
     transition: height 100ms;
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Dropdown, TimePicker, DatePicker, Button} from 'antd';
+import {TimePicker, DatePicker, Button} from 'antd';
 import classes from './SearchBar.module.css';
 import LocationInput from "../../../components/LocationInput/LocationInput";
 import {FaFilter} from  'react-icons/fa';
@@ -31,22 +31,17 @@ class Search extends React.Component{
 
 
 
+
+
     render() {
         let filters = (
             <div className={classes.ReactCollapseCollapse}>
-                <div>
+                <div className={classes.Item}>
                     <DatePicker  placeholder={'Select Date'} style={{ width: 150}} onChange={this.onChange} />
+                </div>
+                <div className={classes.Item}>
                     <TimePicker style={{ width: 150}} minuteStep={15} secondStep={10} />
                 </div>
-                <div>
-
-                </div>
-
-
-
-
-
-
             </div>
         );
 
@@ -79,12 +74,14 @@ class Search extends React.Component{
                     </Button>
 
                     <div className={classes.break}></div>
-                    <Collapse
-                        isOpened={this.state.opened}
 
-                    >
-                        <div>{filters}</div>
-                    </Collapse>
+                    {
+                        this.state.opened ?
+                            filters
+                            : null
+                    }
+
+
 
 
 
