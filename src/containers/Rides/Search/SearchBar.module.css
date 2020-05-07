@@ -11,7 +11,7 @@
     justify-content: center;
     align-items:center;
 
-    border: 1px black solid;
+
 }
 .Item {
     margin: 10px;
@@ -24,12 +24,16 @@
 
 .ReactCollapseCollapse {
     display: inherit;
-    margin: 10px;
+    margin: auto;
+    flex-wrap: wrap;
+
     align-content: center;
     justify-content: center;
-    width: 100%;
+
 
     transition: height 100ms;
 
-    border: 2px solid black;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 0 0 2px 2px;
 }

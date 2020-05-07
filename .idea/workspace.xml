@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Pagination/Pagination.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Rides/skata.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/rideActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/ridesReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LocationInput/LocationInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationInput/LocationInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Rides.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Rides/Search/SearchBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Search/SearchBar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -46,15 +56,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/containers/Rides" />
       <recent name="$PROJECT_DIR$/src/assets/images" />
       <recent name="$PROJECT_DIR$/src/components/Forms/AddCarForm" />
       <recent name="$PROJECT_DIR$/src/components/Modals" />
       <recent name="$PROJECT_DIR$/src/containers/User" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -103,7 +113,7 @@
       <workItem from="1588604395054" duration="705000" />
       <workItem from="1588705299092" duration="23014000" />
       <workItem from="1588732796984" duration="34000" />
-      <workItem from="1588778044038" duration="3585000" />
+      <workItem from="1588778044038" duration="26271000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -189,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588732544923</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="adding search form">
+      <created>1588790201161</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588790201161</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,10 +247,10 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588719452420" />
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1588732544543">
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1588818665052">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588732544543" />
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588818665052" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

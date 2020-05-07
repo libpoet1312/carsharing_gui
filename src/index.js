@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App.js';
 import authReducer from "./store/reducers/authReducer";
+import ridesReducer from "./store/reducers/ridesReducer";
 
 
 
@@ -16,7 +17,8 @@ import authReducer from "./store/reducers/authReducer";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    rides: ridesReducer
 });
 
 

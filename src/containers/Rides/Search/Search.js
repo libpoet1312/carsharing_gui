@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import {TimePicker, DatePicker, Button} from 'antd';
+import React from 'react';
+import {TimePicker, DatePicker, Button, InputNumber} from 'antd';
 import classes from './SearchBar.module.css';
 import LocationInput from "../../../components/LocationInput/LocationInput";
 import {FaFilter} from  'react-icons/fa';
 import logo from '../../../assets/images/img_571322.png'
-import {Collapse} from 'react-collapse';
 
 class Search extends React.Component{
 
     state = {
-        opened: false
+        opened: false,
     };
 
     FiltersHandler = () => {
@@ -19,14 +18,13 @@ class Search extends React.Component{
 
     onChange = (date, dateString) => {
         console.log(date, dateString);
+        this.props.setDate(dateString);
     };
 
-    setOrigin = () => {
-        this.setState()
-    };
+    setPass = (pass) => {
 
-    setDestination = () => {
 
+        this.props.setPassengers(pass);
     };
 
 
@@ -34,13 +32,25 @@ class Search extends React.Component{
 
 
     render() {
+
         let filters = (
             <div className={classes.ReactCollapseCollapse}>
                 <div className={classes.Item}>
-                    <DatePicker  placeholder={'Select Date'} style={{ width: 150}} onChange={this.onChange} />
+                    <DatePicker  placeholder={'Select Date'}
+                                 style={{ width: 150}}
+                                 onChange={this.onChange}
+                    />
                 </div>
                 <div className={classes.Item}>
-                    <TimePicker style={{ width: 150}} minuteStep={15} secondStep={10} />
+                    <TimePicker style={{ width: 150}} minuteStep={15} secondStep={10}/>
+                </div>
+                <div className={classes.Item}>
+                    <InputNumber onChange={this.setPass}
+                                 style={{width: 100}}
+                                 placeholder={'No of seats'}
+                                 defaultValue={1}
+                                 min={1}
+                    />
                 </div>
             </div>
         );
@@ -51,7 +61,7 @@ class Search extends React.Component{
                 <h4 className={classes.SearchTitle}>Αναζήτηση</h4>
                 <div className={classes.SearchBar}>
                     <div className={classes.Item}>
-                        <LocationInput placeholder='Origin'/>
+                        <LocationInput placeholder='Origin' setCity={(city)=> this.props.setOrigin(city)}/>
                     </div>
 
                     <div className={classes.Item}>
@@ -59,7 +69,7 @@ class Search extends React.Component{
                     </div>
 
                     <div className={classes.Item}>
-                        <LocationInput placeholder='Destination'/>
+                        <LocationInput placeholder='Destination' setCity={(city)=> this.props.setDestination(city)}/>
                     </div>
 
                     <div className={classes.break}></div>
@@ -67,7 +77,7 @@ class Search extends React.Component{
 
                     <Button onClick={()=> this.FiltersHandler()}
                             icon={<FaFilter/>}
-                            style={{ width: 150, marginTop: 10}}
+                            style={{ width: 150, marginTop: 10, marginBottom: 10}}
                             type="outline"
                     >
                         More filters
@@ -91,6 +101,6 @@ class Search extends React.Component{
     }
 
 
-};
+}
 
 export default Search;

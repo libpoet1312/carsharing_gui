@@ -1,27 +1,90 @@
 import React, { Component } from 'react';
-import {List} from 'antd';
+import {List, Spin} from 'antd';
+import {connect} from 'react-redux';
+import Pagination from 'rc-pagination';
 
 import Aux from '../../hoc/Aux/Aux';
 import RideList from "./RideList/RideList";
-import axios from "axios";
 import SearchBar from "./Search/Search";
+import * as rideActions from '../../store/actions/rideActions';
+
+import { LoadingOutlined } from '@ant-design/icons';
+import './skata.css';
+
+let query = new URLSearchParams();
 
 class Rides extends Component {
-
     state = {
-        rides: []
+        origin: null,
+        destination: null,
+        date: null,
+        time: null,
+        passengers: null
     };
 
     componentDidMount() {
-        axios
-            .get('http://localhost:8000/api/')
-            .then(response => {
-                this.setState({
-                    rides: response.data.results
-                });
-                console.log(response.data);
-            });
+        // console.log('[componentDidMount]', query.toString());
+        this.props.fetchRides(query.toString());
+
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state!==prevState){
+            // console.log('[componentDidUpdate]',prevState);
+            this.props.fetchRides(query.toString());
+        }
+    }
+
+
+
+    setOrigin = (origin) => {
+        console.log('origin', origin);
+        this.setState({origin: origin});
+        if(origin===''){
+            query.delete('origin');
+        }else{
+            query.append('origin', origin);
+        }
+
+        console.log(query.toString());
+    };
+
+    setDestination = (destination) => {
+        console.log('destination',destination);
+        this.setState({destination: destination});
+        if(destination===''){
+            query.delete('destination');
+        }else{
+            query.append('destination', destination);
+        }
+        console.log(query.toString());
+    };
+
+    setDate = (date) => {
+        console.log('date',date);
+        this.setState({destination: date});
+        if(date===''){
+            query.delete('date');
+        }else{
+            query.append('date', date);
+        }
+        console.log(query.toString());
+    };
+
+    setPassengers = (passengers) => {
+        console.log('passengers',passengers);
+        this.setState({destination: passengers});
+        if(passengers===''){
+            query.delete('passengers');
+        }else{
+            query.append('passengers', passengers);
+        }
+        console.log(query.toString());
+    };
+
+    handlePageClick = (current, pageSize) => {
+        console.log(current, pageSize);
+    };
 
 
     renderItemFunction = (item) => {
@@ -29,32 +92,57 @@ class Rides extends Component {
     };
 
     render() {
+        const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
+
+        let list = <Spin indicator={antIcon} />;
+        if(!this.props.loading && this.props.rides){
+            list = <List
+                itemLayout="vertical"
+                size="large"
+
+                loading={this.props.loading}
+                dataSource={this.props.rides.results}
+                footer={
+                    <Pagination
+                        total={this.props.rides.count}
+                        onChange={this.handlePageClick}
+                        defaultPageSize={1}
+                        locale={''}
+                    />
+                }
+                renderItem={this.renderItemFunction}
+            />
+
+        }
+
         return (
             <Aux>
-                <SearchBar/>
-                <List
-                    itemLayout="vertical"
-                    size="large"
-                    pagination={{
-                        onChange: page => {
-                            console.log(page);
-                        },
-                        pageSize: 2,
-                    }}
-                    dataSource={this.state.rides}
-                    footer={
-                        <div>
-                            <b>ant design</b> footer part
-                        </div>
-                    }
-                    renderItem={this.renderItemFunction}
-                >
+                <SearchBar
+                    setOrigin={(origin)=> this.setOrigin(origin)}
+                    setDestination={(destination)=> this.setDestination(destination)}
+                    setDate = {(date) => this.setDate(date)}
+                    setPassengers = {(passengers) => {this.setPassengers(passengers)}}
+                />
+                {list}
 
-                </List>
 
             </Aux>
         )
     }
 }
 
-export default Rides;
+const mapStateToProps = (state) => {
+    return {
+        rides: state.rides.rides,
+        error: state.rides.error,
+        loading: state.rides.loading
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchRides: (query) => dispatch(rideActions.fetchRides(query))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rides);
