@@ -6,9 +6,6 @@ import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 
 
 
-
-
-
 const MyMapComponent = compose(
     withProps({
         googleMapURL:
@@ -63,6 +60,24 @@ const MyMapComponent = compose(
                     console.log(result);
                 }
             });
+
+            await DistanceService.getDistanceMatrix({
+                origins: [origin],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+
+            }, (result, status) => {
+                if(status === 'OK'){
+                    this.setState({
+                        distance: result.rows[0].elements[0].distance.text,
+                        duration: result.rows[0].elements[0].duration['text']
+                    })
+                }else{
+                    console.error(`error fetching directions ${result}`);
+                    console.log(result);
+                }
+            });
+
         }
     })
 )(props => (
