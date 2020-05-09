@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {List, Spin} from 'antd';
 import {connect} from 'react-redux';
-import Pagination from 'rc-pagination';
+// import Pagination from 'rc-pagination';
+import Pagination from '../../components/Pagination/Pagination'
 
 import Aux from '../../hoc/Aux/Aux';
 import RideList from "./RideList/RideList";
 import SearchBar from "./Search/Search";
-import * as rideActions from '../../store/actions/rideActions';
+import * as ridesActions from '../../store/actions/ridesActions';
 
 import { LoadingOutlined } from '@ant-design/icons';
-import './skata.css';
 
 let query = new URLSearchParams();
 
@@ -19,12 +19,14 @@ class Rides extends Component {
         destination: null,
         date: null,
         time: null,
-        passengers: null
+        passengers: null,
+        pager: {}
     };
 
     componentDidMount() {
         // console.log('[componentDidMount]', query.toString());
         this.props.fetchRides(query.toString());
+
 
     }
 
@@ -82,8 +84,16 @@ class Rides extends Component {
         console.log(query.toString());
     };
 
-    handlePageClick = (current, pageSize) => {
-        console.log(current, pageSize);
+
+    setPage = (page) => {
+        console.log(page);
+
+        if(page===1){
+            query.delete('page');
+        }else{
+            query.append('page', page);
+        }
+        this.props.fetchRides(query.toString());
     };
 
 
@@ -91,23 +101,23 @@ class Rides extends Component {
         return <RideList item={item}/>
     };
 
+
     render() {
         const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
 
         let list = <Spin indicator={antIcon} />;
+
         if(!this.props.loading && this.props.rides){
             list = <List
                 itemLayout="vertical"
                 size="large"
 
                 loading={this.props.loading}
-                dataSource={this.props.rides.results}
+                dataSource={this.props.rides}
                 footer={
                     <Pagination
-                        total={this.props.rides.count}
-                        onChange={this.handlePageClick}
-                        defaultPageSize={1}
-                        locale={''}
+                        pager={this.props.pager}
+                        setPage={(page)=> this.setPage(page)}
                     />
                 }
                 renderItem={this.renderItemFunction}
@@ -135,13 +145,14 @@ const mapStateToProps = (state) => {
     return {
         rides: state.rides.rides,
         error: state.rides.error,
-        loading: state.rides.loading
+        loading: state.rides.loading,
+        pager: state.rides.pager
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRides: (query) => dispatch(rideActions.fetchRides(query))
+        fetchRides: (query) => dispatch(ridesActions.fetchRides(query))
     }
 };
 

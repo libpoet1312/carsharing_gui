@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Home from "../components/Home/Home";
 import ErrorPage from '../components/404'
 import Rides from "../containers/Rides/Rides";
-import Ride from "../containers/Rides/Ride/Ride";
+import Ride from "../components/Ride/Ride";
 import User from '../containers/User/User';
 import addRide from "../containers/addRide/addRide";
 

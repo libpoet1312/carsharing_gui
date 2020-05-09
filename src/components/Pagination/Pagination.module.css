@@ -1,0 +1,21 @@
+.Pagination {
+    display: flex;
+    border: 1px solid crimson;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.Pagination li {
+    list-style-type: none;
+}
+
+.Button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}

@@ -1,0 +1,33 @@
+.Ride {
+}
+
+.Ride p span {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Column {
+
+    padding: 10px;
+    border: 1px black solid;
+}
+
+.Info {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.Map{
+
+}
+

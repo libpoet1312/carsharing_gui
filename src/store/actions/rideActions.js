@@ -1,43 +1,40 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from "./actionTypes";
 import axios from 'axios';
 
-export const fetchRidesStart =() => {
+// single ride actions
+
+export const fetchRideStart =() => {
     return {
-        type: actionTypes.FETCH_RIDES_START
+        type: actionTypes.FETCH_RIDE_START,
+        loading:true
     }
 };
 
-export const fetchRidesFail =(error) => {
+export const fetchRideFail =(error) => {
     return {
-        type: actionTypes.FETCH_RIDES_FAIL,
-        error: error
+        type: actionTypes.FETCH_RIDE_FAIL,
+        error: error,
+        loading: false
     }
 };
 
-export const fetchRidesSuccess =(rides) => {
+export const fetchRideSuccess = (ride) => {
     return {
-        type: actionTypes.FETCH_RIDES_SUCCESS,
-        rides: rides
+        type: actionTypes.FETCH_RIDE_SUCCESS,
+        ride: ride
     }
 };
 
 
 // async
-
-export const fetchRides = (query) => {
+export const fetchSingleRide = (pk) => {
     return dispatch => {
-        dispatch(fetchRidesStart());
-        if(query!==''){
-            console.log('edw');
-            query = '?'+query;
-        }
-        axios.get('http://localhost:8000/api/'+ query)
-            .then( (response) => {
-                // console.log(response.data);
-                dispatch(fetchRidesSuccess(response.data));
+        dispatch(fetchRideStart());
+        axios.get('http://localhost:8000/api/'+ pk + '/')
+            .then( response => {
+                dispatch(fetchRideSuccess(response.data));
             }).catch( error => {
-                console.log(error);
-                dispatch(fetchRidesFail(error));
-        })
+                dispatch(fetchRideFail(error));
+        });
     }
 };

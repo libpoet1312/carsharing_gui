@@ -16,14 +16,14 @@ const RideList = (props) => {
                     </Link>
 
                 ]}
-                extra={
-                    <img
-                        width={200}
-                        height={200}
-                        alt="logo"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                    />
-                }
+                // extra={
+                //     <img
+                //         width={200}
+                //         height={200}
+                //         alt="logo"
+                //         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                //     />
+                // }
             >
                 <List.Item.Meta
                     avatar={ props.isAuthenticated ?
