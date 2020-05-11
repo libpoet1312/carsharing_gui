@@ -8,17 +8,52 @@ import {Spin, Descriptions} from "antd";
 
 import classes from './Ride.module.css';
 import MyMapComponent from "../Map/Map";
+import {AwesomeButton} from "react-awesome-button/";
+import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
+    TwitterShareButton, WhatsappShareButton, ViberShareButton,
+    FacebookIcon,
+    FacebookMessengerIcon,
+    TwitterIcon,
+    WhatsappIcon,
+    EmailIcon,
+    ViberIcon,
+} from "react-share";
 
 class Ride extends Component{
+    state = {
+        duration: 0,
+        distance: 0,
+        isOwner: false,
+        joined: false,
+    };
 
     componentDidMount() {
-        // console.log(this.props.match.params.ridePK);
+        console.log(this.props);
         this.props.fetchRide(this.props.match.params.ridePK);
     }
+
+    handleDuration = (duration) => {
+        this.setState({duration: duration})
+    };
+
+    handleDistance = (distance) => {
+        this.setState({distance: distance})
+        if(this.props.isAuthenticated){
+            console.log(this.props.isAuthenticated);
+            if(this.props.ride.uploader.username===this.props.user.user.username){
+                this.setState({isOwner: true});
+            }
+        }
+    };
+
+    handleJoin = () => {
+
+    };
 
 
     render() {
         const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
+
 
 
 
@@ -27,26 +62,101 @@ class Ride extends Component{
 
 
 
+
+
+
             let ride = this.props.ride;
+            let shareUrl = 'https://localhost:3000/'+this.props.match.url;
+
             output = (
                 <div className={classes.Ride}>
-                    <p>From <span>{ride.origin}</span> to <span>{ride.destination}</span></p>
+
+                    <p>From <span> {ride.origin} </span> to <span> {ride.destination} </span></p>
                     <div className={[classes.Row]}>
+                        <div style={ this.props.isAuthenticated ? {width: "85%"} : {}}>
+                            <Descriptions>
+                                <Descriptions.Item label="date">{ride.date}</Descriptions.Item>
+                                <Descriptions.Item label="time">{ride.time}</Descriptions.Item>
+                                <Descriptions.Item label="driver">{ride.uploader.username}</Descriptions.Item>
+                                <Descriptions.Item label="vacant seats">{ride.vacant_seats}</Descriptions.Item>
+                                <Descriptions.Item label="Estimated Time">{this.state.duration}</Descriptions.Item>
+                                <Descriptions.Item label="Driving distance">{this.state.distance}</Descriptions.Item>
+
+                            </Descriptions>
+                        </div>
+                        {
+                            this.props.isAuthenticated ?
+                                <div className={classes.ColumnRight}>
+                                    <AwesomeButton onPress={this.handleJoin}>JOIN</AwesomeButton>
+                                </div>
+                                : null
+                        }
 
 
-                        <Descriptions>
-                            <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-                            <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-                            <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-                            <Descriptions.Item label="Remark">empty</Descriptions.Item>
-                            <Descriptions.Item label="Address">
-                                No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-                            </Descriptions.Item>
-                        </Descriptions>
+
+
+
                     </div>
 
+
+
                     <div className={[classes.Column, classes.Map]}>
-                        <MyMapComponent origin={ride.origin} destination={ride.destination}/>
+                        <MyMapComponent origin={ride.origin} destination={ride.destination}
+                                        handleDuration={(duration) => this.handleDuration(duration)}
+                                        handleDistance={(distance) => this.handleDistance(distance)}
+                        />
+                    </div>
+
+
+
+
+                    <div className={classes.Share}>
+                        Share:
+                    </div>
+                    <div className={classes.ShareButtons}>
+
+                        <FacebookShareButton url={shareUrl} >
+                            <FacebookIcon size={32} round={true}/>
+                        </FacebookShareButton>
+
+                        <FacebookMessengerShareButton
+                            url={shareUrl}
+                            appId="521270401588372"
+                            className="Demo__some-network__share-button"
+                        >
+                            <FacebookMessengerIcon size={32} round />
+                        </FacebookMessengerShareButton>
+
+                        <TwitterShareButton
+                            url={shareUrl}
+                            className="Demo__some-network__share-button"
+                        >
+                            <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+
+                        <WhatsappShareButton
+                            url={shareUrl}
+                            separator=":: "
+                            className="Demo__some-network__share-button"
+                        >
+                            <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+
+                        <ViberShareButton
+                            url={shareUrl}
+                            className="Demo__some-network__share-button"
+                        >
+                            <ViberIcon size={32} round />
+                        </ViberShareButton>
+
+                        <EmailShareButton
+                            url={shareUrl}
+                            body="body"
+                            className="Demo__some-network__share-button"
+                        >
+                            <EmailIcon size={32} round />
+                        </EmailShareButton>
+
                     </div>
 
 
@@ -70,6 +180,8 @@ const mapStateToProps = (state) => {
         ride: state.ride.ride,
         error: state.ride.error,
         loading: state.ride.loading,
+        user: state.auth.user,
+        isAuthenticated: state.auth.user !== null,
     }
 };
 
