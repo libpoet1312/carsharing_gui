@@ -32,6 +32,7 @@ class Rides extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.state!==prevState){
+
             // console.log('[componentDidUpdate]',prevState);
             this.props.fetchRides(query.toString());
         }

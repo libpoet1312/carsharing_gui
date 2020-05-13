@@ -23,7 +23,7 @@ class User extends Component {
             }
         };
         console.log(this.props.match.params.id);
-        axios.get('http://localhost:8000/user/'+this.props.match.params.id+'/', config)
+        axios.get('http://192.168.1.45:8000/user/'+this.props.match.params.id+'/', config)
             .then(res => {
                 console.log('server', res.data);
                 this.setState({

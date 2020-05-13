@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-const AUTH_URL = 'http://localhost:8000/';
+const AUTH_URL = 'http://192.168.1.45:8000/';
 
 export const authStart =() => {
     return {
@@ -136,7 +136,7 @@ export const facebookAuth = (fbToken) => {
         dispatch(facebookAuthStart());
         axios
             .post(
-                'http://localhost:8000/rest-auth/facebook/',
+                'http://192.168.1.45:8000/rest-auth/facebook/',
                 {access_token: fbToken})
             .then( response =>{
                 console.log(response);

@@ -18,9 +18,10 @@
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
-    border: 1px black solid;
+
     margin-bottom: 10px;
 }
+
 
 .ColumnLeft {
     width: 85%;
@@ -45,16 +46,30 @@
     font-size: 20px;
     font-weight: bold;
     font-style: italic;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .ShareButtons {
     display: flex;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    text-align: center;
+    justify-content: center;
+}
+
+/* Bounce In */
+.HVRBounceIn {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.HVRBounceIn:hover, .HVRBounceIn:focus, .HVRBounceIn:active {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 
 .Map{

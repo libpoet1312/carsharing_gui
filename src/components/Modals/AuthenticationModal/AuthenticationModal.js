@@ -29,9 +29,9 @@ const AuthenticationModal = (props) => {
     let modal;
 
     if(props.modal==='register'){
-        modal = <RegistrationForm changeModal={(modal)=> props.changeModal(modal)}/>
+        modal = <RegistrationForm showModal={props.showModal} changeModal={(modal)=> props.changeModal(modal)}/>
     }else if (props.modal==='forgot'){
-        modal = <ForgotPasswordForm changeModal={(modal)=> props.changeModal(modal)}/>
+        modal = <ForgotPasswordForm showModal={props.showModal} changeModal={(modal)=> props.changeModal(modal)}/>
     }else{
         modal =
             <Row justify="space-around" align="middle" className='text-center'>

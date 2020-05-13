@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
 import * as rideActions from "../../store/actions/rideActions";
 import {LoadingOutlined} from "@ant-design/icons";
-import {Spin, Descriptions} from "antd";
+import {Spin, Descriptions, Space} from "antd";
 
 import classes from './Ride.module.css';
 import MyMapComponent from "../Map/Map";
@@ -32,12 +32,17 @@ class Ride extends Component{
         this.props.fetchRide(this.props.match.params.ridePK);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+    }
+
     handleDuration = (duration) => {
         this.setState({duration: duration})
     };
 
     handleDistance = (distance) => {
-        this.setState({distance: distance})
+        this.setState({distance: distance});
+
         if(this.props.isAuthenticated){
             console.log(this.props.isAuthenticated);
             if(this.props.ride.uploader.username===this.props.user.user.username){
@@ -61,19 +66,15 @@ class Ride extends Component{
         if(!this.props.loading && this.props.ride){
 
 
-
-
-
-
             let ride = this.props.ride;
-            let shareUrl = 'https://localhost:3000/'+this.props.match.url;
+            let shareUrl = 'https://localhost:3000'+this.props.match.url;
 
             output = (
                 <div className={classes.Ride}>
 
                     <p>From <span> {ride.origin} </span> to <span> {ride.destination} </span></p>
                     <div className={[classes.Row]}>
-                        <div style={ this.props.isAuthenticated ? {width: "85%"} : {}}>
+                        <div style={ this.props.isAuthenticated || this.state.isOwner ? {width: "85%"} : {}}>
                             <Descriptions>
                                 <Descriptions.Item label="date">{ride.date}</Descriptions.Item>
                                 <Descriptions.Item label="time">{ride.time}</Descriptions.Item>
@@ -85,11 +86,15 @@ class Ride extends Component{
                             </Descriptions>
                         </div>
                         {
-                            this.props.isAuthenticated ?
+                            this.state.isOwner ?
+                                <div className={classes.ColumnRight}>
+                                    <AwesomeButton onPress={this.handleJoin}>EDIT</AwesomeButton>
+                                </div>
+                                : this.props.isAuthenticated ?
                                 <div className={classes.ColumnRight}>
                                     <AwesomeButton onPress={this.handleJoin}>JOIN</AwesomeButton>
                                 </div>
-                                : null
+                                :null
                         }
 
 
@@ -114,52 +119,52 @@ class Ride extends Component{
                         Share:
                     </div>
                     <div className={classes.ShareButtons}>
+                        <Space>
 
-                        <FacebookShareButton url={shareUrl} >
-                            <FacebookIcon size={32} round={true}/>
-                        </FacebookShareButton>
+                            <FacebookShareButton url={shareUrl} className={classes.HVRBounceIn}>
+                                <FacebookIcon size={32} round={true}/>
+                            </FacebookShareButton>
 
-                        <FacebookMessengerShareButton
-                            url={shareUrl}
-                            appId="521270401588372"
-                            className="Demo__some-network__share-button"
-                        >
-                            <FacebookMessengerIcon size={32} round />
-                        </FacebookMessengerShareButton>
+                            <FacebookMessengerShareButton
+                                url={shareUrl}
+                                appId="521270401588372"
+                                className={classes.HVRBounceIn}
+                            >
+                                <FacebookMessengerIcon size={32} round />
+                            </FacebookMessengerShareButton>
 
-                        <TwitterShareButton
-                            url={shareUrl}
-                            className="Demo__some-network__share-button"
-                        >
-                            <TwitterIcon size={32} round />
-                        </TwitterShareButton>
 
-                        <WhatsappShareButton
-                            url={shareUrl}
-                            separator=":: "
-                            className="Demo__some-network__share-button"
-                        >
-                            <WhatsappIcon size={32} round />
-                        </WhatsappShareButton>
+                            <TwitterShareButton
+                                url={shareUrl}
+                                className={classes.HVRBounceIn}
+                            >
+                                <TwitterIcon size={32} round />
+                            </TwitterShareButton>
 
-                        <ViberShareButton
-                            url={shareUrl}
-                            className="Demo__some-network__share-button"
-                        >
-                            <ViberIcon size={32} round />
-                        </ViberShareButton>
+                            <WhatsappShareButton
+                                url={shareUrl}
+                                separator=":: "
+                                className={classes.HVRBounceIn}
+                            >
+                                <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
 
-                        <EmailShareButton
-                            url={shareUrl}
-                            body="body"
-                            className="Demo__some-network__share-button"
-                        >
-                            <EmailIcon size={32} round />
-                        </EmailShareButton>
+                            <ViberShareButton
+                                url={shareUrl}
+                                className={classes.HVRBounceIn}
+                            >
+                                <ViberIcon size={32} round />
+                            </ViberShareButton>
 
+                            <EmailShareButton
+                                url={shareUrl}
+                                body="body"
+                                className={classes.HVRBounceIn}
+                            >
+                                <EmailIcon size={32} round />
+                            </EmailShareButton>
+                        </Space>
                     </div>
-
-
                 </div>
             )
         }
@@ -182,6 +187,7 @@ const mapStateToProps = (state) => {
         loading: state.ride.loading,
         user: state.auth.user,
         isAuthenticated: state.auth.user !== null,
+        isOwner: state.auth.user
     }
 };
 

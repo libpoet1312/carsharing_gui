@@ -35,7 +35,7 @@ export const fetchRides = (query) => {
             console.log('edw');
             query = '?'+query;
         }
-        axios.get('http://localhost:8000/api/'+ query)
+        axios.get('http://192.168.1.45:8000/api/'+ query)
             .then( (response) => {
                 // console.log(response.data);
                 dispatch(fetchRidesSuccess(response.data));

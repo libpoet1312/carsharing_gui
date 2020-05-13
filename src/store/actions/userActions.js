@@ -32,7 +32,7 @@ export const getUser = token => {
               "Content-Type": "Application/Json",
               "Authorization": "JWT "+token
           };
-          axios.get('http://localhost:8000/user').then(res => {
+          axios.get('http://192.168.1.45:8000/user').then(res => {
               console.log(res.data);
               dispatch(getUserSuccess(res.data));
           }).catch(error => {

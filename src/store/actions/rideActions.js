@@ -30,7 +30,7 @@ export const fetchRideSuccess = (ride) => {
 export const fetchSingleRide = (pk) => {
     return dispatch => {
         dispatch(fetchRideStart());
-        axios.get('http://localhost:8000/api/'+ pk + '/')
+        axios.get('http://192.168.1.45:8000/api/'+ pk + '/')
             .then( response => {
                 dispatch(fetchRideSuccess(response.data));
             }).catch( error => {

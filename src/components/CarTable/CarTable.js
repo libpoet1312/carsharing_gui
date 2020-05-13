@@ -144,7 +144,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.get('http://localhost:8000/cars/car', config)
+        axios.get('http://192.168.1.45:8000/cars/car', config)
             .then( response => {
                 console.log(response.data);
                 const cars = [];
@@ -187,7 +187,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.delete('http://localhost:8000/cars/car/'+key, config)
+        axios.delete('http://192.168.1.45:8000/cars/car/'+key, config)
             .then( response => {
                 console.log(response);
                 this.setState({
@@ -221,7 +221,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.post('http://localhost:8000/cars/car/', newCar, config)
+        axios.post('http://192.168.1.45:8000/cars/car/', newCar, config)
             .then( response => {
                 console.log(response);
 
@@ -250,7 +250,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.patch('http://localhost:8000/cars/car/'+item.key+'/', {
+        axios.patch('http://192.168.1.45:8000/cars/car/'+item.key+'/', {
             plate: newData[index].plate,
             brand: newData[index].brand,
             model: newData[index].model,
