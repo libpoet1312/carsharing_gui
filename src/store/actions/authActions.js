@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {Cookies} from 'react-cookie';
 
 const AUTH_URL = 'http://192.168.1.45:8000/';
 
@@ -18,22 +19,56 @@ export const authSuccess = (user) => {
 
 export const authFail = error => ({type: actionTypes.AUTH_FAIL, error});
 
-export const logout = () =>{
-
-    axios.post(AUTH_URL+'rest-auth/logout/',{
-        token: localStorage.getItem('user')
-    }).then( () =>{
-        console.log(localStorage.getItem('user'));
-        localStorage.removeItem('user');
-    }).catch( error => {
-        console.log(error);
-        localStorage.removeItem('user');
-    });
 
 
+//logout actions
+
+export const ws_logout = () => {
+    return {type: actionTypes.AUTH_LOGOUT}
+};
+
+export const logoutStart = () => {
     return {
-        type: actionTypes.AUTH_LOGOUT
+        type: actionTypes.LOGOUT_START
     }
+};
+
+export const logoutFail = (error) => {
+    return {
+        type: actionTypes.LOGOUT_FAIL,
+        error: error
+    }
+};
+
+export const logoutSuccess = () => {
+    return {
+        type: actionTypes.LOGOUT_SUCCESS
+    }
+};
+
+export const logout = () =>{
+    return dispatch => {
+        dispatch(logoutStart());
+        dispatch(ws_logout());
+        axios.post(AUTH_URL+'rest-auth/logout/',{
+            token: localStorage.getItem('user')
+
+        }).then( () =>{
+            console.log(localStorage.getItem('user'));
+            localStorage.removeItem('user');
+            const cookies = new Cookies();
+            cookies.remove('carpooling_token', { path: '/', httpOnly: true, sameSite: "lax"});
+            dispatch(logoutSuccess());
+        }).catch( error => {
+
+            console.log(error);
+            dispatch(logoutFail(error));
+            localStorage.removeItem('user');
+            const cookies = new Cookies();
+            cookies.remove('carpooling_token', { path: '/', httpOnly: true, sameSite: "lax"});
+
+        });
+    };
 };
 
 
@@ -74,10 +109,13 @@ export const authLogin = (username, password) => {
                 user: response.data.user
             };
             localStorage.setItem('user', JSON.stringify(user));
-            dispatch(authSuccess(user));
-        }).catch( error => {
+            const cookies = new Cookies();
+            cookies.set('carpooling_token', user.token, { path: '/', httpOnly: true, sameSite: "lax"});
 
-            dispatch(authFail(error))
+            dispatch(authSuccess(user));
+            // webSocketActions.webSocketConnectStart('ws://192.168.1.45:8000/ws/');
+        }).catch( error => {
+            dispatch(authFail(error));
         });
     }
 };
@@ -107,6 +145,9 @@ export const authSignup = (
                         user: response.data.user
                     };
                     localStorage.setItem('user', JSON.stringify(user));
+                    const cookies = new Cookies();
+                    cookies.set('carpooling_token', user.token, { path: '/', httpOnly:true, SameSite: "lax" });
+
                     dispatch(authSuccess(user));
                 }
             ).catch( (response, error) => {
@@ -122,8 +163,10 @@ export const authCheckState = () => {
     return dispatch => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user === undefined || user === null) {
-            dispatch(logout());
+            // console.log('123123');
+            // dispatch(logout());
         } else {
+            // console.log('edwwww');
             dispatch(authSuccess(user));   
         }
     }
@@ -156,3 +199,5 @@ export const facebookAuth = (fbToken) => {
             })
     }
 };
+
+

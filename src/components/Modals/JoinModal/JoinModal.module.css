@@ -1,0 +1,22 @@
+.JoinModal {
+    text-align: center;
+}
+.Title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.Row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: bold;
+    font-size: 35px;
+
+}

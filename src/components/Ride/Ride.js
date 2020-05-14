@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Aux from '../../hoc/Aux/Aux';
 import * as rideActions from "../../store/actions/rideActions";
 import {LoadingOutlined} from "@ant-design/icons";
-import {Spin, Descriptions, Space} from "antd";
+import {Spin, Descriptions, Space, Modal} from "antd";
 
 import classes from './Ride.module.css';
 import MyMapComponent from "../Map/Map";
@@ -18,6 +18,7 @@ import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
     EmailIcon,
     ViberIcon,
 } from "react-share";
+import JoinModal from "../Modals/JoinModal/JoinModal";
 
 class Ride extends Component{
     state = {
@@ -25,6 +26,7 @@ class Ride extends Component{
         distance: 0,
         isOwner: false,
         joined: false,
+        joinModal: false
     };
 
     componentDidMount() {
@@ -51,8 +53,9 @@ class Ride extends Component{
         }
     };
 
-    handleJoin = () => {
-
+    handleJoinBtn = () => {
+        console.log('edw');
+        this.setState({joinModal: !this.state.joinModal})
     };
 
 
@@ -71,7 +74,14 @@ class Ride extends Component{
 
             output = (
                 <div className={classes.Ride}>
-
+                    <Modal visible={this.state.joinModal}
+                           onCancel={this.handleJoinBtn}
+                           title={<h3>Join</h3>}
+                           width={400}
+                           footer={''}
+                    >
+                        <JoinModal/>
+                    </Modal>
                     <p>From <span> {ride.origin} </span> to <span> {ride.destination} </span></p>
                     <div className={[classes.Row]}>
                         <div style={ this.props.isAuthenticated || this.state.isOwner ? {width: "85%"} : {}}>
@@ -88,11 +98,11 @@ class Ride extends Component{
                         {
                             this.state.isOwner ?
                                 <div className={classes.ColumnRight}>
-                                    <AwesomeButton onPress={this.handleJoin}>EDIT</AwesomeButton>
+                                    <AwesomeButton onPress={this.handleJoinBtn}>EDIT</AwesomeButton>
                                 </div>
                                 : this.props.isAuthenticated ?
                                 <div className={classes.ColumnRight}>
-                                    <AwesomeButton onPress={this.handleJoin}>JOIN</AwesomeButton>
+                                    <AwesomeButton onPress={this.handleJoinBtn}>JOIN</AwesomeButton>
                                 </div>
                                 :null
                         }
@@ -105,12 +115,12 @@ class Ride extends Component{
 
 
 
-                    <div className={[classes.Column, classes.Map]}>
-                        <MyMapComponent origin={ride.origin} destination={ride.destination}
-                                        handleDuration={(duration) => this.handleDuration(duration)}
-                                        handleDistance={(distance) => this.handleDistance(distance)}
-                        />
-                    </div>
+                    {/*<div className={[classes.Column, classes.Map]}>*/}
+                    {/*    <MyMapComponent origin={ride.origin} destination={ride.destination}*/}
+                    {/*                    handleDuration={(duration) => this.handleDuration(duration)}*/}
+                    {/*                    handleDistance={(distance) => this.handleDistance(distance)}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
 
 
@@ -193,7 +203,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRide: (pk) => dispatch(rideActions.fetchSingleRide(pk))
+        fetchRide: (pk) => dispatch(rideActions.fetchSingleRide(pk)),
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ride);

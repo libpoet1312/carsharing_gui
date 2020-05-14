@@ -13,9 +13,9 @@ const { Panel } = Collapse;
 const UserInfo = (props) => {
 
     let country = <GiEarthAfricaEurope/>;
-    if(props.user.country!==null){
-        country=getUnicodeFlagIcon(props.user.country);
-    }
+    // if(!props.user.country){
+    //     country=getUnicodeFlagIcon(props.user.country);
+    // }
     let gender = null;
     switch (props.user.gender) {
         case 'M': gender=<div>Male</div>;break;

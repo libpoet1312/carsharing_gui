@@ -10,7 +10,8 @@ import App from './App.js';
 import authReducer from "./store/reducers/authReducer";
 import ridesReducer from "./store/reducers/ridesReducer";
 import rideReducer from "./store/reducers/rideReducer";
-
+import webSocketsMiddleware from "./middleware/webSocketMiddleware";
+import webSocketReducer from "./store/reducers/webSocketReducer";
 
 // REDUX CONFIGURATION
 
@@ -19,13 +20,18 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     auth: authReducer,
     rides: ridesReducer,
-    ride: rideReducer
+    ride: rideReducer,
+    webSocket: webSocketReducer
 });
 
+const middleware = [thunk, webSocketsMiddleware];
 
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(thunk)
+export const store = createStore(rootReducer, composeEnhancers(
+    applyMiddleware(...middleware)
 ));
+
+
+
 
 const app = (
     <Provider store={store}>
