@@ -56,17 +56,11 @@ export const logout = () =>{
         }).then( () =>{
             console.log(localStorage.getItem('user'));
             localStorage.removeItem('user');
-            const cookies = new Cookies();
-            cookies.remove('carpooling_token', { path: '/', httpOnly: true, sameSite: "lax"});
             dispatch(logoutSuccess());
         }).catch( error => {
-
             console.log(error);
             dispatch(logoutFail(error));
             localStorage.removeItem('user');
-            const cookies = new Cookies();
-            cookies.remove('carpooling_token', { path: '/', httpOnly: true, sameSite: "lax"});
-
         });
     };
 };

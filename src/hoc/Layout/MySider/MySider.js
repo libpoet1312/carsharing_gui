@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {BarsOutlined} from '@ant-design/icons'
 
 import {FaCar, FaHome, FaUserAlt, FaUserCog, FaQuestionCircle} from 'react-icons/fa';
+import {GoRequestChanges} from 'react-icons/go';
 
 const {Sider} = Layout;
 const { SubMenu } = Menu;
@@ -27,14 +28,21 @@ const MySider = (props) => {
                 }
             >
                 <Menu.Item key="3">My rides</Menu.Item>
-                <Menu.Item key="4">My requests</Menu.Item>
+                <Menu.Item key="4">
+                    <Link to={'/requests'}>
+                        <Space style={{color: 'white'}}>
+                            <GoRequestChanges/>My requests
+                        </Space>
+                    </Link>
+                </Menu.Item>
                 <Menu.Item key="5">
-                    <Link to={`/user/`+props.user.user.pk} replace>
+                    <Link to={`/user/`+props.user.pk} replace>
                         <Space style={{color: 'white'}}>
                             <FaUserCog/>My profile
                         </Space>
                     </Link>
                 </Menu.Item>
+
             </SubMenu>
             )
 

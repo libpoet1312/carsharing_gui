@@ -30,7 +30,7 @@ const webSocketsMiddleware = (function () {
      */
     const onMessage = (ws, store) => event => {
         const payload = JSON.parse(event.data);
-        console.log(payload.type);
+        console.log(payload);
         switch (payload.type) {
             case actionTypes.WS_MESSAGE:
                 store.dispatch(webSocketActions.webSocketMessage(event.host, payload));
@@ -45,6 +45,7 @@ const webSocketsMiddleware = (function () {
      */
 
     return store => next => action => {
+        console.log(action.type);
         switch (action.type) {
             case actionTypes.AUTH_SUCCESS:
                 if (socket !== null) {

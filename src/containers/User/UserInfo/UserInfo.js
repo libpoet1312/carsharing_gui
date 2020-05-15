@@ -1,7 +1,7 @@
 import React from 'react'
 import {Descriptions, Collapse, Divider, Avatar} from 'antd';
 
-import getUnicodeFlagIcon from 'country-flag-icons/unicode'
+// import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import {GiEarthAfricaEurope} from 'react-icons/gi';
 import {GiCarKey} from 'react-icons/gi';
 

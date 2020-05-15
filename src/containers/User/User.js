@@ -31,7 +31,7 @@ class User extends Component {
                     loading: false
                 });
 
-                if(this.props.user.user.username===this.state.user.username){
+                if(this.props.user.username===this.state.user.username){
                     this.setState({
                         isOwner: true
                     });

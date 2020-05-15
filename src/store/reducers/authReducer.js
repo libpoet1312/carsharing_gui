@@ -3,6 +3,7 @@ import {updateObject} from '../updateObject';
 
 const initialState = {
     user: null,
+    requests: [],
     error: null,
     loading: false,
 };
@@ -17,11 +18,20 @@ const authStart = (state) => {
 
 const authSuccess = (state, action) => {
     console.log(action.user);
+    const user = {
+        pk: action.user.user.pk,
+        username: action.user.user.username,
+        avatar: action.user.user.avatar,
+        token: action.user.token
+    };
+    console.log(action.user.user.request);
+
 
 
     return updateObject(state, {
-        user: action.user,
-        loading:false
+        user: user,
+        loading:false,
+        requests: action.user.user.request,
     })
 };
 
@@ -47,9 +57,16 @@ const facebookAuthStart = (state, action) => {
 
 const facebookAuthSuccess = (state, action) => {
     console.log(action.user);
+    const user = {
+        pk: action.user.user.pk,
+        username: action.user.user.username,
+        avatar: action.user.user.avatar,
+        token: action.user.token
+    };
     return updateObject(state, {
-        user: action.user,
-        loading:false
+        user: user,
+        loading:false,
+        requests: action.user.user.request,
     })
 };
 
@@ -57,6 +74,14 @@ const facebookAuthFail = (state, action) => {
     return updateObject(state, {
         error: action.error,
         loading:false
+    })
+};
+
+const joinRequestSuccess = (state, action) => {
+    const oldReq = state.requests;
+    let newArray = oldReq.concat(action.requests);
+    return updateObject(state, {
+        requests: newArray
     })
 };
 
@@ -72,6 +97,7 @@ const authReducer = (state= initialState, action) => {
         case actionTypes.FACEBOOK_AUTH_START: return facebookAuthStart(state, action);
         case actionTypes.FACEBOOK_AUTH_SUCCESS: return facebookAuthSuccess(state, action);
         case actionTypes.FACEBOOK_AUTH_FAIL: return facebookAuthFail(state, action);
+        case actionTypes.JOIN_REQUEST_SUCCESS: return joinRequestSuccess(state, action);
         default:
             return state;
     }

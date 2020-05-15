@@ -3,11 +3,12 @@ import {connect} from 'react-redux';
 
 import Aux from '../../hoc/Aux/Aux';
 import * as rideActions from "../../store/actions/rideActions";
+import * as requestsActions from "../../store/actions/requestsActions";
 import {LoadingOutlined} from "@ant-design/icons";
-import {Spin, Descriptions, Space, Modal} from "antd";
+import {Spin, Descriptions, Space, Modal, Button} from "antd";
 
 import classes from './Ride.module.css';
-import MyMapComponent from "../Map/Map";
+// import MyMapComponent from "../Map/Map";
 import {AwesomeButton} from "react-awesome-button/";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
     TwitterShareButton, WhatsappShareButton, ViberShareButton,
@@ -21,21 +22,46 @@ import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
 import JoinModal from "../Modals/JoinModal/JoinModal";
 
 class Ride extends Component{
+
+
     state = {
         duration: 0,
         distance: 0,
         isOwner: false,
-        joined: false,
-        joinModal: false
+        hasJoined: false,
+        joinModal: false,
     };
 
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
         this.props.fetchRide(this.props.match.params.ridePK);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(prevProps.loading);
+        console.log(this.props.loading);
+        if(prevProps.loading && !this.props.loading){
+            // console.log('edw');
+            if(this.props.isAuthenticated){
+                if(this.props.ride.uploader.username===this.props.user.username){
+                    this.setState({isOwner: true});
+                }
+                console.log(this.props.requests);
 
+
+                // handle if user has already applied!
+                const obj = this.props.requests.find( req => {
+                    return req.ride === 1
+                });
+                if(obj){
+                    this.setState(
+                        {hasJoined: true}
+                    )
+                }
+
+            }
+
+        }
     }
 
     handleDuration = (duration) => {
@@ -44,25 +70,31 @@ class Ride extends Component{
 
     handleDistance = (distance) => {
         this.setState({distance: distance});
-
-        if(this.props.isAuthenticated){
-            console.log(this.props.isAuthenticated);
-            if(this.props.ride.uploader.username===this.props.user.user.username){
-                this.setState({isOwner: true});
-            }
-        }
     };
 
     handleJoinBtn = () => {
-        console.log('edw');
         this.setState({joinModal: !this.state.joinModal})
+    };
+
+    joinHandler = (seats, msg) => {
+        this.handleJoinBtn();
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        // console.log(this.props.ride.pk, user.token ,seats, msg);
+
+        //send join request to server!
+
+
+        this.props.joinRequest(this.props.ride.pk, user.token ,seats, msg)
+    };
+
+    unJoinHandler = () => {
+
     };
 
 
     render() {
         const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
-
-
 
 
         let output =  <Spin indicator={antIcon} />;
@@ -72,6 +104,26 @@ class Ride extends Component{
             let ride = this.props.ride;
             let shareUrl = 'https://localhost:3000'+this.props.match.url;
 
+            let button = (
+                <div className={classes.ColumnRight}>
+                    <AwesomeButton onPress={this.handleJoinBtn}>JOIN</AwesomeButton>
+                </div>);
+            if(this.state.isOwner) {
+                button = (
+                    <div className={classes.ColumnRight}>
+                        <AwesomeButton onPress={this.handleJoinBtn}>EDIT</AwesomeButton>
+                    </div>
+                )
+            }
+            if(this.state.hasJoined) {
+                button = (
+                    <div className={classes.ColumnRight}>
+                        <Button size={"large"} shape={"round"} type={"danger"}
+                                onClick={this.unJoinHandler}>UNJOIN</Button>
+                    </div>
+                )
+            }
+
             output = (
                 <div className={classes.Ride}>
                     <Modal visible={this.state.joinModal}
@@ -80,7 +132,7 @@ class Ride extends Component{
                            width={400}
                            footer={''}
                     >
-                        <JoinModal/>
+                        <JoinModal vacant_seats={ride.vacant_seats} joinHandler={(seats, msg) => this.joinHandler(seats, msg)}/>
                     </Modal>
                     <p>From <span> {ride.origin} </span> to <span> {ride.destination} </span></p>
                     <div className={[classes.Row]}>
@@ -95,17 +147,8 @@ class Ride extends Component{
 
                             </Descriptions>
                         </div>
-                        {
-                            this.state.isOwner ?
-                                <div className={classes.ColumnRight}>
-                                    <AwesomeButton onPress={this.handleJoinBtn}>EDIT</AwesomeButton>
-                                </div>
-                                : this.props.isAuthenticated ?
-                                <div className={classes.ColumnRight}>
-                                    <AwesomeButton onPress={this.handleJoinBtn}>JOIN</AwesomeButton>
-                                </div>
-                                :null
-                        }
+
+                        {button}
 
 
 
@@ -197,13 +240,15 @@ const mapStateToProps = (state) => {
         loading: state.ride.loading,
         user: state.auth.user,
         isAuthenticated: state.auth.user !== null,
-        isOwner: state.auth.user
+        isOwner: state.auth.user,
+        requests: state.auth.requests
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchRide: (pk) => dispatch(rideActions.fetchSingleRide(pk)),
+        joinRequest: (pk, token, seats, message) => dispatch(requestsActions.joinRequest(pk, token, seats, message))
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ride);

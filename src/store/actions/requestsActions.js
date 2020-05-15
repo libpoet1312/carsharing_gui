@@ -1,33 +1,60 @@
 import * as actionTypes from './actionTypes';
 import axios from "axios";
 
-export const getMyRequests = (requests) => {
+// export const getMyRequests = (user) => {
+//     return {
+//         type: actionTypes.GET_MY_REQUESTS,
+//         user: user
+//     }
+// };
+//
+// export const getRideRequests = (requests) => {
+//     return {
+//         type: actionTypes.GET_RIDE_REQUESTS,
+//         requests: requests
+//     }
+// };
+
+export const joinRequestStart = () => {
     return {
-        type: actionTypes.GET_MY_REQUESTS,
-        requests: requests
+        type: actionTypes.JOIN_REQUEST_START
     }
 };
 
-export const getRideRequests = (requests) => {
+export const joinRequestFail = () => {
     return {
-        type: actionTypes.GET_RIDE_REQUESTS,
+        type: actionTypes.JOIN_REQUEST_FAIL
+    }
+};
+
+export const joinRequestSuccess = (requests) => {
+    return {
+        type: actionTypes.JOIN_REQUEST_SUCCESS,
         requests: requests
     }
 };
 
 export const joinRequest = (pk, token, seats, message) => {
     return dispatch => {
-        axios.headers = {
-            "Content-Type": "Application/Json",
-            "Authorization": "JWT "+token
-        };
-        axios.post('http://192.168.1.45:8000/api/'+pk+'/join/', {
+        const send = {
             seats: seats,
             message: message
-        }).then( response => {
-            console.log(response);
+        };
+        dispatch(joinRequestStart());
+        axios.post('http://192.168.1.45:8000/api/'+pk+'/join/', send,
+            {
+                headers:
+                    {
+                        "Authorization": "JWT "+ token,
+                        "Content-type": "application/json"
+                    }
+            }).then( response => {
+            // console.log(response);
+
+            dispatch(joinRequestSuccess(response.data));
         }).catch( error => {
-            console.log(error)
+            console.log(error);
+            dispatch(joinRequestFail(error));
         });
     }
 };
