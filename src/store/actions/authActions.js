@@ -1,6 +1,5 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
-import {Cookies} from 'react-cookie';
 
 const AUTH_URL = 'http://192.168.1.45:8000/';
 
@@ -103,11 +102,8 @@ export const authLogin = (username, password) => {
                 user: response.data.user
             };
             localStorage.setItem('user', JSON.stringify(user));
-            const cookies = new Cookies();
-            cookies.set('carpooling_token', user.token, { path: '/', httpOnly: true, sameSite: "lax"});
 
             dispatch(authSuccess(user));
-            // webSocketActions.webSocketConnectStart('ws://192.168.1.45:8000/ws/');
         }).catch( error => {
             dispatch(authFail(error));
         });
@@ -139,8 +135,6 @@ export const authSignup = (
                         user: response.data.user
                     };
                     localStorage.setItem('user', JSON.stringify(user));
-                    const cookies = new Cookies();
-                    cookies.set('carpooling_token', user.token, { path: '/', httpOnly:true, SameSite: "lax" });
 
                     dispatch(authSuccess(user));
                 }
@@ -161,7 +155,42 @@ export const authCheckState = () => {
             // dispatch(logout());
         } else {
             // console.log('edwwww');
-            dispatch(authSuccess(user));   
+
+            // get again my requests!
+            axios.get('http://192.168.1.45:8000/api/getmyrequests/',
+                {
+                    headers:
+                        {
+                            "Authorization": "JWT "+ user.token,
+                            "Content-type": "application/json"
+                        }
+                }).then( response => {
+                    user.user.request = response.data;
+
+                    axios.get('http://192.168.1.45:8000/api/getallrequests/',
+                        {
+                            headers:
+                                {
+                                    "Authorization": "JWT "+ user.token,
+                                    "Content-type": "application/json"
+                                }
+                        }).then( response => {
+                        console.log(response);
+                            user.user.requestsOfMyRides = response.data;
+                            dispatch(authSuccess(user));
+                    }).catch( error => {
+                        console.log(error);
+                        dispatch(authFail(error));
+                    });
+
+
+            }).catch( error => {
+                console.log(error);
+                dispatch(authFail(error));
+            });
+
+
+
         }
     }
 };

@@ -46,13 +46,35 @@ export const JOIN_REQUEST_START = 'JOIN_REQUEST_START';
 export const JOIN_REQUEST_FAIL = 'JOIN_REQUEST_FAIL';
 export const JOIN_REQUEST_SUCCESS = 'JOIN_REQUEST_SUCCESS';
 
+// Update RequestsofRides
+export const ADD_REQUESTS_OF_RIDES = 'ADD_REQUESTS_OF_RIDES';
+export const REMOVE_REQUESTS_OF_RIDES = 'REMOVE_REQUESTS_OF_RIDES';
+
+
+// Update Requests
+export const REMOVE_REQUESTS = 'REMOVE_REQUESTS';
+// UPDATE REQUESTS STATUS
+export const UPDATE_REQUESTS = 'UPDATE_REQUESTS';
 
 
 
-export const JOIN_REQUESTED = 'JOIN_REQUESTED';
+// UNJOIN
+export const UNJOIN_START = 'UNJOIN_START';
+export const UNJOIN_FAIL = 'UNJOIN_FAIL';
+export const UNJOIN_SUCCESS = 'UNJOIN_SUCCESS';
+export const UNJOIN = 'UNJOIN';
+
+// DECLINE JOIN
+export const DECLINE_JOIN = 'DECLINE_JOIN';
+
+// ACCEPT JOIN
+export const ACCEPT_JOIN = 'ACCEPT_JOIN';
+
+
+
 export const ACCEPT_REQUEST = 'ACCEPT_REQUEST';
 export const DECLINE_REQUEST = 'DECLINE_REQUEST';
-export const UNJOIN = 'UNJOIN';
+
 
 
 

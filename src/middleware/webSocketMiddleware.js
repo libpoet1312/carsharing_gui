@@ -1,5 +1,6 @@
 import * as actionTypes from '../store/actions/actionTypes';
 import * as webSocketActions from '../store/actions/webSocketActions';
+import * as requestsActions from '../store/actions/requestsActions';
 
 const webSocketsMiddleware = (function () {
     let socket = null;
@@ -35,9 +36,25 @@ const webSocketsMiddleware = (function () {
             case actionTypes.WS_MESSAGE:
                 store.dispatch(webSocketActions.webSocketMessage(event.host, payload));
                 break;
+            case "addRequests":
+                console.log('add');
+                store.dispatch(requestsActions.addRequestsOfMyRides(payload.text));
+                break;
+            case "removeRequests":
+                console.log('remove');
+                store.dispatch(requestsActions.removeRequestsOfMyRides(payload.text));
+                break;
+            case "removeMYRequests":
+                console.log('removeMY');
+                store.dispatch(requestsActions.removeRequest(payload.text));
+                break;
+            case "updateRequests":
+                console.log('updateRequests');
+                store.dispatch(requestsActions.updateRequests(payload.text));
+                break;
+
             default: console.log('default'); break;
         }
-
     };
 
     /**

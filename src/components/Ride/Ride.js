@@ -30,18 +30,22 @@ class Ride extends Component{
         isOwner: false,
         hasJoined: false,
         joinModal: false,
+        isAccepted: false
     };
 
     componentDidMount() {
-        // console.log(this.props);
+        console.log('[componentDidMount]');
         this.props.fetchRide(this.props.match.params.ridePK);
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(prevProps.loading);
-        console.log(this.props.loading);
-        if(prevProps.loading && !this.props.loading){
+        console.log('[componentDidUpdate]');
+
+        // console.log(this.props.isAuthenticated);
+        if((prevProps.loading && !this.props.loading) || this.props.requests!==prevProps.requests){
             // console.log('edw');
+            console.log(this.props.isAuthenticated);
             if(this.props.isAuthenticated){
                 if(this.props.ride.uploader.username===this.props.user.username){
                     this.setState({isOwner: true});
@@ -51,14 +55,21 @@ class Ride extends Component{
 
                 // handle if user has already applied!
                 const obj = this.props.requests.find( req => {
-                    return req.ride === 1
+                    console.log(req, this.props.ride.pk);
+                    return req.ride.id === this.props.ride.pk
                 });
+                console.log(obj);
                 if(obj){
-                    this.setState(
-                        {hasJoined: true}
-                    )
+                    if(obj.accepted){
+                        this.setState({isAccepted: true})
+                    }else{
+                        this.setState(
+                            {hasJoined: true}
+                        )
+                    }
+                }else{
+                    this.setState({hasJoined: false, isAccepted: false})
                 }
-
             }
 
         }
@@ -85,10 +96,24 @@ class Ride extends Component{
         //send join request to server!
 
 
-        this.props.joinRequest(this.props.ride.pk, user.token ,seats, msg)
+        this.props.joinRequest(this.props.ride.pk, user.token ,seats, msg);
+        this.setState(
+            {hasJoined: true}
+        );
     };
 
-    unJoinHandler = () => {
+    unJoinHandler = (ride) => {
+        console.log('unJoinHandler');
+        const token = JSON.parse(localStorage.getItem('user')).token;
+        const req = this.props.requests.find( el => {
+            // console.log(el);
+            return el.ride.id===ride.pk;
+        });
+        // console.log(req.pk);
+        this.props.unJoin(req.pk, token, ride.pk);
+        this.setState(
+            {hasJoined: false, isAccepted: false}
+        );
 
     };
 
@@ -116,10 +141,23 @@ class Ride extends Component{
                 )
             }
             if(this.state.hasJoined) {
+
+                console.log('joined');
+                button = (
+                    <div className={classes.ColumnRight}>
+                        <Button size={"large"} shape={"round"} type={"ghost"}
+                                style={{height: "100%", backgroundColor: "orange", whiteSpace: "normal"}}
+                                onClick={() => this.unJoinHandler(this.props.ride)}>
+                            <strong>Cancel Request</strong></Button>
+                    </div>
+                )
+            }
+            if(this.state.isAccepted){
+                console.log('accepted');
                 button = (
                     <div className={classes.ColumnRight}>
                         <Button size={"large"} shape={"round"} type={"danger"}
-                                onClick={this.unJoinHandler}>UNJOIN</Button>
+                                onClick={() => this.unJoinHandler(this.props.ride)}>UNJOIN</Button>
                     </div>
                 )
             }
@@ -248,7 +286,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchRide: (pk) => dispatch(rideActions.fetchSingleRide(pk)),
-        joinRequest: (pk, token, seats, message) => dispatch(requestsActions.joinRequest(pk, token, seats, message))
+        joinRequest: (pk, token, seats, message) => dispatch(requestsActions.joinRequest(pk, token, seats, message)),
+        unJoin: (pk, token, ridePK) => dispatch(requestsActions.unJoin(pk, token, ridePK)),
+
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Ride);

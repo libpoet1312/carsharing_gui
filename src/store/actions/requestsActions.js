@@ -1,20 +1,8 @@
 import * as actionTypes from './actionTypes';
 import axios from "axios";
 
-// export const getMyRequests = (user) => {
-//     return {
-//         type: actionTypes.GET_MY_REQUESTS,
-//         user: user
-//     }
-// };
-//
-// export const getRideRequests = (requests) => {
-//     return {
-//         type: actionTypes.GET_RIDE_REQUESTS,
-//         requests: requests
-//     }
-// };
 
+// JOIN
 export const joinRequestStart = () => {
     return {
         type: actionTypes.JOIN_REQUEST_START
@@ -71,8 +59,137 @@ export const declineRequest = () => {
     }
 };
 
-export const unJoin = () => {
+
+
+// UNJOIN
+export const unJoinStart = () => {
     return {
-        type: actionTypes.UNJOIN
+        type: actionTypes.UNJOIN_START
+    }
+};
+
+export const unJoinFail = (error) => {
+    return {
+        type: actionTypes.UNJOIN_FAIL,
+        error: error
+    }
+};
+
+export const unJoinSuccess = (pk) => {
+    return {
+        type: actionTypes.UNJOIN_SUCCESS,
+        pk: pk
+    }
+};
+
+export const unJoin = (pk, token, ridePK) => {
+    return dispatch => {
+        dispatch(unJoinStart());
+        console.log(ridePK);
+        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/unjoin/',
+            {
+                headers:
+                    {
+                        "Authorization": "JWT "+ token,
+                        "Content-type": "application/json"
+                    }
+            }).then( response => {
+            console.log(response);
+
+            dispatch(unJoinSuccess(pk));
+        }).catch( error => {
+            console.log(error);
+            dispatch(unJoinFail(error));
+        });
+    }
+};
+
+
+// Update REQUESTS from websocket!
+export const addRequestsOfMyRides = (request) => {
+    return {
+        type: actionTypes.ADD_REQUESTS_OF_RIDES,
+        request: request
+    }
+};
+
+export const removeRequestsOfMyRides = (request) => {
+    return {
+        type: actionTypes.REMOVE_REQUESTS_OF_RIDES,
+        request: request
+    }
+};
+
+
+export const removeRequest = (request) => {
+    return {
+        type: actionTypes.REMOVE_REQUESTS,
+        request: request
+    }
+};
+
+export const updateRequests = (request) => {
+    return {
+        type: actionTypes.UPDATE_REQUESTS,
+        request: request
+    }
+};
+
+
+
+
+export const declineJoinSuccess = (pk) => {
+    return {
+        type: actionTypes.DECLINE_JOIN,
+        pk: pk
+    }
+};
+
+
+// decline join
+export const declineJoin = (pk, ridePK, token, userID) => {
+    return dispatch => {
+        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/declinejoin/'+userID+'/',
+            {
+                headers:
+                    {
+                        "Authorization": "JWT "+ token,
+                        "Content-type": "application/json"
+                    }
+            }).then( response => {
+            console.log(response);
+
+            dispatch(declineJoinSuccess(pk));
+        }).catch( error => {
+            console.log(error);
+        });
+    };
+};
+
+
+
+export const acceptJoinSuccess = pk => {
+    return {
+        type: actionTypes.ACCEPT_JOIN,
+        pk: pk
+    }
+};
+
+export const acceptJoin = (pk, ridePK, token, userID) => {
+    return dispatch => {
+        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/acceptjoin/'+userID+'/',
+            {
+                headers:
+                    {
+                        "Authorization": "JWT "+ token,
+                        "Content-type": "application/json"
+                    }
+            }).then( response => {
+            console.log(response);
+
+            dispatch(acceptJoinSuccess(pk));
+        }).catch( error => {
+            console.log(error);
+        });
     }
 };
