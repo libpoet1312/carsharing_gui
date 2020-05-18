@@ -5,6 +5,7 @@ import axios from 'axios';
 import {LoadingOutlined} from '@ant-design/icons';
 
 import UserInfo from "./UserInfo/UserInfo";
+import {API_HTTP} from "../../config";
 
 
 class User extends Component {
@@ -23,7 +24,7 @@ class User extends Component {
             }
         };
         console.log(this.props.match.params.id);
-        axios.get('http://192.168.1.45:8000/user/'+this.props.match.params.id+'/', config)
+        axios.get(API_HTTP + 'user/'+this.props.match.params.id+'/', config)
             .then(res => {
                 console.log('server', res.data);
                 this.setState({

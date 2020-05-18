@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {API_HTTP} from "../../config";
 
-const AUTH_URL = 'http://localhost:8000/';
 
 export const getUserStart = () => {
     return {
@@ -32,7 +32,7 @@ export const getUser = token => {
               "Content-Type": "Application/Json",
               "Authorization": "JWT "+token
           };
-          axios.get('http://192.168.1.45:8000/user').then(res => {
+          axios.get(API_HTTP + 'user').then(res => {
               console.log(res.data);
               dispatch(getUserSuccess(res.data));
           }).catch(error => {

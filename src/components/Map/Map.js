@@ -4,12 +4,13 @@ import {compose, lifecycle, withProps} from "recompose";
 import {DirectionsRenderer, GoogleMap, withGoogleMap} from "react-google-maps";
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 
+import {GOOGLE_MAPS_KEY} from "../../config";
 import classes from './Map.module.css';
 
 const MyMapComponent = compose(
     withProps({
         googleMapURL:
-            "https://maps.googleapis.com/maps/api/js?key=AIzaSyCGR8QHY78WBq43zC_2i9ohE-sT5ZfgZ60&v=3.exp&libraries=geometry,drawing",
+            "https://maps.googleapis.com/maps/api/js?key="+ GOOGLE_MAPS_KEY +"&v=3.exp&libraries=geometry,drawing",
         loadingElement: <div  style={{ height: `100%`}} />,
         containerElement: <div className={classes.Map} style={{ height: `400px`,  border: 'black 1px solid' }} />,
         mapElement: <div style={{ height: `100%` }} />

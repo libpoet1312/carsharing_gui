@@ -12,6 +12,7 @@ import FacebookLogin from 'react-facebook-login'
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 // import AuthService from "../../services/auth.service";
 import * as actions from '../../../store/actions/authActions'
+import {FACEBOOK_APP_ID} from "../../../config";
 
 const AuthenticationModal = (props) => {
 
@@ -37,7 +38,7 @@ const AuthenticationModal = (props) => {
             <Row justify="space-around" align="middle" className='text-center'>
                 <Col span={11} className=''>
                     <FacebookLogin
-                        appId="2603473709910948"
+                        appId={FACEBOOK_APP_ID}
                         autoLoad={false}
                         callback={responseFacebook}
                         onClick={componentClicked}

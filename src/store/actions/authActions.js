@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {API_HTTP} from "../../config";
 
 const AUTH_URL = 'http://192.168.1.45:8000/';
 
@@ -49,7 +50,7 @@ export const logout = () =>{
     return dispatch => {
         dispatch(logoutStart());
         dispatch(ws_logout());
-        axios.post(AUTH_URL+'rest-auth/logout/',{
+        axios.post(API_HTTP+'rest-auth/logout/',{
             token: localStorage.getItem('user')
 
         }).then( () =>{
@@ -93,7 +94,7 @@ export const facebookAuthSuccess = (user) => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post(AUTH_URL+'rest-auth/login/',{
+        axios.post(API_HTTP+'rest-auth/login/',{
             username: username,
             password: password
         }).then( response =>{
@@ -157,7 +158,7 @@ export const authCheckState = () => {
             // console.log('edwwww');
 
             // get again my requests!
-            axios.get('http://192.168.1.45:8000/api/getmyrequests/',
+            axios.get(API_HTTP + 'api/getmyrequests/',
                 {
                     headers:
                         {
@@ -167,7 +168,7 @@ export const authCheckState = () => {
                 }).then( response => {
                     user.user.request = response.data;
 
-                    axios.get('http://192.168.1.45:8000/api/getallrequests/',
+                    axios.get(API_HTTP + 'api/getallrequests/',
                         {
                             headers:
                                 {
@@ -202,7 +203,7 @@ export const facebookAuth = (fbToken) => {
         dispatch(facebookAuthStart());
         axios
             .post(
-                'http://192.168.1.45:8000/rest-auth/facebook/',
+                API_HTTP + 'rest-auth/facebook/',
                 {access_token: fbToken})
             .then( response =>{
                 console.log(response);

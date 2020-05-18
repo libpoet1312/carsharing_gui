@@ -2,6 +2,8 @@ import * as actionTypes from '../store/actions/actionTypes';
 import * as webSocketActions from '../store/actions/webSocketActions';
 import * as requestsActions from '../store/actions/requestsActions';
 
+import {API_WS} from '../config';
+
 const webSocketsMiddleware = (function () {
     let socket = null;
 
@@ -73,11 +75,11 @@ const webSocketsMiddleware = (function () {
                 next(action);
 
                 // // Tell the store that we're busy connecting...
-                store.dispatch(webSocketActions.webSocketConnectStart('ws://192.168.1.45:8000/ws/'));
+                store.dispatch(webSocketActions.webSocketConnectStart(API_WS));
                 let user = JSON.parse(localStorage.getItem('user'));
                 // console.log(user);
                 // Attempt to connect to the remote host...
-                socket = new WebSocket(`ws://192.168.1.45:8000/ws/?token=${user.token}`);
+                socket = new WebSocket(API_WS +`?token=${user.token}`);
 
                 // Set up WebSocket handlers
                 socket.onmessage = onMessage(socket, store);

@@ -84,17 +84,11 @@ class Search extends React.Component{
                     </Button>
 
                     <div className={classes.break}></div>
-
                     {
                         this.state.opened ?
                             filters
                             : null
                     }
-
-
-
-
-
                 </div>
             </div>
         )

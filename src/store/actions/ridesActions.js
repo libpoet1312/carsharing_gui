@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {API_HTTP} from "../../config";
 
 
 // rides actions
@@ -35,7 +36,7 @@ export const fetchRides = (query) => {
             console.log('edw');
             query = '?'+query;
         }
-        axios.get('http://192.168.1.45:8000/api/'+ query)
+        axios.get(API_HTTP + 'api/'+ query)
             .then( (response) => {
                 // console.log(response.data);
                 dispatch(fetchRidesSuccess(response.data));

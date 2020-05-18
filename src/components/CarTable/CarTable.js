@@ -4,6 +4,7 @@ import AddCarForm from "../Forms/AddCarForm/AddCarForm";
 import axios from "axios";
 import {connect} from "react-redux";
 import {GrAddCircle} from 'react-icons/gr';
+import {API_HTTP} from "../../config";
 
 
 const EditableContext = React.createContext();
@@ -144,7 +145,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.get('http://192.168.1.45:8000/cars/car', config)
+        axios.get(API_HTTP + 'cars/car', config)
             .then( response => {
                 console.log(response.data);
                 const cars = [];
@@ -187,7 +188,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.delete('http://192.168.1.45:8000/cars/car/'+key, config)
+        axios.delete(API_HTTP + 'cars/car/'+key, config)
             .then( response => {
                 console.log(response);
                 this.setState({
@@ -221,7 +222,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.post('http://192.168.1.45:8000/cars/car/', newCar, config)
+        axios.post(API_HTTP + 'cars/car/', newCar, config)
             .then( response => {
                 console.log(response);
 
@@ -250,7 +251,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.patch('http://192.168.1.45:8000/cars/car/'+item.key+'/', {
+        axios.patch(API_HTTP + 'cars/car/'+item.key+'/', {
             plate: newData[index].plate,
             brand: newData[index].brand,
             model: newData[index].model,

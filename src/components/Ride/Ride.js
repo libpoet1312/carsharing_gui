@@ -36,7 +36,6 @@ class Ride extends Component{
     componentDidMount() {
         console.log('[componentDidMount]');
         this.props.fetchRide(this.props.match.params.ridePK);
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -45,7 +44,7 @@ class Ride extends Component{
         // console.log(this.props.isAuthenticated);
         if((prevProps.loading && !this.props.loading) || this.props.requests!==prevProps.requests){
             // console.log('edw');
-            console.log(this.props.isAuthenticated);
+            console.log(this.props.isAuthenticated)
             if(this.props.isAuthenticated){
                 if(this.props.ride.uploader.username===this.props.user.username){
                     this.setState({isOwner: true});
@@ -71,7 +70,6 @@ class Ride extends Component{
                     this.setState({hasJoined: false, isAccepted: false})
                 }
             }
-
         }
     }
 
@@ -186,7 +184,11 @@ class Ride extends Component{
                             </Descriptions>
                         </div>
 
-                        {button}
+                        { this.props.isAuthenticated || this.state.isOwner ?
+                            button : null
+                        }
+
+
 
 
 

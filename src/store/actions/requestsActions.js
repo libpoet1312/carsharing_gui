@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from "axios";
-
+import {API_HTTP} from "../../config";
 
 // JOIN
 export const joinRequestStart = () => {
@@ -29,7 +29,7 @@ export const joinRequest = (pk, token, seats, message) => {
             message: message
         };
         dispatch(joinRequestStart());
-        axios.post('http://192.168.1.45:8000/api/'+pk+'/join/', send,
+        axios.post(API_HTTP + 'api/'+pk+'/join/', send,
             {
                 headers:
                     {
@@ -86,7 +86,7 @@ export const unJoin = (pk, token, ridePK) => {
     return dispatch => {
         dispatch(unJoinStart());
         console.log(ridePK);
-        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/unjoin/',
+        axios.get(API_HTTP + 'api/'+ridePK+'/unjoin/',
             {
                 headers:
                     {
@@ -149,7 +149,7 @@ export const declineJoinSuccess = (pk) => {
 // decline join
 export const declineJoin = (pk, ridePK, token, userID) => {
     return dispatch => {
-        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/declinejoin/'+userID+'/',
+        axios.get(API_HTTP + 'api/'+ridePK+'/declinejoin/'+userID+'/',
             {
                 headers:
                     {
@@ -177,7 +177,7 @@ export const acceptJoinSuccess = pk => {
 
 export const acceptJoin = (pk, ridePK, token, userID) => {
     return dispatch => {
-        axios.get('http://192.168.1.45:8000/api/'+ridePK+'/acceptjoin/'+userID+'/',
+        axios.get(API_HTTP + 'api/'+ridePK+'/acceptjoin/'+userID+'/',
             {
                 headers:
                     {
