@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "latest",
+    "@ant-design/pro-layout": "^5.0.12",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -12,6 +13,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.5",
     "country-flag-icons": "^1.2.1",
+    "less": "^3.11.1",
     "moment": "^2.24.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
@@ -40,6 +42,7 @@
     "validator": "^13.0.0"
   },
   "scripts": {
+    "watch-css": "less-watch-compiler src/ ./",
     "start": "HTTPS=true&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -102,8 +102,6 @@ class CustomLayout extends React.Component {
                 {/*    <Button type="primary" icon={<wechat/>} />*/}
                 {/*</Affix>*/}
             </div>
-
-
         );
     }
 }

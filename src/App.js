@@ -9,6 +9,9 @@ import Layout from "./hoc/Layout/Layout";
 
 import 'antd/dist/antd.css';
 
+
+import MyLayout from "./Layout/MyLayout";
+
 class App extends Component{
 
     componentDidMount() {
@@ -19,9 +22,10 @@ class App extends Component{
         return (
             <div>
                 <BrowserRouter>
-                    <Layout {...this.props}>
-                        <Routes/>
-                    </Layout>
+                    {/*<Layout {...this.props}>*/}
+                    {/*    <Routes/>*/}
+                    {/*</Layout>*/}
+                    <MyLayout/>
                 </BrowserRouter>
             </div>
         );
