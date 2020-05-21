@@ -7,14 +7,22 @@
 }
 
 .Title {
-
-
     color: white;
-
     font-weight: bold;
     font-style: italic;
 
 }
+
+.Notif {
+    margin-right: 30px;
+    font-size: 15px;
+}
+
+.User {
+    margin-right: 25px;
+    font-size: 15px;
+}
+
 
 
 

@@ -127,6 +127,7 @@ class CustomLayout extends React.Component {
                                  onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}
                                  showDrawer={() => this.showDrawer()} drawerVisible={this.state.drawerVisible}
 
+
                         />
 
 
@@ -140,23 +141,27 @@ class CustomLayout extends React.Component {
                         <MyHeader showDrawer={() => this.showDrawer()} isMobile={this.state.mobile}
                                   collapsed={this.state.collapsed} isAuthenticated={this.props.isAuthenticated}
                                   showModal={this.showModalHandler} logout={() => this.logout()}
+                                  user={this.props.user}
                         />
 
                         {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
 
 
-                        <Content style={{ margin: '36px 16px' }}>
-                            <Breadcrumb style={{ margin: '16px 0' }}>
+                        <Content style={{ margin: '20px 10px 10px 10px' }}>
+                            <Breadcrumb style={{ margin: '16px 10px' }}>
                                 <Breadcrumb.Item><Link to='/'>Home</Link></Breadcrumb.Item>
                                 <Breadcrumb.Item><Link to='rides/'>List</Link></Breadcrumb.Item>
                             </Breadcrumb>
-                            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                                {this.props.children}
+                            <div className="site-layout-background" style={{ padding: 15, minHeight: 500 }}>
+                                {React.cloneElement(this.props.children, { isMobile: this.state.mobile })}
                             </div>
                         </Content>
-                        <Footer style={{ textAlign: 'center' }}>Copyright © 2020 Created by Nick Pappas</Footer>
+
+                        <Footer style={{marginTop: '20px',width: "100%", textAlign: 'center', position: "fixed", bottom: "0" }}>Copyright © 2020 Created by Nick Pappas</Footer>
                     </Layout>
+
                 </Layout>
+
 
 
                 {/*<Affix style={{position:'fixed',bottom:50,right:50}}>*/}

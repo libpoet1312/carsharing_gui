@@ -1,24 +1,82 @@
 import React from 'react';
-import {Layout} from "antd";
+import {Layout, Badge, Menu, Button, Dropdown, Avatar, Space, Divider} from "antd";
+
 
 import {AwesomeButton} from "react-awesome-button";
 import {
     MenuUnfoldOutlined,
-    MenuFoldOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons';
+    MenuFoldOutlined, LoginOutlined, LogoutOutlined, BellOutlined, SettingOutlined } from '@ant-design/icons';
 
+import {FaUserCog} from 'react-icons/fa';
+import {GoRequestChanges} from 'react-icons/go';
 
 import classes from './myHeader.module.css';
 import './test.css';
+import {Link} from "react-router-dom";
 
 const {Header} = Layout;
 
 const MyHeader = (props) => {
 
     let header = <AwesomeButton type="primary" size="small" action={props.showModal}> <LoginOutlined/><span>Login</span></AwesomeButton>;
+    let userMenu = null;
+    // if(props.isAuthenticated){
+    //     header = (
+    //         <div>
+    //             <AwesomeButton type="primary" size="small" action={props.logout}><LogoutOutlined/>Logout</AwesomeButton>
+    //         </div>
+    //     )
+    // }
+
+    const content = (
+        <Menu>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+                    1st menu item
+                </a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+                    2nd menu item
+                </a>
+            </Menu.Item>
+            <Menu.Item>
+                <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
+                    3rd menu item
+                </a>
+            </Menu.Item>
+        </Menu>
+    );
 
     if(props.isAuthenticated){
-        header = <AwesomeButton type="primary" size="small" action={props.logout}><LogoutOutlined/>Logout</AwesomeButton>
+        userMenu = (
+            <Menu>
+                <Menu.Item key="1">My rides</Menu.Item>
+                <Menu.Item key="2">
+                    <Link to={'/requests'}>
+                        <Space>
+                            <GoRequestChanges/>My requests
+                        </Space>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                    <Link to={'/myaccount'} replace>
+                        <Space>
+                            <SettingOutlined /> Account Settings
+                        </Space>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+
+                   <Space>
+                       <Button type={"ghost"} onClick={props.logout}><LogoutOutlined/>Logout</Button>
+                   </Space>
+                </Menu.Item>
+
+            </Menu>
+        );
     }
+
 
     return (
 
@@ -30,7 +88,41 @@ const MyHeader = (props) => {
                     onClick: props.showDrawer,
                 }) : null}
             </div>
-            <div>{header}</div>
+
+
+
+            <div>
+
+                {
+                    props.isAuthenticated ?
+                        <div className={classes.Notif}>
+                            <Dropdown placement={"bottomCenter"} overlay={content} trigger={['click']}>
+                                <Button style={{all: "unset", cursor: "pointer"}}>
+                                    <Badge count={1} overflowCount={10}>
+                                        <BellOutlined style={{ fontSize: '20px'}}/>
+                                    </Badge>
+                                </Button>
+                            </Dropdown>
+                        </div> : null
+                }
+
+
+            </div>
+            <div>
+                {
+                    props.isAuthenticated ?
+                        <div className={classes.User}>
+                            <Dropdown placement={"bottomCenter"} overlay={userMenu} trigger={['hover']}>
+                                <Button style={{all: "unset", cursor: "pointer"}}>
+                                    <Avatar shape="circle" size={"small"} src={props.user.avatar}/>
+                                </Button>
+                            </Dropdown>
+                        </div> : header
+                }
+            </div>
+
+
+            {/*<div>{header}</div>*/}
 
 
         </Header>
