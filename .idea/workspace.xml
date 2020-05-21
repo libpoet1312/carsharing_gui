@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/getHttpsConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jest/cssTransform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jest/fileTransform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/modules.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/paths.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/pnpTs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpackDevServer.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MyDrawer/MyDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/test.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Layout/MyLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layout/MyLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/CustomLayout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OLD/CustomLayout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/myHeader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/myHeader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -126,7 +124,9 @@
       <workItem from="1589546594964" duration="35941000" />
       <workItem from="1589836574586" duration="3214000" />
       <workItem from="1589879376483" duration="11977000" />
-      <workItem from="1589925587660" duration="4627000" />
+      <workItem from="1589925587660" duration="4659000" />
+      <workItem from="1589975284835" duration="9691000" />
+      <workItem from="1590007014836" duration="15060000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -296,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589896513320</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="trying to adjust pro layout!">
+      <created>1589935437919</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1589935437919</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +330,8 @@
     <MESSAGE value="finishing with Sockets!&#10;almost done joining/unjoining etc!" />
     <MESSAGE value="some config" />
     <MESSAGE value="before eject" />
-    <option name="LAST_COMMIT_MESSAGE" value="before eject" />
+    <MESSAGE value="trying to adjust pro layout!" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to adjust pro layout!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="200" width="800" height="675" key="#Deployment" timestamp="1589896510293">
@@ -346,17 +354,18 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3690" y="378" width="417" height="322" key="#com.intellij.ide.actions.DebugLogConfigureAction/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587857125181" />
-    <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589395192228">
-      <screen x="2944" y="0" width="1920" height="1080" />
+    <state x="693" y="309" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590022536452">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="693" y="309" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1590022536452" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588971199322" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589395192228" />
-    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2" timestamp="1589896513264">
+    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2" timestamp="1589935437145">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="3510" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339474215" />
     <state x="2486" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162681937" />
-    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1589896513264" />
+    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1589935437145" />
     <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035702407" />
     <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589597304037" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">

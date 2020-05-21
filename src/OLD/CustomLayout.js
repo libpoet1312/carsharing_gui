@@ -25,6 +25,12 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 
+{/*<span className={'ant-layout-sider-zero-width-trigger ant-layout-sider-zero-width-trigger-left'}*/}
+{/*      style={{top: 0, margin: "auto", padding: "auto"}}*/}
+{/*      onClick={()=>props.onCollapse(!props.collapsed)}>*/}
+{/*	<BarsOutlined />*/}
+{/*</span>*/}
+
 class CustomLayout extends React.Component {
     constructor(props) {
         super(props);

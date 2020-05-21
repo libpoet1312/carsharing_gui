@@ -10,7 +10,6 @@ import Layout from "./hoc/Layout/Layout";
 import 'antd/dist/antd.css';
 
 
-import MyLayout from "./Layout/MyLayout";
 
 class App extends Component{
 
@@ -20,16 +19,16 @@ class App extends Component{
 
     render() {
         return (
-            <div>
-                <BrowserRouter>
-                    {/*<Layout {...this.props}>*/}
-                    {/*    <Routes/>*/}
-                    {/*</Layout>*/}
-                    <MyLayout/>
-                </BrowserRouter>
-            </div>
+            <BrowserRouter>
+                <Layout {...this.props}>
+                    <Routes/>
+                </Layout>
+                {/*<MyLayout/>*/}
+            </BrowserRouter>
         );
+
     }
+
 }
 
 const mapDispatchToProps = dispatch => {

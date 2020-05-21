@@ -14,6 +14,7 @@ import MySider from "./MySider/MySider";
 import * as authActions from '../../store/actions/authActions';
 import './CustomLayout.css'
 
+
 const {Content, Footer } = Layout;
 
 
@@ -30,6 +31,41 @@ class CustomLayout extends React.Component {
         collapsed: false,
         modalVisible: false,
         modal: modals.login,
+        width: 0,
+        height: 0,
+        mobile: false,
+        drawerVisible: false
+    };
+
+    constructor(props) {
+        super(props);
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    }
+
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevState.width!==this.state.width){
+            this.updateWindowDimensions();
+        }
+
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        this.setState({ mobile: this.state.width<768})
+    }
+
+    changeView = () => {
+        this.setState({mobile: !this.state.mobile})
     };
 
     showModalHandler = () => {
@@ -61,7 +97,14 @@ class CustomLayout extends React.Component {
         this.props.history.push('/');
     };
 
+
+    showDrawer = () => {
+        this.setState({ drawerVisible: !this.state.drawerVisible})
+    };
+
     render() {
+
+
         return (
             <div>
                 <Modal visible={this.state.modalVisible}
@@ -77,14 +120,31 @@ class CustomLayout extends React.Component {
                 </Modal>
 
 
-                <MyHeader isAuthenticated={this.props.isAuthenticated} showModal={this.showModalHandler} logout={() => this.logout()}/>
+                <Layout style={{height:"100vh"}} hasSider>
 
-                <Layout style={{ minHeight: '93vh'}} hasSider>
-                    <MySider isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed} onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}/>
+                        <MySider isMobile={this.state.mobile} changeView={() => this.changeView()}
+                                 isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed}
+                                 onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}
+                                 showDrawer={() => this.showDrawer()} drawerVisible={this.state.drawerVisible}
+
+                        />
+
+
+
+
+
+
 
                     {/* MAIN CONTENT FROM HERE */}
                     <Layout className="site-layout">
+                        <MyHeader showDrawer={() => this.showDrawer()} isMobile={this.state.mobile}
+                                  collapsed={this.state.collapsed} isAuthenticated={this.props.isAuthenticated}
+                                  showModal={this.showModalHandler} logout={() => this.logout()}
+                        />
+
                         {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
+
+
                         <Content style={{ margin: '36px 16px' }}>
                             <Breadcrumb style={{ margin: '16px 0' }}>
                                 <Breadcrumb.Item><Link to='/'>Home</Link></Breadcrumb.Item>
@@ -97,6 +157,7 @@ class CustomLayout extends React.Component {
                         <Footer style={{ textAlign: 'center' }}>Copyright © 2020 Created by Nick Pappas</Footer>
                     </Layout>
                 </Layout>
+
 
                 {/*<Affix style={{position:'fixed',bottom:50,right:50}}>*/}
                 {/*    <Button type="primary" icon={<wechat/>} />*/}
@@ -120,4 +181,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CustomLayout));
+export default connect(mapStateToProps, mapDispatchToProps,  null, { pure: false })(withRouter(CustomLayout));
