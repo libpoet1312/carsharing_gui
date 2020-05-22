@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/addRide/addRide.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CarTable/CarTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CarTable/CarTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ride/Ride.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ride/Ride.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/MyAccount/BasicSettings/BasicSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MyAccount/BasicSettings/BasicSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/RideList/RideList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/RideList/RideList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Rides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/User/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/UserInfo/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User/UserInfo/userInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/UserInfo/userInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/CustomLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/CustomLayout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/addRide/addRide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addRide/addRide.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/myHeader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/myHeader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +128,9 @@
       <workItem from="1589975284835" duration="9691000" />
       <workItem from="1590007014836" duration="15174000" />
       <workItem from="1590060002334" duration="15335000" />
-      <workItem from="1590099415830" duration="6203000" />
+      <workItem from="1590099415830" duration="6216000" />
+      <workItem from="1590143390499" duration="16662000" />
+      <workItem from="1590164544553" duration="4009000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -315,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590075769869</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="responsive2">
+      <created>1590108472803</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1590108472803</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +358,8 @@
     <MESSAGE value="trying to adjust pro layout!" />
     <MESSAGE value="responsive layout and costumising header!" />
     <MESSAGE value="responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="responsive" />
+    <MESSAGE value="responsive2" />
+    <option name="LAST_COMMIT_MESSAGE" value="responsive2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="200" width="800" height="675" key="#Deployment" timestamp="1589896510293">
@@ -374,12 +388,12 @@
     <state x="693" y="309" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1590022536452" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588971199322" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589395192228" />
-    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590075768732">
+    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590108472409">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="3510" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339474215" />
     <state x="2486" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162681937" />
-    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590075768732" />
+    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590108472409" />
     <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035702407" />
     <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589597304037" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
@@ -417,10 +431,10 @@
     <state x="624" y="268" width="672" height="661" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1590073914860" />
     <state x="3568" y="247" key="run.anything.popup/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588727079135" />
     <state x="3568" y="247" width="672" height="677" key="run.anything.popup/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589396725650" />
-    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1590106191004">
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1590146290146">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1590106191004" />
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1590146290146" />
     <state x="3567" y="239" width="672" height="678" key="search.everywhere.popup/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1587673271016" />
     <state x="3567" y="239" width="672" height="678" key="search.everywhere.popup/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589589983981" />
   </component>

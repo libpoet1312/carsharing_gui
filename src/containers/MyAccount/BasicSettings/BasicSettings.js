@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    Form, Input, Tooltip, Select, Upload,
-    Checkbox, Button, DatePicker, Divider, Row, Col, Avatar
-} from 'antd';
+import {Form, Input, Upload, Button, Avatar} from 'antd';
 import {connect} from 'react-redux';
 import {UploadOutlined} from '@ant-design/icons';
 import './MyAccount.css';

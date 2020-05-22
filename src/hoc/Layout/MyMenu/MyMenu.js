@@ -5,6 +5,7 @@ import {FaCarSide} from 'react-icons/fa';
 
 import {FaCar, FaHome, FaUserAlt, FaUserCog, FaQuestionCircle} from 'react-icons/fa';
 import {GoRequestChanges} from 'react-icons/go';
+import {AiOutlinePlusCircle} from 'react-icons/ai';
 
 const { SubMenu } = Menu;
 
@@ -67,9 +68,21 @@ const MyMenu = (props) => {
                     </Link>
                 </Menu.Item>
 
+                {props.isAuthenticated?
+                    <Menu.Item key="6">
+                        <Link to={`/ridesadd/`}>
+                            <Space style={{color: 'white'}}>
+                                <AiOutlinePlusCircle />
+                                <span>Add Ride</span>
+                            </Space>
+                        </Link>
+                    </Menu.Item>
+                    : null
+                }
+
                 {user_menu}
 
-                <Menu.Item key="6">
+                <Menu.Item key="7">
                     <Space>
                         <FaQuestionCircle /> F.A.Q.
                     </Space>

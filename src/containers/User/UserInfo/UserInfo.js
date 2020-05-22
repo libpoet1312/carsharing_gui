@@ -1,5 +1,5 @@
 import React from 'react'
-import {Descriptions, Divider, Avatar, Card} from 'antd';
+import {Descriptions, Avatar, Card} from 'antd';
 
 // import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import {GiEarthAfricaEurope} from 'react-icons/gi';
@@ -26,14 +26,15 @@ const UserInfo = (props) => {
     let date = new Date(Date.parse(props.user.date_joined)).toDateString();
 
 
+
     return (
         <div className={classes.Info}>
             <Card className={classes.Card}
 
                   actions={[
-                      <Link to={'/myaccount'}>
+                      props.isOwner ? <Link to={'/myaccount'}>
                           <SettingOutlined key="Account Settings" />
-                      </Link>,
+                      </Link>: "",
                       <EllipsisOutlined key="ellipsis" />]}
 
             >

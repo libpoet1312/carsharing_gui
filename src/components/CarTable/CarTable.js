@@ -163,14 +163,10 @@ class CarTable extends React.Component {
                     dataSource: cars,
                     count: response.data.length
                 });
-
-
             }).catch(error=>{
 
             console.log(error);
         });
-
-
     };
 
     componentDidMount() {
@@ -198,9 +194,6 @@ class CarTable extends React.Component {
             }).catch(error=>{
                 console.log(error);
         });
-
-
-
     };
 
     handleAdd = (newCar) => {

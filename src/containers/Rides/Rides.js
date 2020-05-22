@@ -99,7 +99,7 @@ class Rides extends Component {
 
 
     renderItemFunction = (item) => {
-        return <RideList item={item}/>
+        return <RideList item={item} isAuthenticated={this.props.isAuthenticated}/>
     };
 
 
@@ -122,6 +122,7 @@ class Rides extends Component {
                     />
                 }
                 renderItem={this.renderItemFunction}
+
             />
 
         }
@@ -144,6 +145,7 @@ class Rides extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        isAuthenticated: state.auth.user!==null,
         rides: state.rides.rides,
         error: state.rides.error,
         loading: state.rides.loading,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Layout, Badge, Menu, Button, Dropdown, Avatar, Space, Divider} from "antd";
+import {Layout, Badge, Menu, Button, Dropdown, Avatar, Space} from "antd";
 
 
 import {AwesomeButton} from "react-awesome-button";

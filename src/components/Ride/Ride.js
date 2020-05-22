@@ -8,7 +8,7 @@ import {LoadingOutlined} from "@ant-design/icons";
 import {Spin, Descriptions, Space, Modal, Button} from "antd";
 
 import classes from './Ride.module.css';
-// import MyMapComponent from "../Map/Map";
+import MyMapComponent from "../Map/Map";
 import {AwesomeButton} from "react-awesome-button/";
 import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
     TwitterShareButton, WhatsappShareButton, ViberShareButton,
@@ -34,12 +34,12 @@ class Ride extends Component{
     };
 
     componentDidMount() {
-        console.log('[componentDidMount]');
+        // console.log('[componentDidMount]');
         this.props.fetchRide(this.props.match.params.ridePK);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('[componentDidUpdate]');
+        // console.log('[componentDidUpdate]');
 
         // console.log(this.props.isAuthenticated);
         if((prevProps.loading && !this.props.loading) || this.props.requests!==prevProps.requests){
@@ -49,12 +49,12 @@ class Ride extends Component{
                 if(this.props.ride.uploader.username===this.props.user.username){
                     this.setState({isOwner: true});
                 }
-                console.log(this.props.requests);
+                // console.log(this.props.requests);
 
 
                 // handle if user has already applied!
                 const obj = this.props.requests.find( req => {
-                    console.log(req, this.props.ride.pk);
+                    // console.log(req, this.props.ride.pk);
                     return req.ride.id === this.props.ride.pk
                 });
                 console.log(obj);
@@ -198,12 +198,12 @@ class Ride extends Component{
 
 
 
-                    {/*<div className={[classes.Column, classes.Map]}>*/}
-                    {/*    <MyMapComponent origin={ride.origin} destination={ride.destination}*/}
-                    {/*                    handleDuration={(duration) => this.handleDuration(duration)}*/}
-                    {/*                    handleDistance={(distance) => this.handleDistance(distance)}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
+                    <div className={[classes.Column, classes.Map]}>
+                        <MyMapComponent origin={ride.origin} destination={ride.destination}
+                                        handleDuration={(duration) => this.handleDuration(duration)}
+                                        handleDistance={(distance) => this.handleDistance(distance)}
+                        />
+                    </div>
 
 
 

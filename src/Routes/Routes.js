@@ -25,7 +25,7 @@ const Routes = (props) => {
 
                     <Route exact path='/rides' component={Rides}/>
                     <Route exact path='/rides/:ridePK' component={Ride}/>
-                    {props.isAuthenticated ? <Route exact path='/rides/add' component={addRide}/> : null}
+                    {props.isAuthenticated ? <Route exact path='/ridesadd' component={addRide}/> : null}
 
                     {props.isAuthenticated ? <Route exact path='/requests' component={Requests}/> : null}
 

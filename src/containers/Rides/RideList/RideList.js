@@ -4,6 +4,10 @@ import {Link} from "react-router-dom";
 import {AwesomeButton} from "react-awesome-button";
 
 const RideList = (props) => {
+    const linkToAccount =
+        <Link to={'/user/'+props.item.uploader.pk}><div style={{textAlign: "center"}}>Go to<br/>uploader profile</div></Link>;
+
+
 
     return (
         <div>
@@ -27,13 +31,11 @@ const RideList = (props) => {
             >
                 <List.Item.Meta
                     avatar={ props.isAuthenticated ?
-                        <Popover  placement="bottom" content={<h5>Profile</h5>}>
-                            <a href='/'>
+                        <Popover  placement="bottom" content={linkToAccount}>
                                 <div className='border border-primary text-center'>
                                     <Avatar src={props.item.uploader.avatar} alt='avatar'/>
                                     <h6 className='font-italic text-muted mt-5'>{props.item.uploader.username}</h6>
                                 </div>
-                            </a>
                         </Popover>
                         :
                         <div className='border border-primary text-center'>

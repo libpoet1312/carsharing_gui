@@ -23,7 +23,6 @@ class Search extends React.Component{
 
     setPass = (pass) => {
 
-
         this.props.setPassengers(pass);
     };
 
