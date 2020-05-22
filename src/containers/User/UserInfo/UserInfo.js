@@ -1,14 +1,13 @@
 import React from 'react'
-import {Descriptions, Collapse, Divider, Avatar} from 'antd';
+import {Descriptions, Divider, Avatar, Card} from 'antd';
 
 // import getUnicodeFlagIcon from 'country-flag-icons/unicode'
 import {GiEarthAfricaEurope} from 'react-icons/gi';
-import {GiCarKey} from 'react-icons/gi';
+import { EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 
 import classes from './userInfo.module.css';
-import CarTable from "../../../components/CarTable/CarTable";
+import {Link} from "react-router-dom";
 
-const { Panel } = Collapse;
 
 const UserInfo = (props) => {
 
@@ -26,21 +25,23 @@ const UserInfo = (props) => {
 
     let date = new Date(Date.parse(props.user.date_joined)).toDateString();
 
+
     return (
-        <div>
+        <div className={classes.Info}>
+            <Card className={classes.Card}
 
-            <div className={classes.Info}>
+                  actions={[
+                      <Link to={'/myaccount'}>
+                          <SettingOutlined key="Account Settings" />
+                      </Link>,
+                      <EllipsisOutlined key="ellipsis" />]}
 
+            >
                 <Avatar src={props.user.avatar} size={100}/>
+                <br/>
+                <div className={classes.DescriptionText} style={{marginTop: "30px"}}>{props.user.username}</div>
 
-
-                <Divider dashed={true}/>
-
-
-                <Descriptions column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 1, xs: 1 }} className={classes.Description}>
-                    <Descriptions.Item label={<strong className={classes.DescriptionTitle}>username</strong>}>
-                        <span className={classes.DescriptionText}>{props.user.username}</span>
-                    </Descriptions.Item>
+                <Descriptions  column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }} className={classes.Description}>
 
                     <Descriptions.Item label={<strong className={classes.DescriptionTitle}>Full name</strong>}>
                         <span className={classes.DescriptionText}>{props.user.username}</span>
@@ -67,29 +68,10 @@ const UserInfo = (props) => {
                     </Descriptions.Item>
 
                 </Descriptions>
-            </div>
 
-            <Divider/>
+            </Card>
 
-            {props.isOwner?
-                <div>
-                    <Divider/>
 
-                    <Collapse>
-                        <Panel key="1"
-                               header={
-                                   <div>
-                                       <strong>Αμάξια </strong>
-                                       <GiCarKey size={"20px"}/>
-                                   </div>
-                               }
-                        >
-                            <CarTable/>
-                        </Panel>
-                    </Collapse>
-                </div>
-                : null
-            }
         </div>
     )
 };

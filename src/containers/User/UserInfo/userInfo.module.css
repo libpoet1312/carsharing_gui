@@ -9,25 +9,22 @@
 
 
 
+}
 
-    box-shadow: 2px 5px 19px 11px  #001529;
+.Card {
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 300px;
+
+    box-shadow: 15px 15px 15px 5px  #001529;
 
 }
+
 .Description{
     text-align: justify;
-}
-
-
-.DescriptionTitle {
-    font-size: 20px;
-    font-weight: lighter;
-    color: #001529;
-}
-
-.DescriptionText {
-    font-size: 20px;
-    font-weight: bolder;
-    color: black;
+    margin-top: 20px;
 }
 
 

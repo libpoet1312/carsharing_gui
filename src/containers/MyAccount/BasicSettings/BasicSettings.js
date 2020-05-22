@@ -16,7 +16,7 @@ const BasicSettings = (props) => {
     };
 
     return (
-        <div>
+        <div style={{marginBottom: '20px'}}>
         {
             props.user ?
 

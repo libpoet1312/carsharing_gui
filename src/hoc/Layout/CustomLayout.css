@@ -20,6 +20,13 @@
 
 .site-layout .site-layout-background {
     background: #fff;
+    border: 1px solid hotpink;
+}
+
+.Content {
+    background: #fff;
+    min-height: 800px;
+    padding: 15px;
 }
 
 .site-title{

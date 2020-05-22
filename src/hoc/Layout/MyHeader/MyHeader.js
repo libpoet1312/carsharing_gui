@@ -7,7 +7,7 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined, LoginOutlined, LogoutOutlined, BellOutlined, SettingOutlined } from '@ant-design/icons';
 
-import {FaUserCog} from 'react-icons/fa';
+import {FaUserAlt} from 'react-icons/fa';
 import {GoRequestChanges} from 'react-icons/go';
 
 import classes from './myHeader.module.css';
@@ -62,11 +62,18 @@ const MyHeader = (props) => {
                 <Menu.Item key="3">
                     <Link to={'/myaccount'} replace>
                         <Space>
-                            <SettingOutlined /> Account Settings
+                            <FaUserAlt /> My Account
                         </Space>
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="4">
+                    <Link to={'/mysettings'} replace>
+                        <Space>
+                            <SettingOutlined /> Account Settings
+                        </Space>
+                    </Link>
+                </Menu.Item>
+                <Menu.Item key="5">
 
                    <Space>
                        <Button type={"ghost"} onClick={props.logout}><LogoutOutlined/>Logout</Button>
@@ -90,36 +97,38 @@ const MyHeader = (props) => {
             </div>
 
 
+            <div className={classes.Right}>
+                <div>
+                    {
+                        props.isAuthenticated ?
+                            <div className={classes.Notif}>
+                                <Dropdown placement={"bottomCenter"} overlay={content} trigger={['click']}>
+                                    <Button style={{all: "unset", cursor: "pointer"}}>
+                                        <Badge count={1} overflowCount={10}>
+                                            <BellOutlined style={{ fontSize: '20px'}}/>
+                                        </Badge>
+                                    </Button>
+                                </Dropdown>
+                            </div> : null
+                    }
 
-            <div>
 
-                {
-                    props.isAuthenticated ?
-                        <div className={classes.Notif}>
-                            <Dropdown placement={"bottomCenter"} overlay={content} trigger={['click']}>
-                                <Button style={{all: "unset", cursor: "pointer"}}>
-                                    <Badge count={1} overflowCount={10}>
-                                        <BellOutlined style={{ fontSize: '20px'}}/>
-                                    </Badge>
-                                </Button>
-                            </Dropdown>
-                        </div> : null
-                }
-
+                </div>
+                <div>
+                    {
+                        props.isAuthenticated ?
+                            <div className={classes.User}>
+                                <Dropdown placement={"bottomCenter"} overlay={userMenu} trigger={['hover']}>
+                                    <Button style={{all: "unset", cursor: "pointer"}}>
+                                        <Avatar shape="circle" size={"small"} src={props.user.avatar}/>
+                                    </Button>
+                                </Dropdown>
+                            </div> : header
+                    }
+                </div>
 
             </div>
-            <div>
-                {
-                    props.isAuthenticated ?
-                        <div className={classes.User}>
-                            <Dropdown placement={"bottomCenter"} overlay={userMenu} trigger={['hover']}>
-                                <Button style={{all: "unset", cursor: "pointer"}}>
-                                    <Avatar shape="circle" size={"small"} src={props.user.avatar}/>
-                                </Button>
-                            </Dropdown>
-                        </div> : header
-                }
-            </div>
+
 
 
             {/*<div>{header}</div>*/}

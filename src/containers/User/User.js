@@ -24,7 +24,11 @@ class User extends Component {
             }
         };
         console.log(this.props.match.params.id);
-        axios.get(API_HTTP + 'user/'+this.props.match.params.id+'/', config)
+        let pk = this.props.match.params.id;
+        if(!pk){
+            pk = this.props.user.pk
+        }
+        axios.get(API_HTTP + 'user/'+pk+'/', config)
             .then(res => {
                 console.log('server', res.data);
                 this.setState({
@@ -70,7 +74,7 @@ class User extends Component {
             loadedUser=<UserInfo user={this.state.user} isOwner={this.state.isOwner}/>
         }
 
-        return loadedUser
+        return <div>{loadedUser}</div>
     }
 }
 

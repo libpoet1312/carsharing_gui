@@ -6,6 +6,11 @@
     justify-content: space-between;
 }
 
+.Right {
+    display: flex;
+    justify-content: right;
+}
+
 .Title {
     color: white;
     font-weight: bold;

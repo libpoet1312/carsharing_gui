@@ -19,7 +19,8 @@ const Routes = (props) => {
                     <Route exact path='/' component={Home}/>
 
                     {props.isAuthenticated ? <Route exact path='/user/:id' component={User}/> : null}
-                    {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
+                    {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <User {...props} isMobile={isMobile}/>}/>: null}
+                    {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
 
 
                     <Route exact path='/rides' component={Rides}/>
