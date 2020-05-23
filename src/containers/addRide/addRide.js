@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Card, Input, message, Steps, Button, Form, DatePicker, TimePicker, Select, Modal, Row} from "antd";
+import {Card, Input, message, Steps, Button, Form, DatePicker, TimePicker, Select, Modal, Row, InputNumber} from "antd";
 
 import {FaRegArrowAltCircleRight} from 'react-icons/fa';
 
@@ -108,12 +108,12 @@ class addRide extends Component {
             brand: newCar.brand,
             year: newCar.year,
         };
-        console.log(this.props.token);
+        console.log(this.props.user.token);
 
         let config = {
             headers: {
                 "Content-Type": "Application/Json",
-                "Authorization": "JWT "+ this.props.token
+                "Authorization": "JWT "+ this.props.user.token
             }
         };
         axios.post(API_HTTP + 'cars/car/', newCar, config)
@@ -126,8 +126,7 @@ class addRide extends Component {
         });
 
         this.setState({
-            dataSource: [...dataSource, newData],
-            count: count + 1,
+            cars: [...this.state.cars, newData],
         });
     };
 
@@ -153,7 +152,8 @@ class addRide extends Component {
     render() {
         const formItemLayout = {
             labelCol: { span: 6 },
-            wrapperCol: { span: 8 },
+            wrapperCol: { span: 12 },
+
         };
 
 
@@ -221,24 +221,42 @@ class addRide extends Component {
                             name="basic"
                             {...formItemLayout}
                         >
+
+                                <Form.Item
+                                    name="car"
+                                    label="Car"
+                                    hasFeedback
+                                    rules={[{ required: true, message: 'Please select your Car!' }]}
+                                >
+
+                                    <Select onSelect={this.onFinish} placeholder="Please select your Car">
+                                        {cars}
+                                    </Select>
+
+
+                                </Form.Item>
+                            <Form.Item>
+                                <Button onClick={this.showModal}>Add a Car</Button>
+                            </Form.Item>
+
+
+
+
+
                             <Form.Item
-                                name="car"
-                                label="Car"
-                                hasFeedback
-                                rules={[{ required: true, message: 'Please select your Car!' }]}
-
+                                name="vacant_seats"
+                                label="Vacant Seats"
+                                initialValue={1}
+                                rules={[{ required: true, message: 'Please type your available seats!' }]}
                             >
-                                <>
-                                        <Select onSelect={this.onFinish} placeholder="Please select your Car">
-                                            {cars}
-                                        </Select>
-                                    <Button onClick={this.showModal}>Add a Car</Button>
+                                <InputNumber
 
-
-                                </>
-
+                                             placeholder={'No of seats'}
+                                             min={1}
+                                />
 
                             </Form.Item>
+
 
                             <div className="steps-action" style={{marginTop: "30px"}}>
                                 {this.state.current > 0 && (

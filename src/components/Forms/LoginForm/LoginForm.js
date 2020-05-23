@@ -12,9 +12,13 @@ const LoginForm = (props) => {
         console.log('Received values of form: ', values);
         props.onAuth(values.username, values.password);
         if (!props.error){
-            console.log('okey registration')
+            console.log('okey registration');
+            props.showModal()
+        }else{
+            console.log(props.error);
+
         }
-        props.showModal()
+
     };
 
     let errorMessage = null;
