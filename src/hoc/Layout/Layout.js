@@ -159,7 +159,7 @@ class CustomLayout extends React.Component {
                             </div>
                         </Content>
 
-                        <Footer style={{width: "100%", textAlign: 'center', position: "fixed", bottom: "0" }}>Copyright © 2020 Created by Nick Pappas</Footer>
+                        <Footer style={{width: "100%", textAlign: 'center', position: "fixed", bottom: "0", height: "25px" }}>Copyright © 2020 Created by Nick Pappas</Footer>
                     </Layout>
 
                 </Layout>

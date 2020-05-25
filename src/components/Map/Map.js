@@ -26,7 +26,7 @@ const MyMapComponent = compose(
 
 
             await geocodeByAddress(this.props.origin).then(results => {
-                // console.log(results[0]);
+                console.log(results[0]);
                 return getLatLng(results[0])
             }).then(latLng => {
                 // console.log('Success', latLng);
@@ -35,7 +35,7 @@ const MyMapComponent = compose(
             });
 
             await geocodeByAddress(this.props.destination).then(results => {
-                // console.log(results[0]);
+                console.log(results[0]);
                 return getLatLng(results[0])
             }).then(latLng => {
                 // console.log('Success', latLng);
@@ -59,7 +59,7 @@ const MyMapComponent = compose(
                     this.props.handleDuration(result.routes[0].legs[0].duration.text);
                     this.props.handleDistance(result.routes[0].legs[0].distance.text);
                 } else {
-                    console.error(`error fetching directions ${result}`);
+                    console.error(`error fetching directions`);
                     console.log(result);
                 }
             });
