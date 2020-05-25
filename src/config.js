@@ -1,4 +1,4 @@
-const API = '192.168.2.6';
+const API = '127.0.0.1';
 const API_PORT = '8000';
 const PREFIX_HTTP = 'http://';
 const PREFIX_WS = 'ws://';

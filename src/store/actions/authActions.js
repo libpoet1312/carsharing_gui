@@ -117,7 +117,7 @@ export const authSignup = (
     has_whatsup, has_viber)  => {
         return dispatch => {
             dispatch(authStart());
-            axios.post(AUTH_URL+'rest-auth/registration/',{
+            axios.post(API_HTTP+'rest-auth/registration/',{
                 username: username,
                 email: email,
                 password1: password1,

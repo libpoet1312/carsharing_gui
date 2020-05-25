@@ -13,7 +13,6 @@ const MySider = (props) => {
         <Sider breakpoint="xl"
                collapsible
                trigger={null}
-
                onBreakpoint={broken => {
                    console.log(broken);
                }}
@@ -22,10 +21,10 @@ const MySider = (props) => {
                    console.log(collapsed, type);
                }}
 
-               style={{minWidth: "200px"}}
+               style={{minWidth: "150px"}}
         >
 
-            <MyMenu isAuthenticated={props.isAuthenticated} user={props.user} />
+            <MyMenu collapsed={props.collapsed} isAuthenticated={props.isAuthenticated} user={props.user} />
         </Sider>
     );
     if(props.isMobile) {

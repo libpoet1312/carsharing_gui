@@ -1,13 +1,26 @@
 .Title {
-    height: 32px;
+    font-size: 20px;
+    text-align: center;
 
-    margin: 25px;
+    margin: 16px;
 
     color: white;
 
     font-weight: bold;
     font-style: italic;
 
+}
+
+.TitleSmall {
+    /*font-size: 20px;*/
+    text-align: center;
+
+    margin: 16px;
+
+    color: white;
+
+    font-weight: bold;
+    font-style: italic;
 }
 
 
