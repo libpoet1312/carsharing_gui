@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, Breadcrumb, Modal} from 'antd';
+import {Layout, Breadcrumb, Modal, notification} from 'antd';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
@@ -13,6 +13,7 @@ import MySider from "./MySider/MySider";
 
 import * as authActions from '../../store/actions/authActions';
 import './CustomLayout.css'
+import {SmileOutlined} from "@ant-design/icons";
 
 
 const {Content, Footer } = Layout;
@@ -34,7 +35,10 @@ class CustomLayout extends React.Component {
         width: 0,
         height: 0,
         mobile: false,
-        drawerVisible: false
+        drawerVisible: false,
+        notifications: [],
+        unreadNotifications: [],
+        unreadNotificationsCount: 0
     };
 
     constructor(props) {
@@ -49,10 +53,30 @@ class CustomLayout extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('UPDATE');
         if(prevState.width!==this.state.width){
             this.updateWindowDimensions();
         }
 
+        // when user logs in update notifications!
+        if(prevProps.notifications!==this.props.notifications){
+            console.log('UPDATE notifications');
+
+            const newArray = this.props.notifications.filter( notif => {
+                console.log(notif);
+                return notif.unread===true
+            });
+            this.setState({unreadNotifications: newArray, unreadNotificationsCount: newArray.length})
+        }
+        console.log(prevState.unreadNotificationsCount);
+        if(prevState.unreadNotificationsCount && prevState.unreadNotificationsCount!==this.state.unreadNotificationsCount && prevProps.user === this.props.user){
+            notification.open({
+                message: 'Notifications Title',
+                description:
+                    'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+                // icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+            });
+        }
     }
 
     componentWillUnmount() {
@@ -126,12 +150,7 @@ class CustomLayout extends React.Component {
                                  isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed}
                                  onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}
                                  showDrawer={() => this.showDrawer()} drawerVisible={this.state.drawerVisible}
-
-
                         />
-
-
-
 
 
 
@@ -141,7 +160,8 @@ class CustomLayout extends React.Component {
                         <MyHeader showDrawer={() => this.showDrawer()} isMobile={this.state.mobile}
                                   collapsed={this.state.collapsed} isAuthenticated={this.props.isAuthenticated}
                                   showModal={this.showModalHandler} logout={() => this.logout()}
-                                  user={this.props.user}
+                                  user={this.props.user} notifications={this.props.notifications}
+                                  unreadNotificationsCount={this.state.unreadNotificationsCount}
                         />
 
                         {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
@@ -177,7 +197,8 @@ class CustomLayout extends React.Component {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.user !== null,
-        user: state.auth.user
+        user: state.auth.user,
+        notifications: state.auth.notifications
     };
 };
 

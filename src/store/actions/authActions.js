@@ -2,7 +2,6 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 import {API_HTTP} from "../../config";
 
-const AUTH_URL = 'http://192.168.1.45:8000/';
 
 export const authStart =() => {
     return {

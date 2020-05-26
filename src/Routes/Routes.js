@@ -9,6 +9,7 @@ import Ride from "../components/Ride/Ride";
 import User from '../containers/User/User';
 import addRide from "../containers/addRide/addRide";
 import Requests from "../components/Requests/Requests";
+import MySettings from "../containers/MySettings/MySettings";
 import MyAccount from "../containers/MyAccount/MyAccount";
 
 const Routes = (props) => {
@@ -19,8 +20,8 @@ const Routes = (props) => {
                     <Route exact path='/' component={Home}/>
 
                     {props.isAuthenticated ? <Route exact path='/user/:id' component={User}/> : null}
-                    {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <User {...props} isMobile={isMobile}/>}/>: null}
-                    {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
+                    {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
+                    {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MySettings {...props} isMobile={isMobile}/>}/>: null}
 
 
                     <Route exact path='/rides' component={Rides}/>

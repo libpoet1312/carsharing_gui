@@ -5,6 +5,7 @@ const initialState = {
     user: null,
     requests: [],
     requestsOfMyRides: [],
+    notifications: [],
     error: null,
     loading: false,
 };
@@ -33,7 +34,8 @@ const authSuccess = (state, action) => {
         user: user,
         loading:false,
         requests: action.user.user.request,
-        requestsOfMyRides: action.user.user.requestsOfMyRides
+        requestsOfMyRides: action.user.user.requestsOfMyRides,
+        notifications: action.user.user.notifications,
     })
 };
 

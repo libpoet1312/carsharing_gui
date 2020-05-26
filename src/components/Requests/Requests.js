@@ -33,7 +33,7 @@ class Requests extends Component{
                 <List
                     bordered={true}
                     itemLayout="horizontal"
-                    header={"My Requests"}
+                    header={"Requests that I made"}
                     dataSource={this.props.requests}
                     renderItem={item => (
                         <List.Item
@@ -110,6 +110,7 @@ class Requests extends Component{
                                     }
                                     description={
                                         <div>on <strong>{item.ride.date}</strong> for <strong>{item.seats}</strong> seat(s)
+                                            from <Link to={'/user/'+item.fromuser.pk}>{item.fromuser.username}</Link>
                                         </div>
                                     }
 

@@ -196,6 +196,15 @@ class addRide extends Component {
         });
     };
 
+    disabledDate = (current) => {
+        // Can not select days before today and today
+        // return current && current < moment().endOf('day');
+        return (
+            current &&
+            (current < moment().subtract(1, "day"))
+        );
+    };
+
     onSubmit = () => {
         const time1 = moment('12:00:00', "hh:mm:ss").toISOString();
         console.log('Submit!');
@@ -264,6 +273,7 @@ class addRide extends Component {
                                 placeholder={'Select Date'}
                                 style={{ width: 150, marginRight: "20px"}}
                                 onChange={this.setDate}
+                                disabledDate={this.disabledDate}
                             />
 
                             <TimePicker style={{ width: 150}} minuteStep={15} onChange={this.setTime}/>
@@ -408,7 +418,7 @@ class addRide extends Component {
                     type="navigation"
                     size="small"
                     current={this.state.current}
-                    onChange={this.onChange}
+                    // onChange={this.onChange}
                     className={["site-navigation-steps"]}
                 >
                     <Step

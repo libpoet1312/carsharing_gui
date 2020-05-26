@@ -13,6 +13,7 @@ import {GoRequestChanges} from 'react-icons/go';
 import classes from './myHeader.module.css';
 import './test.css';
 import {Link} from "react-router-dom";
+import Notifications from "../../../components/Notifications/Notifications";
 
 const {Header} = Layout;
 
@@ -29,23 +30,7 @@ const MyHeader = (props) => {
     // }
 
     const content = (
-        <Menu>
-            <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                    1st menu item
-                </a>
-            </Menu.Item>
-            <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-                    2nd menu item
-                </a>
-            </Menu.Item>
-            <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-                    3rd menu item
-                </a>
-            </Menu.Item>
-        </Menu>
+        <Notifications notifications={props.notifications}/>
     );
 
     if(props.isAuthenticated){
@@ -104,7 +89,7 @@ const MyHeader = (props) => {
                             <div className={classes.Notif}>
                                 <Dropdown placement={"bottomCenter"} overlay={content} trigger={['click']}>
                                     <Button style={{all: "unset", cursor: "pointer"}}>
-                                        <Badge count={1} overflowCount={10}>
+                                        <Badge count={props.unreadNotificationsCount} overflowCount={10}>
                                             <BellOutlined style={{ fontSize: '20px'}}/>
                                         </Badge>
                                     </Button>

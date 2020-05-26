@@ -23,7 +23,7 @@ class User extends Component {
                 "Authorization": 'JWT ' + this.props.user.token,
             }
         };
-        console.log(this.props.match.params.id);
+        // console.log(this.props.match.params.id);
         let pk = this.props.match.params.id;
         if(!pk){
             pk = this.props.user.pk
@@ -48,7 +48,7 @@ class User extends Component {
 
     // it gets called if page refreshed on url:/myprofile/
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('[componentDidUpdate]', prevProps, this.props.user);
+        // console.log('[componentDidUpdate]', prevProps, this.props.user);
         if(prevProps.match.url!==this.props.match.url){
             console.log('[componentDidUpdate] INSIDE');
             this.fetchUserHandler();
