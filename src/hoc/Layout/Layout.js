@@ -1,7 +1,6 @@
 import React from "react";
-import {Layout, Breadcrumb, Modal, notification} from 'antd';
+import {Layout, Modal} from 'antd';
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 
 import 'react-awesome-button/dist/styles.css';
@@ -12,13 +11,11 @@ import MyHeader from "./MyHeader/MyHeader";
 import MySider from "./MySider/MySider";
 
 import * as authActions from '../../store/actions/authActions';
+import * as notifActions from '../../store/actions/notificationsActions';
 import './CustomLayout.css'
-import {SmileOutlined} from "@ant-design/icons";
 
 
 const {Content, Footer } = Layout;
-
-
 
 const modals = {
     login: 'login',
@@ -37,7 +34,6 @@ class CustomLayout extends React.Component {
         mobile: false,
         drawerVisible: false,
         notifications: [],
-        unreadNotifications: [],
         unreadNotificationsCount: 0
     };
 
@@ -53,29 +49,20 @@ class CustomLayout extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('UPDATE');
+        // console.log('UPDATE');
         if(prevState.width!==this.state.width){
             this.updateWindowDimensions();
         }
 
         // when user logs in update notifications!
         if(prevProps.notifications!==this.props.notifications){
-            console.log('UPDATE notifications');
+            // console.log('UPDATE notifications');
 
             const newArray = this.props.notifications.filter( notif => {
-                console.log(notif);
+                // console.log(notif);
                 return notif.unread===true
             });
-            this.setState({unreadNotifications: newArray, unreadNotificationsCount: newArray.length})
-        }
-        console.log(prevState.unreadNotificationsCount);
-        if(prevState.unreadNotificationsCount && prevState.unreadNotificationsCount!==this.state.unreadNotificationsCount && prevProps.user === this.props.user){
-            notification.open({
-                message: 'Notifications Title',
-                description:
-                    'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
-                // icon: <SmileOutlined style={{ color: '#108ee9' }} />,
-            });
+            this.setState({ unreadNotificationsCount: newArray.length})
         }
     }
 
@@ -126,6 +113,13 @@ class CustomLayout extends React.Component {
         this.setState({ drawerVisible: !this.state.drawerVisible})
     };
 
+    setNotificationAsRead = (id) => {
+        console.log('asREAD: ',id);
+        const token = JSON.parse(localStorage.getItem('user')).token;
+        this.props.setRead(id, token);
+
+    };
+
     render() {
 
 
@@ -144,12 +138,13 @@ class CustomLayout extends React.Component {
                 </Modal>
 
 
-                <Layout style={{height:"100vh"}} hasSider>
+                <Layout  hasSider>
 
                         <MySider isMobile={this.state.mobile} changeView={() => this.changeView()}
                                  isAuthenticated={this.props.isAuthenticated} collapsed={this.state.collapsed}
                                  onCollapse={(skata)=>this.onCollapse(skata)} user={this.props.user}
                                  showDrawer={() => this.showDrawer()} drawerVisible={this.state.drawerVisible}
+                                 selectedKeys={[this.props.location.pathname]}
                         />
 
 
@@ -162,24 +157,20 @@ class CustomLayout extends React.Component {
                                   showModal={this.showModalHandler} logout={() => this.logout()}
                                   user={this.props.user} notifications={this.props.notifications}
                                   unreadNotificationsCount={this.state.unreadNotificationsCount}
+                                  setNotificationAsRead={(id) => this.setNotificationAsRead(id)}
                         />
 
                         {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
 
 
                         <Content style={{ margin: '20px 10px' }}>
-                            <Breadcrumb style={{ margin: '16px 10px' }}>
-                                <Breadcrumb.Item><Link to='/'>Home</Link></Breadcrumb.Item>
-                                <Breadcrumb.Item><Link to='rides/'>List</Link></Breadcrumb.Item>
-                            </Breadcrumb>
-
-
                             <div className="Content">
                                 {React.cloneElement(this.props.children, { isMobile: this.state.mobile })}
                             </div>
                         </Content>
 
-                        <Footer style={{width: "100%", textAlign: 'center', position: "fixed", bottom: "0", height: "25px" }}>Copyright © 2020 Created by Nick Pappas</Footer>
+                        <Footer style={{textAlign: 'center'}}>
+                            Copyright © 2020 Created by Nick Pappas</Footer>
                     </Layout>
 
                 </Layout>
@@ -206,6 +197,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         logout: () => dispatch(authActions.logout()),
+        setRead: (id, token) => dispatch(notifActions.setNotificationRead(id, token))
     }
 };
 

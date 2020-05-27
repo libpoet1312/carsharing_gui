@@ -11,7 +11,6 @@ const { SubMenu } = Menu;
 
 const MyMenu = (props) => {
     let user_menu = null;
-    console.log(props.collapsed);
 
     if(props.isAuthenticated && props.user){
         user_menu = (
@@ -51,7 +50,7 @@ const MyMenu = (props) => {
             }
 
 
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" selectedKeys={props.selectedKeys}>
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                     <Link to={'/'}>
                         Home

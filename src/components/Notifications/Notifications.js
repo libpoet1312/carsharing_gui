@@ -1,41 +1,158 @@
-import React from "react";
-
-import {Avatar, List, Popconfirm, Tooltip} from "antd";
+import React, {Component} from "react";
+import {Avatar, List, Tag, Button, Tooltip} from "antd";
+import {connect} from 'react-redux';
+import {CheckCircleTwoTone, CloseCircleFilled, InfoCircleTwoTone, EyeOutlined} from "@ant-design/icons";
+import moment from "moment";
 import {Link} from "react-router-dom";
+import * as notifActions from "../../store/actions/notificationsActions";
+
+function getNoticeData(notices) {
+    if (notices.length === 0) {
+        return {};
+    }
+    const newNotices = notices.map(notice => {
+        const newNotice = { ...notice };
+        // transform id to item key
+        newNotice.type = 'notification';
 
 
-const Notifications = (props) => {
-    return (
-        <List
-            bordered={true}
-            itemLayout="horizontal"
+        if(notice.verb==='accepted'){
+            newNotice.avatar = <CheckCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}} twoToneColor="#52c41a" />;
+            newNotice.description =
+                <div>
+                    <span>You have been accepted to </span>
+                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                </div>
+        }else if(notice.verb==='request'){
+            newNotice.avatar = <InfoCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}}/>;
+            newNotice.description =
+                <div>
+                    <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                    <span> requested to join in </span>
+                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                </div>
+        }else if(notice.verb==='declineRequest'){
+            newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
+            newNotice.description =
+                <div>
+                    <span>You have been denied to join </span>
+                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                </div>
+        }else if(notice.verb==='cancelRequest'){
+            newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
+            newNotice.description =
+                <div>
+                    <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                    <span> canceled his/her request in </span>
+                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                </div>
+        }else{
+            newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}}/>;
+            newNotice.description =
+                <div>
+                    <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                    <span> requested to join in </span>
+                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                </div>
+        }
 
-            dataSource={props.notifications}
-            style={{backgroundColor: "white"}}
-            renderItem={item => {
 
-                return(
-                    <List.Item
-                    >
-                        <List.Item.Meta
-                            avatar={
-                                <Tooltip title={item.actor.username}><Link to={'/user/'+item.actor.pk}><Avatar src={item.actor.avatar}/></Link></Tooltip>
-                            }
-                            title={
-                                <span>
-                                    <span> {item.verb} </span>
-                                    <Link to={'rides/'+item.target.pk}>{item.target.origin} to {item.target.destination}</Link>
-                                </span>
-                            }
-                        />
-                    </List.Item>
-                )
-            }}
-            >
+        newNotice.datetime = moment(notice.timestamp).fromNow();
+        newNotice.sort = moment(notice.timestamp);
 
-        </List>
-    )
+        if (newNotice.id) {
+            newNotice.key = newNotice.id;
+        }
+        if(newNotice.unread){
+            newNotice.extra = (
+                <Tag color={'red'} style={{ marginRight: 0 }}>
+                    Unread
+                </Tag>
+            );
+        }
+
+        return newNotice;
+    });
+
+    newNotices.sort( (a,b) => {
+        return a.sort.diff(b.sort)<=0
+    });
+
+
+
+    return newNotices.reduce((pre, data) => {
+
+        if (!pre[data.type]) {
+            pre[data.type] = [];
+        }
+        pre[data.type].push(data);
+        return pre;
+    }, {});
+
+}
+
+class Notifications extends Component{
+
+    setAllReadHandler = () => {
+        const token = JSON.parse(localStorage.getItem('user')).token;
+        this.props.setAllAsRead(token)
+    };
+
+    setReadHandler = (id) => {
+        const token = JSON.parse(localStorage.getItem('user')).token;
+        this.props.setRead(id, token);
+    };
+
+    render() {
+        const noticeData = getNoticeData(this.props.notifications);
+        return (
+            <div>
+                <List
+                    itemLayout="horizontal"
+                    bordered={true}
+                    header={
+                        <div style={{display: "flex", justifyContent: "space-between"}}>
+                            <span>Notifications </span>
+                            <div>
+                                <Tooltip placement="topRight" title={'Set all Notifications as Read'}>
+                                    <Button onClick={this.setAllReadHandler} icon={<EyeOutlined />} />
+                                </Tooltip>
+                            </div>
+                        </div>
+                    }
+                    dataSource={noticeData.notification}
+                    renderItem={item => {
+                        return (
+                            <List.Item
+                                actions={item.extra ? [<div>{item.extra}</div>, <Button onClick={() => this.setReadHandler(item.id)}>Set Read</Button>] : ""}
+                            >
+                                <List.Item.Meta
+                                    avatar={<Avatar icon={item.avatar}/>}
+                                    title={item.description}
+                                    description={item.datetime}
+                                />
+                            </List.Item>
+                        )}}
+                />
+            </div>
+        )
+    }
+
+
+}
+
+const mapStateToProps = state => {
+    return {
+        notifications: state.auth.notifications
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setAllAsRead: (token) => dispatch(notifActions.setAllNotificationsRead(token)),
+        setRead: (id, token) => dispatch(notifActions.setNotificationRead(id, token))
+    }
 };
 
 
-export default Notifications;
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

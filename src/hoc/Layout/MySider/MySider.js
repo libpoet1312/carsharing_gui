@@ -14,17 +14,17 @@ const MySider = (props) => {
                collapsible
                trigger={null}
                onBreakpoint={broken => {
-                   console.log(broken);
+                   // console.log(broken);
                }}
 
                onCollapse={(collapsed, type) => {
-                   console.log(collapsed, type);
+                   // console.log(collapsed, type);
                }}
 
                style={{minWidth: "150px"}}
         >
 
-            <MyMenu collapsed={props.collapsed} isAuthenticated={props.isAuthenticated} user={props.user} />
+            <MyMenu selectedKeys={props.selectedKeys} collapsed={props.collapsed} isAuthenticated={props.isAuthenticated} user={props.user} />
         </Sider>
     );
     if(props.isMobile) {

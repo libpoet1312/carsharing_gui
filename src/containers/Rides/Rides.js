@@ -41,7 +41,7 @@ class Rides extends Component {
 
 
     setOrigin = (origin) => {
-        console.log('origin', origin);
+        // console.log('origin', origin);
         this.setState({origin: origin});
         if(origin===''){
             query.delete('origin');
@@ -49,45 +49,45 @@ class Rides extends Component {
             query.append('origin', origin);
         }
 
-        console.log(query.toString());
+        // console.log(query.toString());
     };
 
     setDestination = (destination) => {
-        console.log('destination',destination);
+        // console.log('destination',destination);
         this.setState({destination: destination});
         if(destination===''){
             query.delete('destination');
         }else{
             query.append('destination', destination);
         }
-        console.log(query.toString());
+        // console.log(query.toString());
     };
 
     setDate = (date) => {
-        console.log('date',date);
+        // console.log('date',date);
         this.setState({destination: date});
         if(date===''){
             query.delete('date');
         }else{
             query.append('date', date);
         }
-        console.log(query.toString());
+        // console.log(query.toString());
     };
 
     setPassengers = (passengers) => {
-        console.log('passengers',passengers);
+        // console.log('passengers',passengers);
         this.setState({destination: passengers});
         if(passengers===''){
             query.delete('passengers');
         }else{
             query.append('passengers', passengers);
         }
-        console.log(query.toString());
+        // console.log(query.toString());
     };
 
 
     setPage = (page) => {
-        console.log(page);
+        // console.log(page);
 
         if(page===1){
             query.delete('page');

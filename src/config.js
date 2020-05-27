@@ -7,6 +7,6 @@ export const API_HTTP = PREFIX_HTTP + API + ':' + API_PORT + '/';
 export const API_WS = PREFIX_WS + API + ':' + API_PORT + '/ws/';
 
 
-export const FACEBOOK_APP_ID = '';
+export const FACEBOOK_APP_ID = '697265101083086';
 export const GOOGLE_MAPS_KEY = 'AIzaSyCGR8QHY78WBq43zC_2i9ohE-sT5ZfgZ60';
 

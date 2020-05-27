@@ -1,6 +1,6 @@
 import React from 'react'
-import {Avatar, Col, List, Popover, Row} from "antd";
-import {Link} from "react-router-dom";
+import {Avatar, Col, List, Tooltip, Row, Button} from "antd";
+import {Link, withRouter} from "react-router-dom";
 import {AwesomeButton} from "react-awesome-button";
 
 const RideList = (props) => {
@@ -31,22 +31,24 @@ const RideList = (props) => {
             >
                 <List.Item.Meta
                     avatar={ props.isAuthenticated ?
-                        <Popover  placement="bottom" content={linkToAccount}>
-                                <div className='border border-primary text-center'>
-                                    <Avatar src={props.item.uploader.avatar} alt='avatar'/>
-                                    <h6 className='font-italic text-muted mt-5'>{props.item.uploader.username}</h6>
-                                </div>
-                        </Popover>
+                        <Tooltip  placement="bottom" title={props.item.uploader.username} content={linkToAccount}>
+                                <Button
+                                    shape={"circle"}
+                                    icon={<Avatar  src={props.item.uploader.avatar} alt='avatar'/>}
+                                    className='text-center'
+                                    style={{cursor: "pointer", border: "none"}}
+                                    onClick={()=> {props.history.push('/user/'+props.item.uploader.pk)}}
+                                />
+                        </Tooltip>
                         :
-                        <div className='border border-primary text-center'>
+                        <div className='text-center'>
                             <Avatar src={props.item.uploader.avatar} alt='avatar'/>
-                            <h6 className='font-italic text-muted mt-5'>{props.item.uploader.username}</h6>
                         </div>
 
 
                     }
                     title={
-                        <Row className='border border-danger' type="flex" align="middle">
+                        <Row type="flex" align="middle">
                             {/* Title */}
                             <Col>
                                 <h5>
@@ -70,19 +72,19 @@ const RideList = (props) => {
                             </Col>
                         </Row>
                     }
-                    description={
-                        <Row className='border border-info' type='flex' align='middle'>
-                            <h5>Type: {props.item.type}</h5>
-                        </Row>
-                    }
+                    // description={
+                    //     <Row type='flex' align='middle'>
+                    //         <h5>Type: {props.item.type}</h5>
+                    //     </Row>
+                    // }
                 />
-                <div className='border border-secondary'>
-                    {props.item.content}
-                    skasdaeds
-                </div>
+                {/*<div>*/}
+                {/*    {props.item.content}*/}
+                {/*    skasdaeds*/}
+                {/*</div>*/}
             </List.Item>
         </div>
     )
 };
 
-export default RideList
+export default withRouter(RideList)

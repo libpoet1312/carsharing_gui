@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/MySettings/MySettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="finished notifications!!!">
+      <change afterPath="$PROJECT_DIR$/src/components/MyBreadcrumb/MyBreadcrumb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/actions/notificationsActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Layout/MyLayout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Notification/Notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notifications/Notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Requests/Requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Requests/Requests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Notifications/Notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notifications/Notifications.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MyAccount/BasicSettings/BasicSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MySettings/BasicSettings/BasicSettings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MyAccount/BasicSettings/MyAccount.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MySettings/BasicSettings/MyAccount.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MyAccount/MyAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MyAccount/MyAccount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User/UserInfo/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/UserInfo/UserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/User/UserInfo/userInfo.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/User/UserInfo/userInfo.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/addRide/addRide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addRide/addRide.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/RideList/RideList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/RideList/RideList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/Rides.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Rides.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware/webSocketMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/webSocketMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
     </list>
@@ -139,7 +138,9 @@
       <workItem from="1590192533627" duration="2352000" />
       <workItem from="1590356377392" duration="9189000" />
       <workItem from="1590410943701" duration="2996000" />
-      <workItem from="1590427813649" duration="14777000" />
+      <workItem from="1590427813649" duration="14930000" />
+      <workItem from="1590452299738" duration="37000" />
+      <workItem from="1590489711877" duration="39799000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -365,15 +366,20 @@
       <option name="project" value="LOCAL" />
       <updated>1590413911679</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="adding notifications!">
+      <created>1590452231914</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1590452231914</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="some of redux and almost finished forms!" />
-    <MESSAGE value="some of redux and almost finished forms!!" />
     <MESSAGE value="some of redux and almost finished forms!!!" />
     <MESSAGE value="some of redux and almost finished forms!!!!" />
     <MESSAGE value="reconstruction almost done!&#10;auth with redux working :)" />
@@ -397,17 +403,20 @@
     <MESSAGE value="carr add1" />
     <MESSAGE value="finished adding ride!&#10;needs some stuff though" />
     <MESSAGE value="fixing responsivness" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing responsivness" />
+    <MESSAGE value="adding notifications!" />
+    <MESSAGE value="finished notifications!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished notifications!!!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="200" width="800" height="675" key="#Deployment" timestamp="1589896510293">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="591" y="200" width="800" height="675" key="#Deployment/0.27.1920.1053@0.27.1920.1053" timestamp="1589896510293" />
-    <state x="3499" y="201" width="800" height="675" key="#ESLint" timestamp="1588007137314">
+    <state x="3499" y="201" width="800" height="675" key="#ESLint" timestamp="1590536082356">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3499" y="201" width="800" height="675" key="#ESLint/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588007137314" />
+    <state x="3499" y="201" key="#ESLint/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590536082356" />
     <state x="3565" y="345" width="667" height="388" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588719432388">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -426,14 +435,14 @@
     <state x="693" y="309" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1590022536452" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588971199322" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589395192228" />
-    <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590413911121">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590537776880">
+      <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3510" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339474215" />
     <state x="2486" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162681937" />
     <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590413911121" />
     <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035702407" />
-    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589597304037" />
+    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590537776880" />
     <state x="3740" y="303" width="501" height="511" key="FileChooserDialogImpl" timestamp="1587668237375">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -446,14 +455,14 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588385701417" />
-    <state x="555" y="296" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1590413924348">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1590540609838">
+      <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3499" y="276" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339480190" />
     <state x="2475" y="276" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162689785" />
     <state x="555" y="296" width="800" height="526" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1590413924348" />
     <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035713850" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589597311356" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590540609838" />
     <state x="3787" y="483" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1588385678642">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -462,13 +471,13 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3672" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589409906074" />
-    <state x="624" y="268" width="672" height="661" key="run.anything.popup" timestamp="1590073914860">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="3568" y="247" width="672" height="677" key="run.anything.popup" timestamp="1590527456391">
+      <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="2544" y="247" key="run.anything.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589159644823" />
     <state x="624" y="268" width="672" height="661" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1590073914860" />
     <state x="3568" y="247" key="run.anything.popup/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588727079135" />
-    <state x="3568" y="247" width="672" height="677" key="run.anything.popup/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589396725650" />
+    <state x="3568" y="247" width="672" height="677" key="run.anything.popup/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590527456391" />
     <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1590362082810">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>

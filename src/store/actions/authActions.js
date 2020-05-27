@@ -175,9 +175,22 @@ export const authCheckState = () => {
                                     "Content-type": "application/json"
                                 }
                         }).then( response => {
-                        console.log(response);
-                            user.user.requestsOfMyRides = response.data;
-                            dispatch(authSuccess(user));
+                        user.user.requestsOfMyRides = response.data;
+                            axios.get(API_HTTP + 'notifier/getall/', {
+                                headers:
+                                    {
+                                        "Authorization": "JWT "+ user.token,
+                                        "Content-type": "application/json"
+                                    }
+                            }).then( response => {
+                                user.user.notifications = response.data;
+                                // console.log(response);
+
+                                dispatch(authSuccess(user));
+                            })
+
+
+
                     }).catch( error => {
                         console.log(error);
                         dispatch(authFail(error));

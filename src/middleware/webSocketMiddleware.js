@@ -1,6 +1,7 @@
 import * as actionTypes from '../store/actions/actionTypes';
 import * as webSocketActions from '../store/actions/webSocketActions';
 import * as requestsActions from '../store/actions/requestsActions';
+import * as notifActions from '../store/actions/notificationsActions';
 
 import {API_WS} from '../config';
 
@@ -53,6 +54,11 @@ const webSocketsMiddleware = (function () {
             case "updateRequests":
                 console.log('updateRequests');
                 store.dispatch(requestsActions.updateRequests(payload.text));
+                break;
+            case "sendNotification":
+                console.log('sendNotification');
+                console.log(JSON.parse(payload.text));
+                store.dispatch(notifActions.receiveNotification(JSON.parse(payload.text)));
                 break;
 
             default: console.log('default'); break;

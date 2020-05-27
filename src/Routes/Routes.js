@@ -11,6 +11,7 @@ import addRide from "../containers/addRide/addRide";
 import Requests from "../components/Requests/Requests";
 import MySettings from "../containers/MySettings/MySettings";
 import MyAccount from "../containers/MyAccount/MyAccount";
+import Notifications from "../components/Notifications/Notifications";
 
 const Routes = (props) => {
         let isMobile = props.isMobile;
@@ -22,6 +23,7 @@ const Routes = (props) => {
                     {props.isAuthenticated ? <Route exact path='/user/:id' component={User}/> : null}
                     {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
                     {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MySettings {...props} isMobile={isMobile}/>}/>: null}
+                    {props.isAuthenticated ? <Route exact path='/mynotifications' render={(props) => <Notifications {...props}/>}/>: null}
 
 
                     <Route exact path='/rides' component={Rides}/>
@@ -44,3 +46,14 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Routes);
+
+export const routes = [
+    {
+        path: '/',
+        breadcrumbName: 'Home',
+    },
+    {
+        path: 'rides/',
+        breadcrumbName: 'Rides',
+    },
+];
