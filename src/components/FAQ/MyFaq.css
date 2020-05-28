@@ -1,0 +1,24 @@
+.MyFaq{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.visual ,
+.merchandising {
+    display: inline-block;
+    width: 0;
+    opacity: 0;
+
+    -webkit-transition: all 0.4s linear; /* Safari */
+    transition: all 0.4s linear;
+}
+
+#l:hover span.visual,
+#l:hover span.merchandising {
+    opacity: 1;
+    width:auto;
+}

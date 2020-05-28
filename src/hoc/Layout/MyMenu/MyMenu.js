@@ -43,11 +43,9 @@ const MyMenu = (props) => {
 
     return (
         <div>
-            {props.collapsed ?
-                <div className="TitleSmall">Car <FaCarSide/> Sharing</div>
-                :
-                <div className="Title" >Car <FaCarSide/> Sharing</div>
-            }
+
+            <div className="Title" ><span>Car </span><FaCarSide/><span> Sharing</span></div>
+
 
 
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" selectedKeys={props.selectedKeys}>
@@ -74,7 +72,10 @@ const MyMenu = (props) => {
                 {user_menu}
 
                 <Menu.Item key="7" icon={<QuestionCircleOutlined />}>
-                       F.A.Q.
+                    <Link to={`/faq/`}>
+                        <span>F.A.Q.</span>
+                    </Link>
+
                 </Menu.Item>
             </Menu>
         </div>

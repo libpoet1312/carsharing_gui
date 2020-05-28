@@ -1,0 +1,11 @@
+.TitleHome {
+    font-size: 50px;
+    text-align: center;
+    text-emphasis: blue;
+}
+
+.Home {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

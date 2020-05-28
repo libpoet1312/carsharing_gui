@@ -1,26 +1,21 @@
 .Title {
     font-size: 20px;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
-    margin: 16px;
-
-    color: white;
-
-    font-weight: bold;
-    font-style: italic;
-
-}
-
-.TitleSmall {
-    /*font-size: 20px;*/
-    text-align: center;
-
-    margin: 16px;
+    /*margin: 16px;*/
+    margin-top: 15px;
 
     color: white;
 
     font-weight: bold;
     font-style: italic;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+
 }
 
 
