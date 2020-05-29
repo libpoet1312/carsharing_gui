@@ -113,7 +113,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (
     username, email, password1, password2,
     phone_number, avatar, gender, country,
-    has_whatsup, has_viber)  => {
+    has_whatsup, has_viber, dob)  => {
         return dispatch => {
             dispatch(authStart());
             axios.post(API_HTTP+'rest-auth/registration/',{
@@ -127,6 +127,7 @@ export const authSignup = (
                 country: country,
                 has_whatsup: has_whatsup,
                 has_viber: has_viber,
+                dob: dob,
             }).then (
                 response =>{
                     console.log(response);

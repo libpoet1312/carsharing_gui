@@ -205,6 +205,7 @@ class MyHeader extends Component {
                                 </div> : header
                         }
                     </div>
+
                 </div>
             </Header>
         )

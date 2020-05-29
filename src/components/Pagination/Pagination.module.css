@@ -1,6 +1,5 @@
 .Pagination {
     display: flex;
-    border: 1px solid crimson;
     flex-wrap: wrap;
     flex-direction: row;
 

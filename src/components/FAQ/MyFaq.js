@@ -60,7 +60,6 @@ const MyFaq = () => {
                 <div style={{width: "70%"}}><Faq data={data} styles={styles} config={config}  /></div>
             </div>
         </Card>
-
     )
 };
 

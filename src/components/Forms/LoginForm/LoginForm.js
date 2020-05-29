@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Input, Button, Checkbox, Spin, Space, Divider} from 'antd';
+import {Form, Input, Button, Checkbox, Spin, Divider} from 'antd';
 import { UserOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/authActions';
@@ -37,7 +37,7 @@ const LoginForm = (props) => {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 size={"large"}
-                style={{display: "flex", flexDirection: "column"}}
+                style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", alignContent: "center"}}
             >
                 <Form.Item
                     name="username"
@@ -56,6 +56,8 @@ const LoginForm = (props) => {
                         placeholder="Password"
                     />
                 </Form.Item>
+
+
                 <Form.Item>
                     <Form.Item name="remember" valuePropName="checked" noStyle>
                         <Checkbox>Remember me</Checkbox>
@@ -70,18 +72,21 @@ const LoginForm = (props) => {
                     </Button>
                 </Form.Item>
 
-                <Form.Item >
-                    <Space direction="vertical">
+                <Form.Item>
+                    <div>
                         <Button type="secondary"
                                 onClick={() => props.changeModal('register')}
                                 className="login-form-button"
                         >
-                            Εγγραφή
+                            Register
                         </Button>
-                        Or
-                        <Button type="primary" htmlType="submit" className="login-form-button">Σύνδεση</Button>
-                    </Space>
+                        <span style={{opacity: 0.8}}><strong>  OR  </strong></span>
+                        <Button type="primary" htmlType="submit" className="login-form-button">Login</Button>
+                    </div>
                 </Form.Item>
+
+
+
             </Form>
         )
     }

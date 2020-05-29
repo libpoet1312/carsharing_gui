@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/images/carsharing.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/carwithleaf.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/costreduce.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/homelogo.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/leaf.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/sustain.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/404/404.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/404/404.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FAQ/MyFaq.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FAQ/MyFaq.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/Home.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/s.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Home/skata.less" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/404.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/CustomLayout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/CustomLayout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyMenu/MyMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MySider/MySider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FAQ/MyFaq.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FAQ/MyFaq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/LoginForm/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/LoginForm/LoginForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Forms/RegisterForm/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Forms/RegisterForm/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pagination/Pagination.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination/Pagination.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Rides/Search/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +138,7 @@
       <workItem from="1590489711877" duration="39898000" />
       <workItem from="1590605723948" duration="2067000" />
       <workItem from="1590618787197" duration="4236000" />
-      <workItem from="1590673053422" duration="18426000" />
+      <workItem from="1590673053422" duration="27084000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1587388791875</created>
@@ -398,14 +385,20 @@
       <option name="project" value="LOCAL" />
       <updated>1590683850011</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="adding home, 404 and faq!">
+      <created>1590698567239</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1590698567239</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="some of redux and almost finished forms!!!!" />
     <MESSAGE value="reconstruction almost done!&#10;auth with redux working :)" />
     <MESSAGE value="reconstruction done!&#10;auth/fb with redux done :)&#10;styling on process" />
     <MESSAGE value="finished car manipulation!&#10;still working on styling!" />
@@ -430,7 +423,8 @@
     <MESSAGE value="adding notifications!" />
     <MESSAGE value="finished notifications!!!" />
     <MESSAGE value="deployment?" />
-    <option name="LAST_COMMIT_MESSAGE" value="deployment?" />
+    <MESSAGE value="adding home, 404 and faq!" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding home, 404 and faq!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="200" width="800" height="675" key="#Deployment" timestamp="1589896510293">
@@ -460,14 +454,14 @@
     <state x="693" y="309" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1590022536452" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588971199322" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589395192228" />
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590683849703">
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1590698567120">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3510" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339474215" />
     <state x="2486" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162681937" />
     <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1590413911121" />
     <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035702407" />
-    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590683849703" />
+    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590698567120" />
     <state x="3445" y="317" width="908" height="443" key="EditFileWatcherDialog" timestamp="1590689864985">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -484,18 +478,22 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3393" y="175" key="SettingsEditor/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588385701417" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1590683865713">
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1590698576018">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3499" y="276" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339480190" />
     <state x="2475" y="276" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1589162689785" />
     <state x="555" y="296" width="800" height="526" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1590413924348" />
     <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1589035713850" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590683865713" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590698576018" />
     <state x="3787" y="483" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog" timestamp="1588385678642">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3787" y="483" key="com.intellij.ide.ui.customization.CustomizableActionsPanel$EditIconDialog/1024.0.1920.1080/2944.0.1920.1080/0.312.1024.768@2944.0.1920.1080" timestamp="1588385678642" />
+    <state x="3557" y="158" width="683" height="762" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590703907697">
+      <screen x="2944" y="0" width="1920" height="1080" />
+    </state>
+    <state x="3557" y="158" width="683" height="762" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1590703907697" />
     <state x="3672" y="460" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589409906074">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>

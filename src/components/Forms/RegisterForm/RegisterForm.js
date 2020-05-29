@@ -16,6 +16,7 @@ import {RiArrowGoBackLine} from 'react-icons/ri';
 import {GrPowerReset} from 'react-icons/gr';
 import * as actions from "../../../store/actions/authActions";
 import {connect} from "react-redux";
+import moment from "moment";
 
 
 const formItemLayout = {
@@ -49,14 +50,28 @@ const tailFormItemLayout = {
     },
 };
 
+const disabledDate = (current) => {
+    // Can not select days after today
+    // return current && current < moment().endOf('day');
+    return (
+        current &&
+        (current > moment().subtract(1, "day"))
+    );
+};
+
+
+
 const RegistrationForm = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = (values,error) => {
         console.log('Received values of form: ', values);
+        const date = values.dob;
+        console.log(date.toISOString().split('T')[0]);
+
         props.onAuth(values.username, values.email, values.password1, values.password2,
             values.phone_number, values.avatar, values.gender, values.country,
-            values.has_whatsup, values.has_viber);
+            values.has_whatsup, values.has_viber, date.toISOString().split('T')[0]);
         if (!props.error && !error){
             console.log('okey registration');
             props.showModal()
@@ -169,7 +184,9 @@ const RegistrationForm = (props) => {
                         },
                     ]}
                 >
-                    <DatePicker />
+                    <DatePicker
+                        disabledDate={disabledDate}
+                    />
                 </Form.Item>
 
                 <Divider/>
@@ -303,9 +320,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, email, password1, password2, phone_number, avatar, gender, country,
-                 has_whatsup, has_viber) => dispatch(actions.authSignup(
+                 has_whatsup, has_viber, dob) => dispatch(actions.authSignup(
                      username, email, password1, password2, phone_number, avatar, gender, country,
-            has_whatsup, has_viber))
+            has_whatsup, has_viber, dob))
     }
 };
 

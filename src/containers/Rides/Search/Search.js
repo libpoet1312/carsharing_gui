@@ -4,6 +4,7 @@ import classes from './SearchBar.module.css';
 import LocationInput from "../../../components/LocationInput/LocationInput";
 import {FaFilter} from  'react-icons/fa';
 import logo from '../../../assets/images/img_571322.png'
+import moment from "moment";
 
 class Search extends React.Component{
 
@@ -26,7 +27,14 @@ class Search extends React.Component{
         this.props.setPassengers(pass);
     };
 
-
+    disabledDate = (current) => {
+        // Can not select days before today and today
+        // return current && current < moment().endOf('day');
+        return (
+            current &&
+            (current < moment().subtract(1, "day"))
+        );
+    };
 
 
 
@@ -38,6 +46,7 @@ class Search extends React.Component{
                     <DatePicker  placeholder={'Select Date'}
                                  style={{ width: 150}}
                                  onChange={this.onChange}
+                                 disabledDate={this.disabledDate}
                     />
                 </div>
                 <div className={classes.Item}>
