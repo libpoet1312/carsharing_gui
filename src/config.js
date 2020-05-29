@@ -1,7 +1,7 @@
 // const API = '192.168.1.45';
-const API = '127.0.0.1';
-// const API = 'snf-876572.vm.okeanos.grnet.gr';
-const API_PORT = '8000';
+// const API = '127.0.0.1';
+const API = 'snf-876572.vm.okeanos.grnet.gr';
+const API_PORT = '';
 const PREFIX_HTTP = 'http://';
 const PREFIX_WS = 'ws://';
 
