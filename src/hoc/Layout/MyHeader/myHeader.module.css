@@ -23,15 +23,13 @@
     font-size: 15px;
 }
 
-
-
-
 .trigger {
     font-size: 20px;
     line-height: 50px;
     padding: 0 24px;
     cursor: pointer;
     transition: color 0.3s;
+    color: black;
 }
 
 #components-layout-demo-custom-trigger .trigger:hover {

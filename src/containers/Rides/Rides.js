@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {List, Spin} from 'antd';
 import {connect} from 'react-redux';
-// import Pagination from 'rc-pagination';
 import Pagination from '../../components/Pagination/Pagination'
 
 import Aux from '../../hoc/Aux/Aux';
@@ -14,25 +13,23 @@ import { LoadingOutlined } from '@ant-design/icons';
 let query = new URLSearchParams();
 
 class Rides extends Component {
+
     state = {
         origin: null,
         destination: null,
         date: null,
         time: null,
         passengers: null,
-        pager: {}
+        pager: {},
     };
 
     componentDidMount() {
         // console.log('[componentDidMount]', query.toString());
         this.props.fetchRides(query.toString());
-
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.state!==prevState){
-
             // console.log('[componentDidUpdate]',prevState);
             this.props.fetchRides(query.toString());
         }
@@ -108,6 +105,14 @@ class Rides extends Component {
 
         let list = <Spin indicator={antIcon} />;
 
+        let pagination = null;
+        if(this.props.rides && this.props.rides.length){
+            pagination =  <Pagination
+                pager={this.props.pager}
+                setPage={(page)=> this.setPage(page)}
+            />
+        }
+
         if(!this.props.loading && this.props.rides){
             list = <List
                 itemLayout="vertical"
@@ -115,12 +120,7 @@ class Rides extends Component {
 
                 loading={this.props.loading}
                 dataSource={this.props.rides}
-                footer={
-                    <Pagination
-                        pager={this.props.pager}
-                        setPage={(page)=> this.setPage(page)}
-                    />
-                }
+                footer={pagination}
                 renderItem={this.renderItemFunction}
 
             />

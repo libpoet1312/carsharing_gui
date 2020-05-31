@@ -157,7 +157,8 @@ class MyHeader extends Component {
             <Header className={[classes.myHeader, "site-layout-background"]} style={{ padding: 0 }}>
 
                 <div>
-                    {this.props.isMobile ? React.createElement(this.props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                    {this.props.isMobile ? React.createElement(this.props.collapsed ?
+                        MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: classes.trigger,
                         onClick: this.props.showDrawer,
                     }) : null}

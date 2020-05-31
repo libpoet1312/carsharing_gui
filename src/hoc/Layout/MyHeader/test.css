@@ -3,3 +3,7 @@
     width: 80px !important;
     margin-right: 18px;
 }
+
+header > div > .anticon {
+    color: black;
+}
