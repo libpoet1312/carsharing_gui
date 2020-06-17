@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Divider, Row} from "antd";
+import {Col, Divider, Row, Spin} from "antd";
 import {connect} from 'react-redux';
 
 import Aux from '../../../hoc/Aux/Aux'
@@ -10,9 +10,11 @@ import ForgotPasswordForm from "../../Forms/ForgotPasswordForm/ForgotPasswordFor
 
 import FacebookLogin from 'react-facebook-login'
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-// import AuthService from "../../services/auth.service";
 import * as actions from '../../../store/actions/authActions'
 import {FACEBOOK_APP_ID} from "../../../config";
+import {LoadingOutlined} from "@ant-design/icons";
+
+const antIcon = <LoadingOutlined style={{ fontSize: 50 }} spin />;
 
 const AuthenticationModal = (props) => {
 
@@ -27,7 +29,7 @@ const AuthenticationModal = (props) => {
     };
 
 
-    let modal;
+    let modal= <Spin indicator={antIcon}/>;
 
     if(props.modal==='register'){
         modal = <RegistrationForm showModal={props.showModal} changeModal={(modal)=> props.changeModal(modal)}/>
@@ -52,6 +54,9 @@ const AuthenticationModal = (props) => {
                                style={{height: "250px"}}/>
                 </Col>
             </Row>
+    }
+    if(props.loading){
+        modal = <div style={{textAlign: "center"}}><Spin indicator={antIcon}/></div>;
     }
 
 

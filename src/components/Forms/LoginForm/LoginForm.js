@@ -11,21 +11,29 @@ const LoginForm = (props) => {
     const onFinish = (values, error) => {
         console.log('Received values of form: ', values);
         props.onAuth(values.username, values.password);
-        if (!props.error){
+
+        if (!props.error && !props.loading){
+            console.log(props.error);
             console.log('okey registration');
-            props.showModal()
+            // props.showModal();
         }else{
             console.log(props.error);
-
         }
 
     };
 
     let errorMessage = null;
     if (props.error){
-        errorMessage = (
-            <p>{props.error.message}</p>
-        )
+        if(props.error.message.includes("400")){
+            errorMessage = (
+                <p style={{color: "red", fontWeight: "bold"}}>Wrong username or password</p>
+            )
+        }else {
+            errorMessage = (
+                <p style={{color: "red", fontWeight: "bold"}}>Server connection error</p>
+            )
+        }
+
     }
 
     let form = <Spin indicator={antIcon}/>;

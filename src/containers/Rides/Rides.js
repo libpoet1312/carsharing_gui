@@ -101,7 +101,8 @@ class Rides extends Component {
 
 
     render() {
-        const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
+        const antIcon = <LoadingOutlined style={{ fontSize: 50, textAlign: "center" }} spin />;
+
 
         let list = <Spin indicator={antIcon} />;
 
@@ -136,8 +137,6 @@ class Rides extends Component {
                     setPassengers = {(passengers) => {this.setPassengers(passengers)}}
                 />
                 {list}
-
-
             </Aux>
         )
     }

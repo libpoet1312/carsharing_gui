@@ -53,7 +53,7 @@ export const logout = () =>{
             token: localStorage.getItem('user')
 
         }).then( () =>{
-            console.log(localStorage.getItem('user'));
+            // console.log(localStorage.getItem('user'));
             localStorage.removeItem('user');
             dispatch(logoutSuccess());
         }).catch( error => {

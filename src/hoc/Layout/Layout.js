@@ -49,20 +49,24 @@ class CustomLayout extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // console.log('UPDATE');
+
         if(prevState.width!==this.state.width){
             this.updateWindowDimensions();
         }
 
         // when user logs in update notifications!
         if(prevProps.notifications!==this.props.notifications){
-            // console.log('UPDATE notifications');
-
             const newArray = this.props.notifications.filter( notif => {
                 // console.log(notif);
                 return notif.unread===true
             });
             this.setState({ unreadNotificationsCount: newArray.length})
+        }
+
+
+        // close login modal after user authenticates
+        if(this.props.isAuthenticated && (prevProps.isAuthenticated === false)){
+            this.showModalHandler();
         }
     }
 
