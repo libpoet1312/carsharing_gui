@@ -145,7 +145,7 @@ class CarTable extends React.Component {
                 "Authorization": "JWT "+ this.props.token
             }
         };
-        axios.get(API_HTTP + 'cars/car', config)
+        axios.get(API_HTTP + 'cars/car/', config)
             .then( response => {
                 console.log(response.data);
                 const cars = [];

@@ -12,7 +12,7 @@ class MyAccount extends Component {
     };
 
     fetchUserHandler = () => {
-        // console.log(this.props.user.token);
+        console.log(this.props.user.token);
 
         let config = {
             headers: {
@@ -31,6 +31,7 @@ class MyAccount extends Component {
 
             }).catch( err => {
             console.log(err);
+
         });
     };
 
