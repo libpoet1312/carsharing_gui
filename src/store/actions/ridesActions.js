@@ -36,7 +36,14 @@ export const fetchRides = (query) => {
             console.log('edw');
             query = '?'+query;
         }
-        axios.get(API_HTTP + 'api/'+ query)
+
+        axios.get(API_HTTP + 'api/'+ query, {
+            headers:
+                {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-type": "application/json"
+                }
+        })
             .then( (response) => {
                 // console.log(response.data);
                 dispatch(fetchRidesSuccess(response.data));
