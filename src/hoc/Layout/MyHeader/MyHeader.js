@@ -40,20 +40,65 @@ class MyHeader extends Component {
             newNotice.type = 'notification';
 
             if(notice.verb==='accepted'){
-                newNotice.avatar = <CheckCircleTwoTone twoToneColor="#52c41a" />;
-                newNotice.description =`You have been accepted in ${notice.target.origin} to ${notice.target.destination}'`;
+                newNotice.avatar = <CheckCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}} twoToneColor="#52c41a" />;
+                newNotice.description =
+                    notice.target ?
+                        <div>
+                            <span>You have been accepted to </span>
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        </div>:
+                        <div>
+                            <span>You have been accepted to </span>
+                            <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        </div>
+
+
             }else if(notice.verb==='request'){
-                newNotice.avatar = <InfoCircleTwoTone />;
-                newNotice.description =notice.actor.username + ` requested to join in '${notice.target.origin} to ${notice.target.destination}'`;
+                newNotice.avatar = <InfoCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}}/>;
+                newNotice.description =
+                    <div>
+                        <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                        <span> requested to join in </span>
+                        {notice.target ?
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                            : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        }
+
+                    </div>
             }else if(notice.verb==='declineRequest'){
-                newNotice.avatar = <CloseCircleFilled style={{color: "red"}} twoToneColor="#eb2f96"/>;
-                newNotice.description =`You have been denied to join '${notice.target.origin} to ${notice.target.destination}'`;
+                newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
+                newNotice.description =
+                    <div>
+                        <span>You have been denied to join </span>
+                        {notice.target ?
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                            : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        }
+                    </div>
             }else if(notice.verb==='cancelRequest'){
-                newNotice.avatar = <CloseCircleFilled style={{color: "red"}} twoToneColor="#eb2f96"/>;
-                newNotice.description =notice.actor.username + ` canceled his/her request in '${notice.target.origin} to ${notice.target.destination}'`;
+                newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
+                newNotice.description =
+                    <div>
+                        <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                        <span> canceled his/her request in </span>
+                        {notice.target ?
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                            : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        }
+
+                    </div>
             }else{
-                newNotice.avatar = <CloseCircleFilled style={{color: "red"}} twoToneColor="#eb2f96"/>;
-                newNotice.description =notice.actor.username + notice.verb +` requested to join in '${notice.target.origin} to ${notice.target.destination}'`;
+                newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}}/>;
+                newNotice.description =
+                    <div>
+                        <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
+                        <span> requested to join in </span>
+                        {notice.target ?
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                            : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        }
+
+                    </div>
             }
 
 
@@ -99,7 +144,8 @@ class MyHeader extends Component {
     };
 
     onClear = (tabTitle) => {
-        console.log(tabTitle);
+        // console.log(tabTitle);
+        this.props.setAllNotificationAsRead();
     };
 
     onViewMore =(tabProps, event) => {

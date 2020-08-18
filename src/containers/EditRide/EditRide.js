@@ -217,7 +217,7 @@ class addRide extends Component {
             origin: this.state.origin,
             destination: this.state.destination,
             date: this.state.date,
-            time: this.state.time ? this.state.time.toISOString() : null,
+            time: this.state.time ? this.state.time.toISOString() : time,
             vacant_seats: this.state.vacant_seats
         };
 
@@ -234,8 +234,8 @@ class addRide extends Component {
                 message.success('Processing complete!');
                 this.props.history.push('/rides/'+response.data.pk);
             }).catch(error=>{
-                console.log(error);
-                message.error('Error adding event! Try again!')
+            console.log(error);
+            message.error('Error adding event! Try again!')
         });
 
 
@@ -333,9 +333,9 @@ class addRide extends Component {
                                 rules={[{ required: true, message: 'Please type your available seats!' }]}
                             >
                                 <InputNumber
-                                             placeholder={'No of seats'}
-                                             min={1}
-                                             onChange={(vacant_seats) => this.setPass(vacant_seats)}
+                                    placeholder={'No of seats'}
+                                    min={1}
+                                    onChange={(vacant_seats) => this.setPass(vacant_seats)}
                                 />
 
                             </Form.Item>
@@ -411,40 +411,40 @@ class addRide extends Component {
         }
 
         return (
-        <div>
-
             <div>
-                <Steps
-                    type="navigation"
-                    size="small"
-                    current={this.state.current}
-                    // onChange={this.onChange}
-                    className={["site-navigation-steps"]}
-                >
-                    <Step
-                        title="Basic Ride Informantion"
-                    />
-                    <Step
-                        title="Extra"
-                    />
-                    <Step
-                        title="Submit"
-                    />
-                </Steps>
-                <div className={classes.addRide}>
-                    <div className={["steps-content"]}>
-                        {content}
+
+                <div>
+                    <Steps
+                        type="navigation"
+                        size="small"
+                        current={this.state.current}
+                        // onChange={this.onChange}
+                        className={["site-navigation-steps"]}
+                    >
+                        <Step
+                            title="Basic Ride Informantion"
+                        />
+                        <Step
+                            title="Extra"
+                        />
+                        <Step
+                            title="Submit"
+                        />
+                    </Steps>
+                    <div className={classes.addRide}>
+                        <div className={["steps-content"]}>
+                            {content}
+                        </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
             </div>
-
-
-
-
-
-
-
-        </div>
         )
     }
 }

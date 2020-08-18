@@ -12,6 +12,7 @@ import ridesReducer from "./store/reducers/ridesReducer";
 import rideReducer from "./store/reducers/rideReducer";
 import webSocketsMiddleware from "./middleware/webSocketMiddleware";
 import webSocketReducer from "./store/reducers/webSocketReducer";
+import myRidesReducer from "./store/reducers/myRidesReducer";
 
 // REDUX CONFIGURATION
 
@@ -20,6 +21,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     auth: authReducer,
     rides: ridesReducer,
+    myrides: myRidesReducer,
     ride: rideReducer,
     webSocket: webSocketReducer
 });

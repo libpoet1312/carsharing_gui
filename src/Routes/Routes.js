@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Home from "../components/Home/Home";
@@ -13,9 +13,19 @@ import MySettings from "../containers/MySettings/MySettings";
 import MyAccount from "../containers/MyAccount/MyAccount";
 import Notifications from "../components/Notifications/Notifications";
 import MyFaq from '../components/FAQ/MyFaq';
+import MyRides from "../containers/MyRides/MyRides";
+import EditRide from "../containers/EditRide/EditRide";
+
+const checkIfOwner = (pk, ...props)=> {
+    console.log(pk, props.myrides);
+};
 
 const Routes = (props) => {
         let isMobile = props.isMobile;
+        let location = useLocation();
+        const pk = location.pathname.split('/')[2];
+        console.log(location.pathname.split('/'));
+
         return (
             <Switch>
 
@@ -25,6 +35,8 @@ const Routes = (props) => {
                 {props.isAuthenticated ? <Route exact path='/myaccount' render={(props) => <MyAccount {...props} isMobile={isMobile}/>}/>: null}
                 {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MySettings {...props} isMobile={isMobile}/>}/>: null}
                 {props.isAuthenticated ? <Route exact path='/mynotifications' render={(props) => <Notifications {...props}/>}/>: null}
+                {props.isAuthenticated  ? <Route exact path='/myrides' render={(props) => <MyRides {...props}/>}/>: null}
+                {props.isAuthenticated && checkIfOwner(pk) ? <Route exact path='/rides/:ridePK/edit' render={(props) => <EditRide {...props}/>}/>: null}
 
 
                 <Route exact path='/rides' component={Rides}/>
@@ -43,19 +55,10 @@ const Routes = (props) => {
 
 const mapStateToProps = state => {
         return {
-                isAuthenticated: state.auth.token !== null
+            isAuthenticated: state.auth.token !== null,
+            myrides: state.myrides.rides
         };
 };
 
+connect(mapStateToProps)(checkIfOwner);
 export default connect(mapStateToProps)(Routes);
-
-export const routes = [
-    {
-        path: '/',
-        breadcrumbName: 'Home',
-    },
-    {
-        path: 'rides/',
-        breadcrumbName: 'Rides',
-    },
-];

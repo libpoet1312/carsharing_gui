@@ -66,7 +66,7 @@ class CustomLayout extends React.Component {
 
         // close login modal after user authenticates
         if(this.props.isAuthenticated && (prevProps.isAuthenticated === false)){
-            this.showModalHandler();
+            this.closeModal();
         }
     }
 
@@ -87,6 +87,10 @@ class CustomLayout extends React.Component {
         this.setState({
             modalVisible: !this.state.modalVisible,
         });
+    };
+
+    closeModal = () => {
+        this.setState({modalVisible: false});
     };
 
     changeModal = (modal) => {
@@ -121,6 +125,12 @@ class CustomLayout extends React.Component {
         console.log('asREAD: ',id);
         const token = JSON.parse(localStorage.getItem('user')).token;
         this.props.setRead(id, token);
+
+    };
+
+    setAllNotificationAsRead = () => {
+        const token = JSON.parse(localStorage.getItem('user')).token;
+        this.props.setAllNotificationsRead(token);
 
     };
 
@@ -162,6 +172,7 @@ class CustomLayout extends React.Component {
                                   user={this.props.user} notifications={this.props.notifications}
                                   unreadNotificationsCount={this.state.unreadNotificationsCount}
                                   setNotificationAsRead={(id) => this.setNotificationAsRead(id)}
+                                  setAllNotificationAsRead={()=>this.setAllNotificationAsRead()}
                         />
 
                         {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
@@ -174,7 +185,8 @@ class CustomLayout extends React.Component {
                         </Content>
 
                         <Footer style={{textAlign: 'center'}}>
-                            Copyright © 2020 Created by Nick Pappas</Footer>
+                            Copyright © 2020 Created by Nick Pappas
+                        </Footer>
                     </Layout>
 
                 </Layout>
@@ -201,7 +213,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         logout: () => dispatch(authActions.logout()),
-        setRead: (id, token) => dispatch(notifActions.setNotificationRead(id, token))
+        setRead: (id, token) => dispatch(notifActions.setNotificationRead(id, token)),
+        setAllNotificationsRead: token => dispatch(notifActions.setAllNotificationsRead(token))
     }
 };
 

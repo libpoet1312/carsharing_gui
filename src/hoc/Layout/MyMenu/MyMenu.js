@@ -21,7 +21,13 @@ const MyMenu = (props) => {
                     <span>User</span>
                 }
             >
-                <Menu.Item key="3">My rides</Menu.Item>
+                <Menu.Item key="3">
+                    <Link to={'/myrides'}>
+                        <Space style={{color: 'white'}}>
+                            <GoRequestChanges/>My Rides
+                        </Space>
+                    </Link>
+                </Menu.Item>
                 <Menu.Item key="4">
                     <Link to={'/requests'}>
                         <Space style={{color: 'white'}}>

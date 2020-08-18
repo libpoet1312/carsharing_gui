@@ -1,0 +1,34 @@
+.all {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid blue;
+}
+
+.Content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /*flex-basis: 0;*/
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.lastCard {
+    margin-bottom: 20px;
+
+    -webkit-box-shadow: 0 22px 16px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 22px 16px -10px rgba(0,0,0,0.75);
+    box-shadow: 0 22px 16px -10px rgba(0,0,0,0.75);
+}
+
+.addRide {
+    border: 1px solid crimson;
+
+
+}

@@ -15,28 +15,42 @@ function getNoticeData(notices) {
         // transform id to item key
         newNotice.type = 'notification';
 
-
+        console.log(notice.target);
         if(notice.verb==='accepted'){
             newNotice.avatar = <CheckCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}} twoToneColor="#52c41a" />;
             newNotice.description =
-                <div>
-                    <span>You have been accepted to </span>
-                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
-                </div>
+                notice.target ?
+                        <div>
+                            <span>You have been accepted to </span>
+                            <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        </div>:
+                        <div>
+                            <span>You have been accepted to </span>
+                            <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                        </div>
+
+
         }else if(notice.verb==='request'){
             newNotice.avatar = <InfoCircleTwoTone style={{fontSize: "32.4px", textAlign: "center"}}/>;
             newNotice.description =
                 <div>
                     <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
                     <span> requested to join in </span>
-                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                    {notice.target ?
+                        <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                    }
+
                 </div>
         }else if(notice.verb==='declineRequest'){
             newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
             newNotice.description =
                 <div>
                     <span>You have been denied to join </span>
-                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                    {notice.target ?
+                        <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                    }
                 </div>
         }else if(notice.verb==='cancelRequest'){
             newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}} />;
@@ -44,7 +58,11 @@ function getNoticeData(notices) {
                 <div>
                     <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
                     <span> canceled his/her request in </span>
-                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                    {notice.target ?
+                        <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                    }
+
                 </div>
         }else{
             newNotice.avatar = <CloseCircleFilled style={{fontSize: "32.4px", textAlign: "center", color: "red"}}/>;
@@ -52,7 +70,11 @@ function getNoticeData(notices) {
                 <div>
                     <Link to={'/user/'+notice.actor.pk}>{notice.actor.username}</Link>
                     <span> requested to join in </span>
-                    <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                    {notice.target ?
+                        <Link to={'/rides/'+notice.target.pk}>{notice.target.origin} to {notice.target.destination}</Link>
+                        : <Link to={'/rides/'}><span style={{fontStyle: 'italic'}}>"Ride has been deleted"</span></Link>
+                    }
+
                 </div>
         }
 

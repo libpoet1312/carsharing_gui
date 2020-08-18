@@ -1,5 +1,5 @@
 import React from 'react'
-import {Avatar, Col, List, Tooltip, Row, Button} from "antd";
+import {Avatar, Col, List, Tooltip, Row, Button, } from "antd";
 import {Link, withRouter} from "react-router-dom";
 import {AwesomeButton} from "react-awesome-button";
 
@@ -8,18 +8,37 @@ const RideList = (props) => {
         <Link to={'/user/'+props.item.uploader.pk}><div style={{textAlign: "center"}}>Go to<br/>uploader profile</div></Link>;
 
 
-
+    console.log(props.my);
     return (
         <div>
             <List.Item
                 key={props.item.pk}
-                actions={[
-                    <Link to={`/rides/${props.item.pk}`}>
-                        <AwesomeButton as={Link} to={`/rides/${props.item.pk}`}
-                                       type="primary" size="small">Details</AwesomeButton>,
-                    </Link>
+                actions={props.my?
+                    [
+                        <Link to={`/rides/${props.item.pk}`}>
+                            <AwesomeButton as={Link} to={`/rides/${props.item.pk}`}
+                                           type="primary" size="small">Details</AwesomeButton>,
+                        </Link>,
+                        <Link to={`/rides/${props.item.pk}`}>
+                            <Button as={Link} to={`/rides/${props.item.pk}/edit`}
+                                    type="primary" style={{backgroundColor: 'orange'}} size="large" shape={"round"}
+                            >
+                                Edit
+                            </Button>
+                        </Link>,
+                        <Button onClick={()=>props.deleteHandler(props.item.pk)}
+                                type="primary" danger size="large" shape={"round"}
+                        >
+                            Delete
+                        </Button>
 
-                ]}
+                    ]:[
+                        <Link to={`/rides/${props.item.pk}`}>
+                            <AwesomeButton as={Link} to={`/rides/${props.item.pk}`}
+                                           type="primary" size="small">Details</AwesomeButton>,
+                        </Link>
+                    ]
+                }
                 // extra={
                 //     <img
                 //         width={200}
