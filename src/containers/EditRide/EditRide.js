@@ -63,7 +63,7 @@ class addRide extends Component {
         };
         axios.get(API_HTTP + 'cars/car', config)
             .then( response => {
-                console.log(response.data);
+                // console.log(response.data);
                 const cars = [];
                 for (let i = 0; i < response.data.length; i++) {
                     cars.push({

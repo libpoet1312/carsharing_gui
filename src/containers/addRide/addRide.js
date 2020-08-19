@@ -63,7 +63,7 @@ class addRide extends Component {
         };
         axios.get(API_HTTP + 'cars/car', config)
             .then( response => {
-                console.log(response.data);
+                // console.log(response.data);
                 const cars = [];
                 for (let i = 0; i < response.data.length; i++) {
                     cars.push({
@@ -206,18 +206,27 @@ class addRide extends Component {
     };
 
     onSubmit = () => {
-        const time1 = moment('12:00:00', "hh:mm:ss").toISOString();
-        console.log('Submit!');
-        const time2 = time1.split('T');
-        console.log(time2[1].slice(0, -1));
-        const time = time2[1].slice(0, -1);
+        // const time1 = moment('12:00:00', "hh:mm:ss").toISOString();
+        // console.log('Submit!', time1);
+        // const time2 = time1.split('T');
+        // console.log(time2[1].slice(0, -1));
+        // const time = time2[1].slice(0, -1);
+        //
+        // const l = moment(this.state.time, "hh:mm:ss");
+        // console.log('date:', this.state.date);
+        // console.log(l);
+        const date = this.state.date.toISOString().split('T')[0];
+        console.log('date: ', date);
+        const time = this.state.time.toISOString().split('T')[1].slice(0,-1).split('.')[0];
+        console.log(time);
+
 
 
         const ride = {
             origin: this.state.origin,
             destination: this.state.destination,
-            date: this.state.date,
-            time: this.state.time ? this.state.time.toISOString() : null,
+            date: date,
+            time: time ,
             vacant_seats: this.state.vacant_seats
         };
 

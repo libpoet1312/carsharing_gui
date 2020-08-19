@@ -15,7 +15,7 @@ class LocationInput extends React.Component {
         if(address===''){
             this.fetchCity('');
         }
-        console.log('[OnChange] ',address);
+        // console.log('[OnChange] ',address);
         this.setState({
             address,
             errorMessage: '',
@@ -41,7 +41,7 @@ class LocationInput extends React.Component {
     };
 
     fetchCity = (selected) => {
-        let city = selected.split(',')[0];
+        let city = selected.split(',')[0]+','+selected.split(',')[1];
         console.log('[fetchCity] ',city);
         this.props.setCity(city);
     };
@@ -62,6 +62,7 @@ class LocationInput extends React.Component {
                     shouldFetchSuggestions={address.length > 2}
                 >
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+
                         return (
                             <div>
                                 <Input
@@ -75,6 +76,7 @@ class LocationInput extends React.Component {
                                 <div className={classes.autocompleteContainer}>
                                     {loading && <div>Loading...</div>}
                                     {suggestions.map(suggestion => {
+
                                         const className = suggestion.active
                                             ? classes.SuggestionItem
                                             : classes.SuggestionItemActive;
@@ -88,6 +90,8 @@ class LocationInput extends React.Component {
                                                     className,
                                                     style,
                                                 })}
+                                                {...suggestion.key=suggestion.id}
+
                                             >
                                                 <span>{suggestion.description}</span>
                                             </div>

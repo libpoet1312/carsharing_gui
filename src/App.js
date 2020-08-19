@@ -31,10 +31,16 @@ class App extends Component{
 
 }
 
+const mapStateToProps = state => {
+    return {
+        myrides: state.myrides.rides
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
       onTryAutoSignup: () => dispatch(actions.authCheckState())
     };
-  };
+};
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -19,7 +19,7 @@ const RideList = (props) => {
                             <AwesomeButton as={Link} to={`/rides/${props.item.pk}`}
                                            type="primary" size="small">Details</AwesomeButton>,
                         </Link>,
-                        <Link to={`/rides/${props.item.pk}`}>
+                        <Link to={`/rides/${props.item.pk}/edit`}>
                             <Button as={Link} to={`/rides/${props.item.pk}/edit`}
                                     type="primary" style={{backgroundColor: 'orange'}} size="large" shape={"round"}
                             >
