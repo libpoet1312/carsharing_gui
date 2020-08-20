@@ -87,9 +87,36 @@ export const facebookAuthSuccess = (user) => {
     }
 };
 
+
+export const updateProfileStart = () => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_SUCCESS,
+    }
+};
+
+export const updateProfileFail = error => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_FAIL,
+        error
+    }
+};
+
+export const updateProfileSuccess = user => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_SUCCESS,
+        user
+    }
+};
+
 //////////////////////////
 // ASYNC ACTIONS BELOW //
 /////////////////////////
+
+export const updateProfile = (user) => {
+    return dispatch => {
+        dispatch(updateProfileSuccess(user));
+    }
+};
 
 export const authLogin = (username, password) => {
     return dispatch => {
@@ -98,6 +125,7 @@ export const authLogin = (username, password) => {
             username: username,
             password: password
         }).then( response =>{
+            // console.log(response.data);
             const user = {
                 token: response.data.token,
                 user: response.data.user

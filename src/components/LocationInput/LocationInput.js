@@ -12,14 +12,15 @@ class LocationInput extends React.Component {
     };
 
     handleChange = address => {
-        if(address===''){
-            this.fetchCity('');
-        }
-        // console.log('[OnChange] ',address);
+
+        console.log('[OnChange] ',address);
         this.setState({
             address,
             errorMessage: '',
         });
+        if(address===''|| !address){
+            this.fetchCity('');
+        }
 
 
 
@@ -41,9 +42,11 @@ class LocationInput extends React.Component {
     };
 
     fetchCity = (selected) => {
-        let city = selected.split(',')[0]+','+selected.split(',')[1];
-        console.log('[fetchCity] ',city);
-        this.props.setCity(city);
+        // let city = selected.split(',')[0]+','+selected.split(',')[1];
+        // console.log('[fetchCity] ',selected);
+        this.props.setCity(selected);
+
+
     };
 
     render() {

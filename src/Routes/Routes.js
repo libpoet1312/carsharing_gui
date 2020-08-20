@@ -31,8 +31,6 @@ const Routes = (props) => {
     let location = useLocation();
     const pk = location.pathname.split('/')[2];
 
-
-
     useEffect(()=> {
         if(!myrides){
             setMyRides(props.myrides);

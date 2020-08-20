@@ -38,11 +38,13 @@ class Rides extends Component {
 
 
     setOrigin = (origin) => {
-        // console.log('origin', origin);
+        console.log('origin', origin);
         this.setState({origin: origin});
         if(origin===''){
+
             query.delete('origin');
         }else{
+
             query.append('origin', origin);
         }
 
@@ -55,6 +57,7 @@ class Rides extends Component {
         if(destination===''){
             query.delete('destination');
         }else{
+
             query.append('destination', destination);
         }
         // console.log(query.toString());
@@ -73,7 +76,7 @@ class Rides extends Component {
 
     setPassengers = (passengers) => {
         // console.log('passengers',passengers);
-        this.setState({destination: passengers});
+        this.setState({passengers: passengers});
         if(passengers===''){
             query.delete('passengers');
         }else{

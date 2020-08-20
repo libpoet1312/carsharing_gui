@@ -8,6 +8,7 @@ import './MyAccount.css';
 import axios from "axios";
 import {API_HTTP} from "../../../config";
 import moment from "moment";
+import * as authActions from '../../../store/actions/authActions';
 
 const disabledDate = (current) => {
     // Can not select days after today
@@ -64,7 +65,7 @@ const BasicSettings = (props) => {
             };
 
             axios.patch(API_HTTP+'rest-auth/user/',newUser, config).then(res => {
-                // console.log(res.data);
+                console.log(res.data);
                 setUser(res.data);
             }).catch(error=> {
                 console.log(error);
@@ -93,15 +94,18 @@ const BasicSettings = (props) => {
                 "Authorization": 'JWT ' + props.token,
             }
         };
-        // console.log('options', options);
+        console.log('options', options);
         // console.log('data', data);
 
         axios.patch(API_HTTP+'rest-auth/user/', data, config).then(res=>{
-            // console.log(res);
+            // console.log(res.data);
             message.success('Avatar uploaded successfully.');
+            props.updateProfile(res.data);
+            options.onSuccess();
         }).catch(error=> {
             console.log(error);
             message.error('Avatar upload failed.');
+            options.onError();
         })
 
     };
@@ -220,7 +224,7 @@ const BasicSettings = (props) => {
                                 >
                                     <Avatar size={150} src={props.user.avatar}/>
                                     <br/>
-                                    <Upload name="avatar" customRequest={customRequest} beforeUpload={beforeUpload} listType="avatar" >
+                                    <Upload name="avatar" accept={'.jpg,.png,.jpeg'} customRequest={customRequest} beforeUpload={beforeUpload} listType="avatar" >
                                         <Button style={{marginTop: "10px"}}>
                                             <UploadOutlined /> Click to upload
                                         </Button>
@@ -252,4 +256,10 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(BasicSettings);
+const mapDispatchToProps = dispatch => {
+    return {
+        updateProfile : (user) => dispatch(authActions.updateProfile(user))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasicSettings);
