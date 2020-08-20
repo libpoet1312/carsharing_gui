@@ -26,7 +26,7 @@ class MyRides extends Component {
     componentDidMount() {
         // console.log('[componentDidMount]', query.toString());
         if(this.props.token){
-            this.props.fetchRides(query.toString(), this.props.token);
+            this.props.fetchMyRides(query.toString(), this.props.token);
         }
 
     }
@@ -34,7 +34,7 @@ class MyRides extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.state!==prevState || this.props.isAuthenticated!==prevProps.isAuthenticated){
             // console.log('[componentDidUpdate]',prevState);
-            this.props.fetchRides(query.toString(), this.props.token);
+            // this.props.fetchMyRides(query.toString(), this.props.token);
         }
     }
 
@@ -92,9 +92,9 @@ class MyRides extends Component {
         if(page===1){
             query.delete('page');
         }else{
-            query.append('page', page);
+            query.set('page', page);
         }
-        this.props.fetchRides(query.toString());
+        this.props.fetchMyRides(query.toString(), this.props.token);
     };
 
 
@@ -163,7 +163,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRides: (query, token) => dispatch(myRidesActions.fetchMyRides(query, token)),
+        fetchMyRides: (query, token) => dispatch(myRidesActions.fetchMyRides(query, token)),
         deleteRide: (pk, token) => dispatch(myRidesActions.deleteMyRide(pk,token)),
     }
 };

@@ -8,7 +8,7 @@ import 'react-phone-input-2/lib/style.css'
 
 import { QuestionCircleOutlined, UploadOutlined } from '@ant-design/icons';
 import {GiMale, GiFemale} from "react-icons/gi";
-import {IoMdTransgender} from 'react-icons/io'
+import {IoMdTransgender} from 'react-icons/io';
 import {FaViber} from "react-icons/fa";
 import { Icon } from '@iconify/react';
 import whatsappIcon from '@iconify/icons-logos/whatsapp';

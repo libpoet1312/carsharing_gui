@@ -94,7 +94,7 @@ export const fetchMyRides = (query, token) => {
     return dispatch => {
         dispatch(fetchMyRidesStart());
         if(query!==''){
-            console.log('edw');
+            // console.log('edw', query);
             query = '?'+query;
         }
         let config = {

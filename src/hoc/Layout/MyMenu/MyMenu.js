@@ -24,7 +24,7 @@ const MyMenu = (props) => {
                 <Menu.Item key="3">
                     <Link to={'/myrides'}>
                         <Space style={{color: 'white'}}>
-                            <GoRequestChanges/>My Rides
+                            <CarOutlined />My Rides
                         </Space>
                     </Link>
                 </Menu.Item>

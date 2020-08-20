@@ -1,25 +1,118 @@
-import React from 'react';
-import {Form, Input, Upload, Button, Avatar} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Form, Input, Upload, Button, Avatar, Select, DatePicker, message} from 'antd';
 import {connect} from 'react-redux';
 import {UploadOutlined} from '@ant-design/icons';
+import {GiMale, GiFemale} from "react-icons/gi";
+import {IoMdTransgender} from 'react-icons/io';
 import './MyAccount.css';
+import axios from "axios";
+import {API_HTTP} from "../../../config";
+import moment from "moment";
+
+const disabledDate = (current) => {
+    // Can not select days after today
+    // return current && current < moment().endOf('day');
+    return (
+        current &&
+        (current > moment().subtract(1, "day"))
+    );
+};
+
 
 const BasicSettings = (props) => {
     const [form] = Form.useForm();
+    const [user, setUser] = useState();
+
+    useEffect(()=> {
+        if(!props.token) return;
+        let config = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": 'JWT ' + props.user.token,
+            }
+        };
+
+        axios.get(API_HTTP + 'rest-auth/user/', config)
+            .then(res => {
+                console.log('rest auth', res.data);
+
+                setUser(res.data);
+
+            }).catch( err => {
+            console.log(err);
+        });
+    },[props, props.token]);
 
     const onFinish = (values,error) => {
-        console.log('Received values of form: ', values);
+        if(error){
+            console.log('Error: ', error);
+        }else{
+            // console.log('Received values of form: ', values);
+            let newUser={};
+            if(values.email!==user.email) newUser.email=values.email;
+            if(values.username!==user.username) newUser.username=values.username;
+            if(values.country!==user.country) newUser.country=values.country;
+            if(values.gender!==user.gender) newUser.gender=values.gender;
+            if(values.phone!==user.phone_number && !(values.phone===undefined && user.phone_number===null)) newUser.phone_number=values.phone;
+
+            console.log('newUser', newUser);
+            let config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": 'JWT ' + props.user.token,
+                }
+            };
+
+            axios.patch(API_HTTP+'rest-auth/user/',newUser, config).then(res => {
+                // console.log(res.data);
+                setUser(res.data);
+            }).catch(error=> {
+                console.log(error);
+            })
+        }
+    };
+
+    const beforeUpload = (file) => {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    };
+
+    const customRequest= (options) => {
+        const data= new FormData();
+        data.append('avatar', options.file);
+        const config= {
+            "headers": {
+                "Content-Type": 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
+                "Authorization": 'JWT ' + props.token,
+            }
+        };
+        // console.log('options', options);
+        // console.log('data', data);
+
+        axios.patch(API_HTTP+'rest-auth/user/', data, config).then(res=>{
+            // console.log(res);
+            message.success('Avatar uploaded successfully.');
+        }).catch(error=> {
+            console.log(error);
+            message.error('Avatar upload failed.');
+        })
 
     };
 
     return (
         <div style={{marginBottom: '20px'}}>
         {
-            props.user ?
-
+            props.user && user ?
                     <Form
                         form={form}
-                        name="register"
+                        name="updateBasic"
                         onFinish={onFinish}
                         scrollToFirstError
                         layout={"vertical"}
@@ -29,7 +122,7 @@ const BasicSettings = (props) => {
                                 <Form.Item
                                     name="email"
                                     label="E-mail"
-                                    initialValue={props.user.email}
+                                    initialValue={user.email}
                                     rules={[
                                         {
                                             type: 'email',
@@ -40,12 +133,12 @@ const BasicSettings = (props) => {
                                         },
                                     ]}
                                 >
-                                    <Input  />
+                                    <Input placeholder={!user.email ? 'Not set': null} />
                                 </Form.Item>
                                 <Form.Item
                                     name="username"
                                     label="Username"
-                                    initialValue={props.user.username}
+                                    initialValue={user.username}
                                     rules={[
                                         {
                                             message: 'Please input your username',
@@ -57,51 +150,88 @@ const BasicSettings = (props) => {
                                 <Form.Item
                                     name="phone"
                                     label="Phone"
-                                    initialValue={props.user.phone}
+                                    initialValue={user.phone}
                                     rules={[
                                         {
                                             message: 'Please input your phone',
                                         },
                                     ]}
                                 >
-                                    <Input/>
+                                    <Input placeholder={!user.phone ? 'Not set': null}/>
                                 </Form.Item>
                                 <Form.Item
                                     name="country"
                                     label="Country"
-                                    initialValue={props.user.username}
+                                    initialValue={user.country}
                                     rules={[
                                         {
                                             message: 'Please input your country',
                                         },
                                     ]}
                                 >
-                                    <Input style={{width: "250px"}} />
+                                    <Input placeholder={!user.country ? 'Not set': null} style={{width: "250px"}} />
                                 </Form.Item>
 
-                                <Button type="primary" htmlType="submit">
-                                    Submit
+                                <Form.Item
+                                    name="gender"
+                                    label="Gender"
+                                    initialValue={user.gender}
+                                    rules={[
+                                        {
+                                            required: false,
+                                            message: 'Please select your gender',
+                                        },
+                                    ]}
+                                >
+                                    <Select>
+                                        <Select.Option value='M'><GiMale/> Male</Select.Option>
+                                        <Select.Option value='F'><GiFemale/> Female</Select.Option>
+                                        <Select.Option value='O'><IoMdTransgender/> Other</Select.Option>
+                                    </Select>
+
+                                </Form.Item>
+
+                                <Form.Item
+                                    name='dob'
+                                    label="Date of birth"
+                                    rules={[
+                                        {
+                                            required: false,
+                                            message: 'Please input date of birth!',
+                                        },
+                                    ]}
+                                    initialValue={moment(user.date)}
+                                >
+                                    <DatePicker
+                                        disabledDate={disabledDate}
+                                    />
+                                </Form.Item>
+
+                                <Button type="primary" htmlType="submit" shape="round" size={"large"}>
+                                    Update
                                 </Button>
                             </div>
-
-
-
 
                             <div style={{marginBottom: props.isMobile ? '30px': '0'}}>
                                 <Form.Item
                                     label="Avatar"
-
                                     style={{textAlign: "center"}}
 
                                 >
-                                    <Avatar size={150}/>
+                                    <Avatar size={150} src={props.user.avatar}/>
                                     <br/>
-                                    <Upload name="avatar" action="/upload.do" listType="avatar" >
+                                    <Upload name="avatar" customRequest={customRequest} beforeUpload={beforeUpload} listType="avatar" >
                                         <Button style={{marginTop: "10px"}}>
                                             <UploadOutlined /> Click to upload
                                         </Button>
                                     </Upload>
                                 </Form.Item>
+                                <div style={{textAlign: 'center', fontSize: 17}}>
+                                    <span >Member since:</span>
+                                    <br/>
+                                    <span style={{fontStyle: 'italic'}}>{moment(user.date_joined).toISOString().split('T')[0]}</span>
+                                </div>
+
                             </div>
                         </div>
                     </Form>
@@ -117,7 +247,8 @@ const BasicSettings = (props) => {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.user !== null,
-        user: state.auth.user
+        user: state.auth.user,
+        token: state.auth.user ? state.auth.user.token : null
     };
 };
 

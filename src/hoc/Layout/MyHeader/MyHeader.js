@@ -10,7 +10,8 @@ import {
     LogoutOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    SettingOutlined
+    SettingOutlined,
+    CarOutlined
 } from '@ant-design/icons';
 
 import {FaUserAlt} from 'react-icons/fa';
@@ -164,7 +165,14 @@ class MyHeader extends Component {
         if(this.props.isAuthenticated){
             userMenu = (
                 <Menu>
-                    <Menu.Item key="1">My rides</Menu.Item>
+                    <Menu.Item key="1">
+                        <Link to={'/myrides'}>
+                            <Space>
+                                <CarOutlined/>My rides
+                            </Space>
+                        </Link>
+
+                    </Menu.Item>
                     <Menu.Item key="2">
                         <Link to={'/requests'}>
                             <Space>
@@ -221,7 +229,7 @@ class MyHeader extends Component {
                                                 onViewMore={this.onViewMore}
 
 
-                                                bell={<BellOutlined style={{ fontSize: '20px'}}/>}
+                                                bell={<BellOutlined style={{ fontSize: '20px', color: 'gray'}}/>}
                                                 count={this.props.unreadNotificationsCount}>
                                         <NoticeIcon.Tab
                                             title={'Notifications'}

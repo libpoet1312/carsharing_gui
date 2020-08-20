@@ -34,29 +34,29 @@ const webSocketsMiddleware = (function () {
      */
     const onMessage = (ws, store) => event => {
         const payload = JSON.parse(event.data);
-        console.log(payload);
+        // console.log(payload);
         switch (payload.type) {
             case actionTypes.WS_MESSAGE:
                 store.dispatch(webSocketActions.webSocketMessage(event.host, payload));
                 break;
             case "addRequests":
-                console.log('add');
+                // console.log('add');
                 store.dispatch(requestsActions.addRequestsOfMyRides(payload.text));
                 break;
             case "removeRequests":
-                console.log('remove');
+                // console.log('remove');
                 store.dispatch(requestsActions.removeRequestsOfMyRides(payload.text));
                 break;
             case "removeMYRequests":
-                console.log('removeMY');
+                // console.log('removeMY');
                 store.dispatch(requestsActions.removeRequest(payload.text));
                 break;
             case "updateRequests":
-                console.log('updateRequests');
+                // console.log('updateRequests');
                 store.dispatch(requestsActions.updateRequests(payload.text));
                 break;
             case "sendNotification":
-                console.log('sendNotification');
+                // console.log('sendNotification');
                 console.log(JSON.parse(payload.text));
                 store.dispatch(notifActions.receiveNotification(JSON.parse(payload.text)));
                 break;
@@ -70,7 +70,7 @@ const webSocketsMiddleware = (function () {
      */
 
     return store => next => action => {
-        console.log(action.type);
+        // console.log(action.type);
         switch (action.type) {
             case actionTypes.AUTH_SUCCESS:
                 if (socket !== null) {
@@ -94,7 +94,7 @@ const webSocketsMiddleware = (function () {
 
                 break;
             case 'NEW_MESSAGE':
-                console.log('sending a message', action.msg);
+                // console.log('sending a message', action.msg);
                 socket.send(JSON.stringify({ command: 'NEW_MESSAGE', message: action.msg }));
                 break;
 

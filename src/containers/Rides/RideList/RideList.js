@@ -7,8 +7,6 @@ const RideList = (props) => {
     const linkToAccount =
         <Link to={'/user/'+props.item.uploader.pk}><div style={{textAlign: "center"}}>Go to<br/>uploader profile</div></Link>;
 
-
-    console.log(props.my);
     return (
         <div>
             <List.Item
@@ -91,16 +89,8 @@ const RideList = (props) => {
                             </Col>
                         </Row>
                     }
-                    // description={
-                    //     <Row type='flex' align='middle'>
-                    //         <h5>Type: {props.item.type}</h5>
-                    //     </Row>
-                    // }
                 />
-                {/*<div>*/}
-                {/*    {props.item.content}*/}
-                {/*    skasdaeds*/}
-                {/*</div>*/}
+
             </List.Item>
         </div>
     )

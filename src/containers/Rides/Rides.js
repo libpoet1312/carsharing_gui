@@ -89,7 +89,7 @@ class Rides extends Component {
         if(page===1){
             query.delete('page');
         }else{
-            query.append('page', page);
+            query.set('page', page);
         }
         this.props.fetchRides(query.toString());
     };

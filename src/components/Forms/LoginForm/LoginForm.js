@@ -19,7 +19,6 @@ const LoginForm = (props) => {
         }else{
             console.log(props.error);
         }
-
     };
 
     let errorMessage = null;

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Tabs } from 'antd';
 import BasicSettings from "./BasicSettings/BasicSettings";
 import CarTable from "../../components/CarTable/CarTable";
+import SecSettings from "./SecSettings/SecSettings";
 
 const { TabPane } = Tabs;
 
@@ -13,7 +14,7 @@ export class AccountSettings extends Component {
                     <BasicSettings isMobile={this.props.isMobile}/>
                 </TabPane>
                 <TabPane tab={<strong>Security Settings</strong>} key="2">
-                    Content of Tab Pane 2
+                    <SecSettings/>
                 </TabPane>
                 <TabPane tab={<strong>My Cars</strong>} key="3">
                     <CarTable/>

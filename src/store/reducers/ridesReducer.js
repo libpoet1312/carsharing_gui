@@ -36,26 +36,29 @@ const fetchRidesSuccess = (state, action) => {
 
     // find current page
     if(next){
+        // all pages except last one
         nextUrl = new URL(next);
         let params = nextUrl.searchParams;
-        currentPage = params.get('page') - 1;
+        currentPage = parseInt(params.get('page')) - 1;
 
         // console.log('[next]', currentPage);
     }else if (prev && !next){
-        // last page / pages > 2
+        // last page
         prevUrl = new URL(prev);
         let params = prevUrl.searchParams;
+        // console.log(prevUrl);
+        // console.log('prevParams:', params.get('page'));
         if(params.has('page')){
-            currentPage = params.get('page') + 1;
+            currentPage = parseInt(params.get('page') )+ 1;
         }else{
             currentPage = 2;
         }
 
-        // console.log('[prev]', currentPage);
+        // console.log('[Page]', currentPage);
     }
 
 
-    console.log("[currentPage]", currentPage);
+    // console.log("[currentPage]", currentPage);
     let pager = getPager(action.rides.count, currentPage, nextUrl, prevUrl);
 
     return {
