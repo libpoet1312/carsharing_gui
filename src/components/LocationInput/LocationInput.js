@@ -7,7 +7,7 @@ import classes from './LocationInput.module.css'
 class LocationInput extends React.Component {
 
     state = {
-        address: '',
+        address: this.props.value ? this.props.value : '',
         errorMessage: '',
     };
 
@@ -69,7 +69,8 @@ class LocationInput extends React.Component {
                                     {...getInputProps({
                                         placeholder: `${this.props.placeholder}...`,
                                         allowClear: true,
-                                        classnames: `${classes.Input}`
+                                        classnames: `${classes.Input}`,
+
                                     })}
                                 />
 

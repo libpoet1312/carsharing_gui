@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch, useLocation } from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -19,16 +19,27 @@ import * as myRidesActions from "../store/actions/myRidesActions";
 
 const checkIfOwner = (pk, myrides)=> {
     console.log(pk, myrides);
-    return true;
+    if(!myrides || !pk){return false}
+    const owner = myrides.some( ride => {
+        return ride.pk.toString()===pk;
+    });
+    return owner;
 };
 
 const Routes = (props) => {
     let isMobile = props.isMobile;
+    let [myrides, setMyRides] = useState();
     let location = useLocation();
     const pk = location.pathname.split('/')[2];
-    // console.log(location.pathname.split('/'));
-    props.fetchRides('', props.token);
-    checkIfOwner(pk, props.myrides);
+
+
+
+    useEffect(()=> {
+        if(!myrides){
+            setMyRides(props.myrides);
+            console.log('effect');
+        }
+    },[myrides, props.myrides]);
 
     return (
         <Switch>
@@ -38,7 +49,7 @@ const Routes = (props) => {
             {props.isAuthenticated ? <Route exact path='/mysettings' render={(props) => <MySettings {...props} isMobile={isMobile}/>}/>: null}
             {props.isAuthenticated ? <Route exact path='/mynotifications' render={(props) => <Notifications {...props}/>}/>: null}
             {props.isAuthenticated  ? <Route exact path='/myrides' render={(props) => <MyRides {...props}/>}/>: null}
-            {props.isAuthenticated  ? <Route exact path='/rides/:ridePK/edit' render={(props) => <EditRide {...props}/>}/>: null}
+            {props.isAuthenticated && checkIfOwner(pk, myrides)  ? <Route exact path='/rides/:ridePK/edit' render={(props) => <EditRide {...props}/>}/>: null}
 
 
             <Route exact path='/rides' component={Rides}/>
@@ -62,7 +73,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        fetchRides: (query, token) => dispatch(myRidesActions.fetchMyRides(query, token)),
+        fetchMyRides: (query, token) => dispatch(myRidesActions.fetchMyRides(query, token)),
     }
 };
 

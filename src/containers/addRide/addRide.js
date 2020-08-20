@@ -227,7 +227,8 @@ class addRide extends Component {
             destination: this.state.destination,
             date: date,
             time: time ,
-            vacant_seats: this.state.vacant_seats
+            vacant_seats: this.state.vacant_seats,
+            car: this.state.car
         };
 
         let config = {

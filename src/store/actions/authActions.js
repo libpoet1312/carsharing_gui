@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import {fetchMyRides} from "./myRidesActions";
 import axios from 'axios';
 import {API_HTTP} from "../../config";
 
@@ -104,6 +105,7 @@ export const authLogin = (username, password) => {
             localStorage.setItem('user', JSON.stringify(user));
 
             dispatch(authSuccess(user));
+            dispatch(fetchMyRides('', user.token));
         }).catch( error => {
             dispatch(authFail(error));
         });
@@ -188,6 +190,7 @@ export const authCheckState = () => {
                                 // console.log(response);
 
                                 dispatch(authSuccess(user));
+                                dispatch(fetchMyRides('', user.token));
                             })
 
 
@@ -227,6 +230,7 @@ export const facebookAuth = (fbToken) => {
                     };
                     localStorage.setItem('user', JSON.stringify(user));
                     dispatch(facebookAuthSuccess(user));
+                    dispatch(fetchMyRides('', user.token));
                 }else{
                     dispatch(facebookAuthFail(response));
                 }
