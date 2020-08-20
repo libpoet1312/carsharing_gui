@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {
-    Card,
-    Descriptions,
-    message,
-    Steps,
     Button,
-    Form,
+    Card,
+    Col,
     DatePicker,
-    TimePicker,
-    Select,
+    Descriptions,
+    Form,
+    InputNumber,
+    message,
     Modal,
     Row,
-    InputNumber,
+    Select,
+    Space,
+    Spin,
+    Steps,
     Timeline,
-    Tooltip, Space, Col, Spin
+    TimePicker,
+    Tooltip
 } from "antd";
 
 
@@ -41,6 +44,14 @@ class EditRide extends Component {
         time: null,
         vacant_seats: 1,
         car: null,
+
+        newOrigin: null,
+        newDestination: null,
+        newDate: null,
+        newTime: null,
+        newVacant_seats: 1,
+        newCar: null,
+
         cars: null,
         carModalVisible: false,
         duration: 0,
@@ -90,8 +101,6 @@ class EditRide extends Component {
             this.props.fetchMyRide(this.props.token, this.props.match.params.ridePK);
             this.fetchCars();
         }
-
-
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -99,7 +108,7 @@ class EditRide extends Component {
             this.fetchCars();
             // this.props.fetchMyRide(this.props.token, this.props.match.params.ridePK);
         }
-        if(!prevProps.ride && this.props.ride){
+        if(this.props.ride && prevProps.loading && !this.props.loading){
             console.log('setState');
             this.setState({
                 origin: this.props.ride.origin,
@@ -117,39 +126,39 @@ class EditRide extends Component {
         this.setState({ current });
     };
 
-    next() {
+    next = () => {
         const current = this.state.current + 1;
         this.setState({ current });
-    }
+    };
 
-    prev() {
+    prev = () => {
         const current = this.state.current - 1;
         this.setState({ current });
-    }
+    };
 
     setOrigin = (origin) => {
-        console.log('origin', origin);
-        this.setState({origin: origin});
+        // console.log('origin', origin);
+        this.setState({newOrigin: origin});
     };
 
     setDestination = (destination) => {
-        console.log('destination',destination);
-        this.setState({destination: destination});
+        // console.log('destination',destination);
+        this.setState({newDestination: destination});
     };
 
     setDate = date => {
         console.log(date);
-        this.setState({date: date})
+        this.setState({newDate: date})
     };
 
     setTime = time => {
-        console.log(time);
-        this.setState({time: time})
+        // console.log(time);
+        this.setState({newTime: time})
     };
 
     setPass = vacant_seats => {
-        console.log('vacant_seats: ', vacant_seats);
-        this.setState({ vacant_seats: vacant_seats || 1});
+        // console.log('vacant_seats: ', vacant_seats);
+        this.setState({ newVacant_seats: vacant_seats });
     };
 
     handleAdd = (newCar) => {
@@ -207,7 +216,7 @@ class EditRide extends Component {
         };
 
         this.setState({
-            car: car
+            newCar: car
         });
     };
 
@@ -221,20 +230,18 @@ class EditRide extends Component {
     };
 
     onSubmit = () => {
-        const time1 = moment('12:00:00', "hh:mm:ss").toISOString();
-        console.log('Submit!');
-        const time2 = time1.split('T');
-        console.log(time2[1].slice(0, -1));
-        const time = time2[1].slice(0, -1);
 
-
-        const ride = {
-            origin: this.state.origin,
-            destination: this.state.destination,
-            date: this.state.date,
-            time: this.state.time ? this.state.time.toISOString() : time,
-            vacant_seats: this.state.vacant_seats
-        };
+        const updatedRide = {};
+        if(this.state.newOrigin){updatedRide.origin=this.state.newOrigin}
+        if(this.state.newDestination){updatedRide.destination=this.state.newDestination}
+        if(this.state.newDate){
+            updatedRide.date=this.state.newDate.toISOString().split('T')[0];
+        }
+        if(this.state.newTime){
+            updatedRide.time=this.state.newTime.toISOString().split('T')[1].slice(0, -1).split('.')[0];
+        }
+        if(this.state.newCar){updatedRide.car=this.state.newCar}
+        if(this.state.newVacant_seats){updatedRide.vacant_seats=this.state.newVacant_seats}
 
         let config = {
             headers: {
@@ -243,10 +250,12 @@ class EditRide extends Component {
             }
         };
 
-        axios.post(API_HTTP + 'api/create/', ride, config)
+        const pk = this.props.ride.pk;
+
+        axios.patch(API_HTTP + 'api/'+pk+'/edit/', updatedRide , config)
             .then( response => {
                 console.log(response.data);
-                message.success('Processing complete!');
+                message.success('Updating ride complete!');
                 this.props.history.push('/rides/'+response.data.pk);
             }).catch(error=>{
             console.log(error);

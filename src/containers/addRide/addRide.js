@@ -246,17 +246,14 @@ class addRide extends Component {
             }).catch(error=>{
                 console.log(error);
                 message.error('Error adding event! Try again!')
-        });
-
-
-
+            });
     };
 
 
 
     render() {
 
-        let cars = null;
+        let cars;
         if(this.state.cars){
             cars = this.state.cars.map( car => {
                 return <Option key={car.key.toString()} value={car.plate}>{car.plate}</Option>

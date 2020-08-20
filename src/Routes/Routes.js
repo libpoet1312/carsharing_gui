@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch, useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {Route, Switch, useLocation} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Home from "../components/Home/Home";
@@ -18,12 +18,11 @@ import EditRide from "../containers/EditRide/EditRide";
 import * as myRidesActions from "../store/actions/myRidesActions";
 
 const checkIfOwner = (pk, myrides)=> {
-    console.log(pk, myrides);
+    // console.log(pk, myrides);
     if(!myrides || !pk){return false}
-    const owner = myrides.some( ride => {
-        return ride.pk.toString()===pk;
+    return myrides.some(ride => {
+        return ride.pk.toString() === pk;
     });
-    return owner;
 };
 
 const Routes = (props) => {
@@ -37,7 +36,6 @@ const Routes = (props) => {
     useEffect(()=> {
         if(!myrides){
             setMyRides(props.myrides);
-            console.log('effect');
         }
     },[myrides, props.myrides]);
 

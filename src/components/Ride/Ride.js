@@ -20,6 +20,8 @@ import { EmailShareButton, FacebookShareButton, FacebookMessengerShareButton,
     ViberIcon,
 } from "react-share";
 import JoinModal from "../Modals/JoinModal/JoinModal";
+import {Link} from "react-router-dom";
+import {SITE_URL} from "../../config";
 
 class Ride extends Component{
 
@@ -44,7 +46,7 @@ class Ride extends Component{
         // console.log(this.props.isAuthenticated);
         if((prevProps.loading && !this.props.loading) || this.props.requests!==prevProps.requests){
             // console.log('edw');
-            console.log(this.props.isAuthenticated)
+            // console.log(this.props.isAuthenticated);
             if(this.props.isAuthenticated){
                 if(this.props.ride.uploader.username===this.props.user.username){
                     this.setState({isOwner: true});
@@ -117,7 +119,7 @@ class Ride extends Component{
 
 
     render() {
-        const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true }} spin />;
+        const antIcon = <LoadingOutlined style={{ fontSize: 50, centered: true, alignSelf: 'center' }} spin />;
 
 
         let output =  <Spin indicator={antIcon} />;
@@ -125,7 +127,8 @@ class Ride extends Component{
 
 
             let ride = this.props.ride;
-            let shareUrl = 'https://localhost:3000'+this.props.match.url;
+            let shareUrl = SITE_URL;
+
 
             let button = (
                 <div className={classes.ColumnRight}>
@@ -134,7 +137,13 @@ class Ride extends Component{
             if(this.state.isOwner) {
                 button = (
                     <div className={classes.ColumnRight}>
-                        <AwesomeButton onPress={this.handleJoinBtn}>EDIT</AwesomeButton>
+                        <Link to={`/rides/${this.props.ride.pk}/edit`}>
+                            <Button as={Link} to={`/rides/${this.props.ride.pk}/edit`}
+                                    type="primary" style={{backgroundColor: 'orange', width: 100}} size="large" shape={"round"}
+                            >
+                                Edit
+                            </Button>
+                        </Link>
                     </div>
                 )
             }
@@ -145,8 +154,10 @@ class Ride extends Component{
                     <div className={classes.ColumnRight}>
                         <Button size={"large"} shape={"round"} type={"ghost"}
                                 style={{height: "100%", backgroundColor: "orange", whiteSpace: "normal"}}
-                                onClick={() => this.unJoinHandler(this.props.ride)}>
-                            <strong>Cancel Request</strong></Button>
+                                onClick={() => this.unJoinHandler(this.props.ride)}
+                        >
+                            <strong>Cancel Request</strong>
+                        </Button>
                     </div>
                 )
             }
@@ -155,7 +166,10 @@ class Ride extends Component{
                 button = (
                     <div className={classes.ColumnRight}>
                         <Button size={"large"} shape={"round"} type={"danger"}
-                                onClick={() => this.unJoinHandler(this.props.ride)}>UNJOIN</Button>
+                                onClick={() => this.unJoinHandler(this.props.ride)}
+                        >
+                            UNJOIN
+                        </Button>
                     </div>
                 )
             }
@@ -187,13 +201,6 @@ class Ride extends Component{
                         { this.props.isAuthenticated || this.state.isOwner ?
                             button : null
                         }
-
-
-
-
-
-
-
                     </div>
 
 

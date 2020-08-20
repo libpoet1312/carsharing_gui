@@ -143,12 +143,12 @@ class MyHeader extends Component {
         this.props.setNotificationAsRead(item.id);
     };
 
-    onClear = (tabTitle) => {
+    onClear = () => {
         // console.log(tabTitle);
         this.props.setAllNotificationAsRead();
     };
 
-    onViewMore =(tabProps, event) => {
+    onViewMore =() => {
         this.props.history.push('/mynotifications');
     };
 
@@ -192,7 +192,6 @@ class MyHeader extends Component {
                             <Button type={"ghost"} onClick={this.props.logout}><LogoutOutlined/>Logout</Button>
                         </Space>
                     </Menu.Item>
-
                 </Menu>
             );
         }
@@ -201,7 +200,6 @@ class MyHeader extends Component {
         return (
 
             <Header className={[classes.myHeader, "site-layout-background"]} style={{ padding: 0 }}>
-
                 <div>
                     {this.props.isMobile ? React.createElement(this.props.collapsed ?
                         MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -237,9 +235,8 @@ class MyHeader extends Component {
                                     </NoticeIcon>
                                 </div> : null
                         }
-
-
                     </div>
+
                     <div>
                         {
                             this.props.isAuthenticated ?
@@ -252,7 +249,6 @@ class MyHeader extends Component {
                                 </div> : header
                         }
                     </div>
-
                 </div>
             </Header>
         )

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="">
+    <list default="true" id="f5762687-d18f-4d53-93b6-504479ad11eb" name="Default Changelist" comment="fixed addCar, EditCar">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/libpoet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/libpoet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/CustomLayout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/RideDetailView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/RideListView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/Rides.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/services/auth-header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/services/auth.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OLD/services/user.service.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LocationInput/LocationInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LocationInput/LocationInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Ride/Ride.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Ride/Ride.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/EditRide/EditRide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/EditRide/EditRide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/EditRide/addRide.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/EditRide/addRide.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/addRide/addRide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/addRide/addRide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/myRidesActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/myRidesActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/rideReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/rideReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyDrawer/MyDrawer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/Layout/MyHeader/MyHeader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +160,8 @@
       <workItem from="1597784702197" duration="383000" />
       <workItem from="1597785118866" duration="9337000" />
       <workItem from="1597838597409" duration="8296000" />
-      <workItem from="1597874734477" duration="10349000" />
-    </task>
-    <task id="LOCAL-00001" summary="my first commit">
-      <created>1587388791875</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1587388791875</updated>
+      <workItem from="1597874734477" duration="10999000" />
+      <workItem from="1597923429278" duration="9680000" />
     </task>
     <task id="LOCAL-00002" summary="my 2nd commit!">
       <created>1587696464365</created>
@@ -499,15 +499,20 @@
       <option name="project" value="LOCAL" />
       <updated>1597852675335</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fixing AddCar for car!">
+      <created>1597886156817</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1597886156818</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="trying to adjust pro layout!" />
-    <MESSAGE value="responsive layout and costumising header!" />
     <MESSAGE value="responsive" />
     <MESSAGE value="responsive2" />
     <MESSAGE value="carr add" />
@@ -531,7 +536,9 @@
     <MESSAGE value="fixing cors headers!@" />
     <MESSAGE value="Fixing Time in addRide, and making EditRide.js" />
     <MESSAGE value="making EditRide.js and Routes.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="making EditRide.js and Routes.js" />
+    <MESSAGE value="fixing AddCar for car!" />
+    <MESSAGE value="fixed addCar, EditCar" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed addCar, EditCar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="591" y="200" width="800" height="675" key="#Deployment" timestamp="1589896510293">
@@ -547,12 +554,12 @@
     </state>
     <state x="693" y="309" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1590022536452" />
     <state x="3637" y="289" width="524" height="500" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1589395192228" />
-    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1597886153909">
+    <state x="3510" y="91" width="860" height="845" key="CommitChangelistDialog2" timestamp="1597943506143">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3510" y="91" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339474215" />
     <state x="566" y="116" width="860" height="845" key="CommitChangelistDialog2/0.27.1920.1053@0.27.1920.1053" timestamp="1594980523890" />
-    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1597886153909" />
+    <state x="3510" y="91" width="860" height="863" key="CommitChangelistDialog2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1597943506143" />
     <state x="3445" y="317" width="908" height="443" key="EditFileWatcherDialog" timestamp="1590689864985">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
@@ -566,12 +573,12 @@
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3396" y="153" key="SettingsEditor/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1597785232036" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1597852680758">
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1597887592663">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
     <state x="3499" y="276" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1024.768/2944.0.1920.1080@2944.0.1920.1080" timestamp="1589339480190" />
     <state x="555" y="296" width="800" height="526" key="Vcs.Push.Dialog.v2/0.27.1920.1053@0.27.1920.1053" timestamp="1594980544554" />
-    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1597852680758" />
+    <state x="3499" y="276" width="800" height="526" key="Vcs.Push.Dialog.v2/2944.0.1920.1080/0.357.1024.768/1024.0.1920.1080@2944.0.1920.1080" timestamp="1597887592663" />
     <state x="3557" y="158" width="683" height="762" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590703907697">
       <screen x="2944" y="0" width="1920" height="1080" />
     </state>
