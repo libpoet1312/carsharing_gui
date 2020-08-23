@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Input, Button, Checkbox, Spin, Divider} from 'antd';
+import {Form, Input, Button, Spin, Divider} from 'antd';
 import { UserOutlined, LockOutlined, LoadingOutlined } from '@ant-design/icons';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/authActions';
@@ -8,13 +8,13 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const LoginForm = (props) => {
 
-    const onFinish = (values, error) => {
-        console.log('Received values of form: ', values);
+    const onFinish = (values) => {
+        // console.log('Received values of form: ', values);
         props.onAuth(values.username, values.password);
 
         if (!props.error && !props.loading){
             console.log(props.error);
-            console.log('okey registration');
+            // console.log('okey registration');
             // props.showModal();
         }else{
             console.log(props.error);
@@ -66,10 +66,6 @@ const LoginForm = (props) => {
 
 
                 <Form.Item>
-                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                        <Checkbox>Remember me</Checkbox>
-                    </Form.Item>
-
                     <Divider/>
                     <Button type="ghost" size="small"
                             className="login-form-forgot"

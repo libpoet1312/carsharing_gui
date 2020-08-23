@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, Modal} from 'antd';
 import {connect} from "react-redux";
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 import 'react-awesome-button/dist/styles.css';
 import 'react-awesome-button/dist/themes/theme-blue.css';
@@ -90,7 +90,7 @@ class CustomLayout extends React.Component {
     };
 
     closeModal = () => {
-        this.setState({modalVisible: false});
+        this.setState({modalVisible: false, modal: modals.login});
     };
 
     changeModal = (modal) => {
@@ -135,8 +135,6 @@ class CustomLayout extends React.Component {
     };
 
     render() {
-
-
         return (
             <div>
                 <Modal visible={this.state.modalVisible}
@@ -175,8 +173,6 @@ class CustomLayout extends React.Component {
                                   setAllNotificationAsRead={()=>this.setAllNotificationAsRead()}
                         />
 
-                        {/*<Header className="site-layout-background" style={{ padding: 0 }} />*/}
-
 
                         <Content style={{ margin: '20px 10px' }}>
                             <div className="Content">
@@ -185,7 +181,7 @@ class CustomLayout extends React.Component {
                         </Content>
 
                         <Footer style={{textAlign: 'center'}}>
-                            Copyright © 2020 Created by Nick Pappas
+                            Copyright © 2020 Created by Nikolaos Pappas | <Link to={'terms'}>Terms and Conditions</Link> | <Link to={'privacypolicy'}>Privacy Policy</Link>
                         </Footer>
                     </Layout>
 

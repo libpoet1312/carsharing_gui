@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Form, Input, Tooltip, Select, Upload,
-    Checkbox, Button, DatePicker, Divider, Row, Col
+    Checkbox, Button, DatePicker, Divider, Row, Col, message
 } from 'antd';
-import PhoneInput from 'react-phone-input-2'
+import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 
 import { QuestionCircleOutlined, UploadOutlined } from '@ant-design/icons';
@@ -17,7 +17,9 @@ import {GrPowerReset} from 'react-icons/gr';
 import * as actions from "../../../store/actions/authActions";
 import {connect} from "react-redux";
 import moment from "moment";
-
+import { ReactCountryDropdown } from 'react-country-dropdown'
+import 'react-country-dropdown/dist/index.css'
+import classes from './RegisterForm.module.css';
 
 const formItemLayout = {
     labelCol: {
@@ -63,18 +65,70 @@ const disabledDate = (current) => {
 
 const RegistrationForm = (props) => {
     const [form] = Form.useForm();
+    const [country, setCountry] = useState('');
+    const data= new FormData();
+
+    const handleSelect = (country) => {
+        console.log(country);
+        setCountry(country.code);
+        /* returns the details on selected country as an object
+            {
+              name: "United States of America",
+              code: "US",
+              capital: "Washington, D.C.",
+              region: "Americas",
+              latlng: [38, -97]
+            }
+        */
+    };
+
+    const customRequest= (options) => {
+        data.append('avatar', options.file);
+        options.onSuccess();
+    };
+
+    const beforeUpload = (file) => {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    };
 
     const onFinish = (values,error) => {
         console.log('Received values of form: ', values);
-        const date = values.dob;
-        console.log(date.toISOString().split('T')[0]);
+        const date = values.dob.toISOString().split('T')[0];
+        console.log(date);
 
-        props.onAuth(values.username, values.email, values.password1, values.password2,
-            values.phone_number, values.avatar, values.gender, values.country,
-            values.has_whatsup, values.has_viber, date.toISOString().split('T')[0]);
+        // props.onAuth(values.username, values.email, values.password1, values.password2,
+        //     values.phone_number, avatar, values.gender, values.country,
+        //     values.has_whatsup, values.has_viber, date.toISOString().split('T')[0]);
+
+        data.append('username', values.username);
+        data.append('email', values.email);
+        data.append('password1', values.password1);
+        data.append('password2', values.password2);
+        data.append('dob', date);
+
+
+        if(values.phone_number!==undefined) {data.append('phone_number', values.phone_number);}
+        data.append('gender', values.gender);
+
+        if(country!==undefined && country!=='') {data.append('country', country);}
+        if(values.has_whatsup!==undefined) {data.append('has_whatsup', values.has_whatsup)}
+        if(values.has_viber!==undefined) {data.append('has_viber', values.has_viber)}
+
+
+
+
+        props.onAuth(data);
         if (!props.error && !error){
             console.log('okey registration');
-            props.showModal()
+            props.showModal();
         }
     };
 
@@ -176,10 +230,10 @@ const RegistrationForm = (props) => {
 
                 <Form.Item
                     name='dob'
-                    label="Ημερομηνία Γέννησης"
+                    label="Date of birth"
                     rules={[
                         {
-                            required: false,
+                            required: true,
                             message: 'Please input date of birth!',
                         },
                     ]}
@@ -193,7 +247,7 @@ const RegistrationForm = (props) => {
 
                 <Form.Item
                     name="gender"
-                    label="Φύλο"
+                    label="Gender"
                     rules={[
                         {
                             required: false,
@@ -220,14 +274,30 @@ const RegistrationForm = (props) => {
                     ]}
                 >
                     <PhoneInput
-                        country={'us'}
+                        country={'gr'}
                         // value={this.state.phone}
-                        // onChange={phone => this.setState({ phone })}
+                        onChange={phone => console.log(phone)}
                     />
                 </Form.Item>
 
-                <Form.Item label="Εικόνα">
-                    <Upload name="avatar" listType="picture">
+                <Form.Item
+                    name="country"
+                    label="Country"
+                    rules={[
+                        {
+                            required: false,
+                            message: 'Please input your country!',
+                        },
+                    ]}
+                >
+                    <div className={classes.lala}>
+                        <ReactCountryDropdown onSelect={handleSelect} countryCode='IN' className="_1KMXW" />
+                    </div>
+
+                </Form.Item>
+
+                <Form.Item label="Avatar">
+                    <Upload name="avatar" listType="picture" accept={'.jpg,.png,.jpeg'} customRequest={customRequest} beforeUpload={beforeUpload}>
                         <Button>
                             <UploadOutlined /> Click to upload
                         </Button>
@@ -319,10 +389,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (username, email, password1, password2, phone_number, avatar, gender, country,
-                 has_whatsup, has_viber, dob) => dispatch(actions.authSignup(
-                     username, email, password1, password2, phone_number, avatar, gender, country,
-            has_whatsup, has_viber, dob))
+        // onAuth: (username, email, password1, password2, phone_number, avatar, gender, country,
+        //          has_whatsup, has_viber, dob) => dispatch(actions.authSignup(
+        //              username, email, password1, password2, phone_number, avatar, gender, country,
+        //     has_whatsup, has_viber, dob))
+        onAuth: (data) => dispatch(actions.authSignup(data))
     }
 };
 

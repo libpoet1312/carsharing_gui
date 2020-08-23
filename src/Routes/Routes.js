@@ -16,6 +16,8 @@ import MyFaq from '../components/FAQ/MyFaq';
 import MyRides from "../containers/MyRides/MyRides";
 import EditRide from "../containers/EditRide/EditRide";
 import * as myRidesActions from "../store/actions/myRidesActions";
+import TermsConditions from "../components/Terms and Conditions/TermsConditions";
+import {PrivacyPolicy} from "../components/PrivacyPolicy/PrivacyPolicy";
 
 const checkIfOwner = (pk, myrides)=> {
     // console.log(pk, myrides);
@@ -49,8 +51,11 @@ const Routes = (props) => {
 
 
             <Route exact path='/rides' component={Rides}/>
+
             <Route exact path='/rides/:ridePK' component={Ride}/>
             <Route exact path='/faq' component={MyFaq}/>
+            <Route exact path='/terms' component={TermsConditions}/>
+            <Route exact path='/privacypolicy' component={PrivacyPolicy}/>
             {props.isAuthenticated ? <Route exact path='/ridesadd' component={addRide}/> : null}
             {props.isAuthenticated ? <Route exact path='/requests' component={Requests}/> : null}
             <Route path='/'  component={error404}/>

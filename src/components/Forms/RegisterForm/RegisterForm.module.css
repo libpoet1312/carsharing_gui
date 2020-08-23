@@ -1,0 +1,18 @@
+._1KMXW {
+    position: relative;
+    margin-top: 18px;
+    transition: all 0.5s;
+    background: #FFFFFF;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    z-index: 10;
+}
+
+.lala {
+    position: relative;
+    /*margin-top: 18px;*/
+    transition: all 0.5s;
+    /*background: #FFFFFF;*/
+
+    z-index: 10;
+}

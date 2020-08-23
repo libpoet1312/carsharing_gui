@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {FaCarSide, FaUserCog} from 'react-icons/fa';
 import {GoRequestChanges} from 'react-icons/go';
 
-import {HomeOutlined, CarOutlined, PlusCircleOutlined, UserOutlined, QuestionCircleOutlined} from '@ant-design/icons';
+import {HomeOutlined, CarOutlined, PlusCircleOutlined, UserOutlined, QuestionCircleOutlined, InfoCircleOutlined} from '@ant-design/icons';
 
 const { SubMenu } = Menu;
 
@@ -42,6 +42,7 @@ const MyMenu = (props) => {
                         </Space>
                     </Link>
                 </Menu.Item>
+
 
             </SubMenu>
         )
@@ -81,7 +82,11 @@ const MyMenu = (props) => {
                     <Link to={`/faq/`}>
                         <span>F.A.Q.</span>
                     </Link>
-
+                </Menu.Item>
+                <Menu.Item key="8" icon={<InfoCircleOutlined />}>
+                    <Link to={`/terms/`}>
+                        <span>Terms & Conditions</span>
+                    </Link>
                 </Menu.Item>
             </Menu>
         </div>

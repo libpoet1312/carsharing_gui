@@ -88,18 +88,18 @@ export const facebookAuthSuccess = (user) => {
 };
 
 
-export const updateProfileStart = () => {
-    return {
-        type: actionTypes.UPDATE_PROFILE_SUCCESS,
-    }
-};
-
-export const updateProfileFail = error => {
-    return {
-        type: actionTypes.UPDATE_PROFILE_FAIL,
-        error
-    }
-};
+// export const updateProfileStart = () => {
+//     return {
+//         type: actionTypes.UPDATE_PROFILE_SUCCESS,
+//     }
+// };
+//
+// export const updateProfileFail = error => {
+//     return {
+//         type: actionTypes.UPDATE_PROFILE_FAIL,
+//         error
+//     }
+// };
 
 export const updateProfileSuccess = user => {
     return {
@@ -140,25 +140,31 @@ export const authLogin = (username, password) => {
     }
 };
 
-export const authSignup = (
-    username, email, password1, password2,
-    phone_number, avatar, gender, country,
-    has_whatsup, has_viber, dob)  => {
+export const authSignup = (data)  => {
+
+    // username, email, password1, password2,
+    //     phone_number, avatar, gender, country,
+    //     has_whatsup, has_viber, dob
+//     username: username,
+//         email: email,
+//         password1: password1,
+//         password2: password2,
+//         phone_number: phone_number,
+//         avatar: avatar,
+//         gender: gender,
+//         country: country,
+//         has_whatsup: has_whatsup,
+//         has_viber: has_viber,
+//         dob: dob,
+// }
+//     const config= {
+//         "headers": {
+//             "Content-Type": 'multipart/form-data; boundary=----WebKitFormBoundaryqTqJIxvkWFYqvP5s',
+//         }
+//     };
         return dispatch => {
             dispatch(authStart());
-            axios.post(API_HTTP+'rest-auth/registration/',{
-                username: username,
-                email: email,
-                password1: password1,
-                password2: password2,
-                phone_number: phone_number,
-                avatar: avatar,
-                gender: gender,
-                country: country,
-                has_whatsup: has_whatsup,
-                has_viber: has_viber,
-                dob: dob,
-            }).then (
+            axios.post(API_HTTP+'rest-auth/registration/',data).then (
                 response =>{
                     console.log(response);
                     const user = {

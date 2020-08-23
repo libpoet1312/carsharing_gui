@@ -13,3 +13,6 @@ export const SITE_URL = window.location.href;
 export const FACEBOOK_APP_ID = '697265101083086';
 export const GOOGLE_MAPS_KEY = 'AIzaSyCGR8QHY78WBq43zC_2i9ohE-sT5ZfgZ60';
 
+export const SITE_NAME = 'Car Sharing';
+export const SITE_EMAIL = '';
+

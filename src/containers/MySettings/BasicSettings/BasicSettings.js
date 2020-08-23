@@ -107,7 +107,6 @@ const BasicSettings = (props) => {
             message.error('Avatar upload failed.');
             options.onError();
         })
-
     };
 
     return (
